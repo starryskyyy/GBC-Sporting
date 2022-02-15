@@ -35,8 +35,9 @@ namespace GBCSporting_Flip_Framework.Models
                 );
 
             modelBuilder.Entity<Customer>().HasData(
-                new Customer { 
-                    CustomerId = 1, 
+                new Customer
+                {
+                    CustomerId = 1,
                     FirstName = "Elizaveta",
                     LastName = "Vygovskaia",
                     Address = "67 Tikhvinskaya street",
@@ -93,7 +94,8 @@ namespace GBCSporting_Flip_Framework.Models
                 );
 
             modelBuilder.Entity<Product>().HasData(
-                new Product { 
+                new Product
+                {
                     ProductId = 1,
                     Code = "H332K",
                     Name = "Draft Manager 1.0",
@@ -111,7 +113,6 @@ namespace GBCSporting_Flip_Framework.Models
                 }
 
                 );
-            
 
             modelBuilder.Entity<Incident>().HasData(
                 new Incident
