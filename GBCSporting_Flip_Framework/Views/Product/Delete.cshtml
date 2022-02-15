@@ -1,5 +1,11 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Product
 @{
+    ViewData["Title"] = "Product Manager";
 }
+<h1>Confirm Deletion</h1>
+<h2>@Model.Name Code(@Model.Code)</h2>
+<form asp-controller="Product" asp-action="Delete">
+    <input type="hidden" asp-for="ProductId"/>
+    <button type="submit">Delete</button>
+    <a asp-controller="Product" asp-action="Index">Cancel</a>
+</form>
