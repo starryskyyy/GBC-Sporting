@@ -4,7 +4,7 @@ namespace GBCSporting_Flip_Framework.Models
     public class Customer
     {
         [Key]
-        public int CutomerId { get; set; }
+        public int CustomerId { get; set; }
         [Required(ErrorMessage ="Please enter a first name")]
         public string? FirstName { get; set; }
         [Required(ErrorMessage ="Please enter a second name")]

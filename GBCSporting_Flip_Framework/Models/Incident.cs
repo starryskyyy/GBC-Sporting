@@ -17,11 +17,11 @@ namespace GBCSporting_Flip_Framework.Models
         public string? Title { get; set; }
         [Required(ErrorMessage ="Please enter a description")]
         public string? Description { get; set; }
-        public int? TechicianId { get; set; }
+        public int? TechnicianId { get; set; }
         public Technician? Technician { get; set; }
         public DateTime? DateOpened     { get; set; }
         [Required(ErrorMessage ="Please enter a date")]
-        public DateTime? DateClosed { get; set; }
+        public DateTime DateClosed { get; set; }
         public String Slug => Title?.Replace(' ', '-').ToLower();
     }
 }
