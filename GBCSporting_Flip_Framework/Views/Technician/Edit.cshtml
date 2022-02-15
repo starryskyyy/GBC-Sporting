@@ -1,5 +1,18 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Technician
 @{
+    ViewData["Title"] = "Technician Manager";
 }
+
+<h1>@ViewBag.Action</h1>
+<form asp-controller="Technician" asp-action="Edit">
+<div asp-validation-summary="All"></div>
+    <label asp-for="TechName">Name</label>
+    <input asp-for="TechName" />
+    <label asp-for="TechEmail">Email</label>
+    <input asp-for="TechEmail" />
+    <label asp-for="TechPhone">Phone</label>
+    <input asp-for="TechPhone" />
+    <input asp-for="TechnicianId" type="hidden"/>
+    <button type="submit">Save</button>
+    <a asp-controller="Technician" asp-action="Index">Cancel</a>
+</form>

@@ -5,13 +5,14 @@
 
 <h1>@ViewBag.Action</h1>
 <form asp-controller="Product" asp-action="Edit">
+<div asp-validation-summary="All"></div>
     <label asp-for="Code">Code</label>
     <input asp-for="Code" />
     <label asp-for="Name">Name</label>
     <input asp-for="Name" />
     <label asp-for="YearlyPrice">Yearly Price</label>
     <input asp-for="YearlyPrice" />
-    <label asp-for="ReleaseDate"Release Date></label>
+    <label asp-for="ReleaseDate">Release Date</label>
     <input asp-for="ReleaseDate" />
     <input asp-for="ProductId" type="hidden"/>
     <button type="submit">Save</button>

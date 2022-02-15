@@ -1,5 +1,30 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Customer>
 @{
+    ViewData["Title"] = "Customer Manager";
 }
+
+<h1>Customer Manager</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>City</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Customer c in Model)
+        {
+            <tr>
+                <td>@c.FirstName @c.LastName</td>
+                <td>@c.CustEmail</td>
+                <td>@c.City</td>
+                <td><a asp-controller="Customer" asp-action="Edit" asp-route-id=@c.CustomerId>Edit</a></td>
+                <td><a asp-controller="Customer" asp-action="Delete" asp-route-id=@c.CustomerId>Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Customer" asp-action="Add">Add Customer</a>
