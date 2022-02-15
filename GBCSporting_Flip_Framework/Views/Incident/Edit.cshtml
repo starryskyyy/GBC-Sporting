@@ -1,5 +1,38 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Incident
 @{
+    ViewData["Title"] = "Incident Manager";
 }
+
+<h1>@ViewBag.Action</h1>
+<form asp-controller="Incident" asp-action="Edit">
+<div asp-validation-summary="All"></div>
+    <select asp-for="CustomerId">
+        @foreach (Customer c in ViewBag.Customers)
+        {
+            <option value=@c.CustomerId>@c.FirstName @c.LastName</option>
+        }
+    </select>
+    <select asp-for="ProductId">
+        @foreach (Product p in ViewBag.Products)
+        {
+            <option value=@p.ProductId>@p.Name</option>
+        }
+    </select>
+    <label asp-for="Title">Title</label>
+    <input asp-for="Title" />
+    <label asp-for="Description">Description</label>
+    <input asp-for="Description" />
+    <select asp-for="TechnicianId">
+        @foreach (Technician t in ViewBag.Technicians)
+        {
+            <option value=@t.TechnicianId>@t.TechName</option>
+        }
+    </select>
+    <label asp-for="DateOpened">Date Opened</label>
+    <input asp-for="DateOpened" />
+    <label asp-for="DateClosed">Date Closed</label>
+    <input asp-for="DateClosed" />
+    <input asp-for="IncidentId" type="hidden"/>
+    <button type="submit">Save</button>
+    <a asp-controller="Incident" asp-action="List">Cancel</a>
+</form>
