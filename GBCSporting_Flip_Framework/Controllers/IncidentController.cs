@@ -2,7 +2,7 @@
 
 namespace GBCSporting_Flip_Framework.Controllers
 {
-    public class CustomersController : Controller
+    public class IncidentController : Controller
     {
         public IActionResult Index()
         {
