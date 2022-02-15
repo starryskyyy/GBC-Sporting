@@ -22,7 +22,7 @@
     <input asp-for="Title" />
     <label asp-for="Description">Description</label>
     <input asp-for="Description" />
-    <select asp-for="TechicianId">
+    <select asp-for="TechnicianId">
         @foreach (Technician t in ViewBag.Technicians)
         {
             <option value=@t.TechnicianId>@t.TechName</option>
