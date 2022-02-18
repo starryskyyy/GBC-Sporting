@@ -6,6 +6,9 @@ namespace GBCSporting_Flip_Framework.Controllers
 {
     public class HomeController : Controller
     {
-        
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }

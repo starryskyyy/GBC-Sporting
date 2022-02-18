@@ -1,5 +1,10 @@
+* {
+    box-sizing: content-box;
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    
 }
 
 @media (min-width: 768px) {
@@ -14,5 +19,44 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #3d405b;
+}
+
+.navbg {
+    background-color: #81b29a;
+}
+
+.hero {
+    position: relative;
+    left: 0;
+    
+    height: 100vh;
+    background-image: url(/images/hero_splash.png);
+    background-position: center center;
+    background-size: cover;
+    margin: 0;
+}
+
+.bannerText {
+    display:inline-flex;
+    position: relative;
+    top: 3rem;
+    left: 3rem;
+    color: #f4f1de;
+    font-size: 3.5rem;
+    width: 50%;
+    margin: 0;
+}
+
+.bannerButtons {
+    display: inline;
+    position: relative;
+    top: 30rem;
+    left: 3rem;
+    width: 25rem;
+}
+.bannerButtons a {
+    text-decoration: none;
+    color: #f4f1de;
 }

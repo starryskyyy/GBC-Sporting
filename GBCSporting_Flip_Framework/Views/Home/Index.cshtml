@@ -1,8 +1,31 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+   <!--Hero Banner section TODO: Keep on styling away and adding more elements-->
+   <div class="hero">
+     <h1 class="bannerText">Step Up Your Game With Us</h1>
+     <div class="d-flex justify-content-evenly bannerButtons">
+         <!-- Buttons are currently disabled for the time being -->
+         <button type="button" class="btn btn-danger" disabled><a asp-controller="Registration" asp-action="Index">Register Here</a></button>
+         <button type="button" class="btn btn-danger" disabled><a asp-controller="About" asp-action="Index">About Us</a></button>
+     </div>
+   </div>
+    
+    <div class="container-fluid">
+        <!--Flavour text will go here-->
+    </div>
+    <section>
+        <!--Linking area for the rest of the home page will go here-->
+        <!--TODO: -Land on a pallette for whole theme, pick a gradient for the link panel buttons
+                  -CSS custom to make buttons move when hovering over
+                  -CSS Custom shapes for button -> slanted corner in bottom right
+                  -Make fully responsive on media queries for text and image
+                  -Inline buttons when past tablet size
+        -->
+    </section>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <!-- Style footer inside of the lay out, will be used across all pages - > Credits, links, contact, copyright, etc-->
+    <!-- Other TODO: -Test Modal system for a pop out when clicking add or edit instead of a whole new page when on those pages-->
+
+
+

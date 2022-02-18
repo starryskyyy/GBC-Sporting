@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using GBCSporting_Flip_Framework.Models;
 
 namespace GBCSporting_Flip_Framework.Controllers
 {
@@ -8,5 +9,6 @@ namespace GBCSporting_Flip_Framework.Controllers
         {
             return View();
         }
+
     }
 }
