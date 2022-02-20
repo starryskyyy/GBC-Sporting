@@ -1,11 +1,14 @@
 ﻿@model Product
 @{
-    ViewData["Title"] = "Product Manager";
+    ViewData["Title"] = "Delete Product";
 }
-<h1>Confirm Deletion</h1>
-<h2>@Model.Name Code(@Model.Code)</h2>
-<form asp-controller="Product" asp-action="Delete">
+
+<h2>Confirm Deletion</h2>
+<h3>@Model.Name Code(@Model.Code)</h3>
+
+<form asp-controller="Product" asp-action="Delete" method="post">
     <input type="hidden" asp-for="ProductId"/>
+
     <button type="submit">Delete</button>
     <a asp-controller="Product" asp-action="Index">Cancel</a>
 </form>
