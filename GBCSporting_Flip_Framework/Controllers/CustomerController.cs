@@ -55,6 +55,7 @@ namespace GBCSporting_Flip_Framework.Controllers
             else
             {
                 ViewBag.Action = (customer.CustomerId == 0) ? "Add" : "Edit";
+                //ViewBag.Countries = context.Countries.OrderBy(c => c.CountryName).ToList();
                 return View(customer);
             }
         }
