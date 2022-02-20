@@ -21,7 +21,7 @@
             <tr>
                 <td>@p.Code</td>
                 <td>@p.Name</td>
-                <td>@p.YearlyPrice</td>
+                <td>@p.YearlyPrice.Value.ToString("C")</td>
                 <td>@p.ReleaseDate</td>
                 <td><a asp-controller="Product" asp-action="Edit" asp-route-id=@p.ProductId>Edit</a></td>
                 <td><a asp-controller="Product" asp-action="Delete" asp-route-id=@p.ProductId>Delete</a></td>
