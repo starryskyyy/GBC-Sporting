@@ -10,7 +10,7 @@
 
     <label asp-for="CustomerId">Customer</label>
     <select asp-for="CustomerId">
-        <option value="">select a customer</option> 
+        <option value="0">select a customer</option> 
         @foreach (Customer c in ViewBag.Customers)
         {
             <option value=@c.CustomerId>@c.FirstName @c.LastName</option>
@@ -19,7 +19,7 @@
 
     <label asp-for="ProductId">Product</label>
     <select asp-for="ProductId">
-        <option value="">select a product</option> 
+        <option value="0">select a product</option> 
         @foreach (Product p in ViewBag.Products)
         {
             <option value=@p.ProductId>@p.Name</option>
@@ -51,5 +51,5 @@
 
     @*action buttons*@
     <button type="submit">@ViewBag.Action</button>
-    <a asp-controller="Incident" asp-action="List">Cancel</a>
+    <a asp-controller="Incident" asp-action="Index">Cancel</a>
 </form>

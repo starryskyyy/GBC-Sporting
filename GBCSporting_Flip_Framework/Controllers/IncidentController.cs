@@ -60,6 +60,9 @@ namespace GBCSporting_Flip_Framework.Controllers
             else
             {
                 ViewBag.Action = (incident.IncidentId == 0) ? "Add" : "Edit";
+                ViewBag.Customers = context.Customers.OrderBy(c => c.FirstName).ToList();
+                ViewBag.Technicians = context.Technicians.OrderBy(t => t.TechName).ToList();
+                ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
                 return View(incident);
             }
         }
