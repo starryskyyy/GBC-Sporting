@@ -15,6 +15,6 @@ namespace GBCSporting_Flip_Framework.Models
         [Required(ErrorMessage ="Please enter a phone")]
         public string? TechPhone { get; set; }
 
-        public string Slug => TechName?.Replace(' ', '-').ToLower();
+        public string? Slug => TechName?.Replace(' ', '-').ToLower();
     }
 }

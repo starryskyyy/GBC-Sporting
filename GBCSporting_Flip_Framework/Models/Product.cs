@@ -18,7 +18,8 @@ namespace GBCSporting_Flip_Framework.Models
         [DisplayFormat(DataFormatString = "{0:C2}")]
         public double? YearlyPrice  { get; set; }
 
-        public DateTime ReleaseDate { get; set; } = DateTime.Now;
+        [Required(ErrorMessage = "Please enter a date")]
+        public DateTime? ReleaseDate { get; set; } = DateTime.Now;
 
         public string Slug => Code?.Replace(' ', '-').ToLower()
              + '-' + Name?.Replace(' ', '-').ToLower();
