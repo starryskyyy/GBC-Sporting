@@ -70,7 +70,13 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var incident = context.Incidents.Find(id);
+            // Customer, Technician, Product objects are need to display details of incident
+            // Not sure if it should be coded like this
+            var incident = context.Incidents
+                .Include(i => i.Customer)
+                .Include(i => i.Technician)
+                .Include(i => i.Product)
+                .FirstOrDefault(i => i.IncidentId == id);
             return View(incident);
         }
         [HttpPost]

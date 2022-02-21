@@ -1,5 +1,6 @@
 ﻿using GBCSporting_Flip_Framework.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GBCSporting_Flip_Framework.Controllers
 {
@@ -63,7 +64,9 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var customer = context.Customers.Find(id);
+            var customer = context.Customers
+                .Include(c => c.Country)
+                .FirstOrDefault(c => c.CustomerId == id);
             return View(customer);
         }
         [HttpPost]
