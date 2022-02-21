@@ -1,7 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-   <!--Hero Banner section TODO: Keep on styling away and adding more elements-->
+   <!--Hero Banner section TODO: Keep on styling away and adding more elements
+                                 Stop using running puns in your writing. 
+   -->
    <div class="hero">
      <h1 class="bannerText">Step Up Your Game With Us</h1>
      <div class="d-flex justify-content-evenly bannerButtons">
@@ -9,11 +11,12 @@
          <button type="button" class="btn btn-danger" disabled><a asp-controller="Registration" asp-action="Index">Register Here</a></button>
          <button type="button" class="btn btn-danger" disabled><a asp-controller="About" asp-action="Index">About Us</a></button>
      </div>
+     <div class="d-flex flavourText">
+        <p class="fs-2 ">GBC Sporting strives to deliver you the tools you need to keep your games running</p>
+    </div>
    </div>
     
-    <div class="container-fluid">
-        <!--Flavour text will go here-->
-    </div>
+    
     <section>
         <!--Linking area for the rest of the home page will go here-->
         <!--TODO: -Land on a pallette for whole theme, pick a gradient for the link panel buttons
@@ -22,6 +25,31 @@
                   -Make fully responsive on media queries for text and image
                   -Inline buttons when past tablet size
         -->
+
+        <div class="container px-4 justify-content-center">
+            <div class="row gy-2">
+                <div class="col-4">
+                    <div class="p-3 border buttonsOnGrid">1</div>
+                </div>
+                <div class="col-4">
+                    <div class="p-3 border buttonsOnGrid">2</div>
+                </div>
+                <div class="col-4">
+                    <div class="p-3 border buttonsOnGrid">3</div>
+                </div>
+            </div>
+            <div class="row gy-2">
+                <div class="col-4">
+                    <div class="p-3 border buttonsOnGrid">4</div>
+                </div>
+                <div class="col-4">
+                    <div class="p-3 border buttonsOnGrid">5</div>
+                </div>
+                <div class="col-4">
+                    <div class="p-3 border buttonsOnGrid">6</div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Style footer inside of the lay out, will be used across all pages - > Credits, links, contact, copyright, etc-->

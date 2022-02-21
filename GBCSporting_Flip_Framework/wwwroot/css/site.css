@@ -1,10 +1,7 @@
-* {
-    box-sizing: content-box;
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
-html {
-    font-size: 14px;
-    
+* {
+    box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
@@ -21,42 +18,71 @@ html {
 body {
     margin-bottom: 60px;
     background-color: #3d405b;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 2px 2px 7px rgba(4,1,33,0.71);
 }
 
-.navbg {
-    background-color: #81b29a;
+nav a, .navfont, .navfont:hover{
+    color: #f4f1de;
+    text-decoration: none;
+}
+
+.navsize {
+    height: 8vh;
+    background-color: #306F71;
+}
+nav {
+    box-shadow: 2px 5px 25px 5px black;
+    border-bottom:2.5px solid orange;
+    z-index:5;
 }
 
 .hero {
     position: relative;
+    top: 0;
     left: 0;
-    
-    height: 100vh;
+    height: 110vh;
+    width: auto;
     background-image: url(/images/hero_splash.png);
     background-position: center center;
     background-size: cover;
+    background-attachment:fixed;
     margin: 0;
 }
 
 .bannerText {
-    display:inline-flex;
     position: relative;
-    top: 3rem;
+    top: 8rem;
     left: 3rem;
     color: #f4f1de;
-    font-size: 3.5rem;
-    width: 50%;
+    font-size: 3.85vw;
+    width: 40vw;
     margin: 0;
+    text-shadow: 2px 2px 7px rgba(4,1,33,0.71);
 }
 
 .bannerButtons {
     display: inline;
     position: relative;
-    top: 30rem;
-    left: 3rem;
+    top: 55vh;
+    left: 2vw;
     width: 25rem;
 }
-.bannerButtons a {
-    text-decoration: none;
-    color: #f4f1de;
+.flavourText {
+    position: relative;
+    top: 6.5vh;
+    left: 65vw;
+    width: 20rem;
 }
+.bannerButtons a, .flavourText > p {
+     text-decoration: none;
+     color: #f4f1de;
+     font-size: 1.75vw;
+     text-shadow: 2px 2px 7px rgba(4,1,33,0.71);
+ }
+.buttonsOnGrid{
+    width: 400px;
+    height: 400px;
+    background-color: orange;
+}
+
