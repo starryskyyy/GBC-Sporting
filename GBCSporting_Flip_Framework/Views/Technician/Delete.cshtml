@@ -1,10 +1,24 @@
 ﻿@model Technician
 @{
-    ViewData["Title"] = "Technician Manager";
+    ViewData["Title"] = "Delete Technician";
 }
-<h1>Confirm Deletion</h1>
-<h2>@Model.TechName</h2>
-<form asp-controller="Technician" asp-action="Delete">
+<h2>Confirm Deletion</h2>
+<table>
+    <tr>
+        <th>Technician Name</th>
+        <td>@Model.TechName</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.TechEmail</td>
+    </tr>
+    <tr>
+        <th>Phone</th>
+        <td>@Model.TechPhone</td>
+    </tr>
+</table>
+
+<form asp-controller="Technician" asp-action="Delete" method="post">
     <input type="hidden" asp-for="TechnicianId"/>
     <button type="submit">Delete</button>
     <a asp-controller="Technician" asp-action="Index">Cancel</a>

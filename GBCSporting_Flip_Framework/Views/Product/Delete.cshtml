@@ -1,11 +1,30 @@
 ﻿@model Product
 @{
-    ViewData["Title"] = "Product Manager";
+    ViewData["Title"] = "Delete Product";
 }
-<h1>Confirm Deletion</h1>
-<h2>@Model.Name Code(@Model.Code)</h2>
-<form asp-controller="Product" asp-action="Delete">
+
+<h2>Confirm Deletion</h2>
+<table>
+    <tr>
+        <th>Code</th>
+        <td>@Model.Code</td>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>@Model.YearlyPrice.Value.ToString("C")</td>
+    </tr>
+    <tr>
+        <th>Release Date</th>
+        <td>@Model.ReleaseDate</td>
+    </tr>
+</table>
+<form asp-controller="Product" asp-action="Delete" method="post">
     <input type="hidden" asp-for="ProductId"/>
+
     <button type="submit">Delete</button>
     <a asp-controller="Product" asp-action="Index">Cancel</a>
 </form>

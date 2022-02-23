@@ -1,20 +1,28 @@
 ﻿@model Product
 @{
-    ViewData["Title"] = "Product Manager";
+    string title = ViewBag.Action + " Product";
+    ViewBag.Title = title;
 }
 
 <h1>@ViewBag.Action</h1>
-<form asp-controller="Product" asp-action="Edit">
-<div asp-validation-summary="All"></div>
+<form asp-controller="Product" asp-action="Edit" method="post">
+    <div asp-validation-summary="All"></div>
+
     <label asp-for="Code">Code</label>
     <input asp-for="Code" />
+
     <label asp-for="Name">Name</label>
     <input asp-for="Name" />
+
     <label asp-for="YearlyPrice">Yearly Price</label>
     <input asp-for="YearlyPrice" />
+
     <label asp-for="ReleaseDate">Release Date</label>
     <input asp-for="ReleaseDate" />
+
     <input asp-for="ProductId" type="hidden"/>
-    <button type="submit">Save</button>
+
+    @*action buttons*@
+    <button type="submit">@ViewBag.Action</button>
     <a asp-controller="Product" asp-action="Index">Cancel</a>
 </form>

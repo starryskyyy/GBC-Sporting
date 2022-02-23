@@ -1,26 +1,34 @@
 ﻿@model Customer
 @{
-    ViewData["Title"] = "Customer Manager";
+    string title = ViewBag.Action + " Customer";
+    ViewBag.Title = title;
 }
 
 <h1>@ViewBag.Action</h1>
-<form asp-controller="Customer" asp-action="Edit">
-<div asp-validation-summary="All"></div>
+<form asp-controller="Customer" asp-action="Edit" method="post">
+    <div asp-validation-summary="All"></div>
+
     <label asp-for="FirstName">First Name</label>
     <input asp-for="FirstName" />
+
     <label asp-for="LastName">Last Name</label>
     <input asp-for="LastName" />
+
     <label asp-for="Address">Address</label>
     <input asp-for="Address" />
+
     <label asp-for="City">City</label>
     <input asp-for="City" />
+
     <label asp-for="State">State</label>
     <input asp-for="State" />
-    <label asp-for="City">City</label>
-    <input asp-for="City" />
+
     <label asp-for="PostalCode">Postal Code</label>
     <input asp-for="PostalCode" />
+
+    <label asp-for="CountryId">Country</label>
     <select asp-for="CountryId">
+        <option value="0">select a country</option> 
         @foreach (Country c in ViewBag.Countries)
         {
             <option value=@c.CountryId>@c.CountryName</option>
@@ -28,9 +36,13 @@
     </select>
     <label asp-for="CustEmail">Email</label>
     <input asp-for="CustEmail" />
+
     <label asp-for="CustPhone">Phone</label>
     <input asp-for="CustPhone" />
+
     <input asp-for="CustomerId" type="hidden"/>
-    <button type="submit">Save</button>
+
+    @*action buttons*@
+    <button type="submit">@ViewBag.Action</button>
     <a asp-controller="Customer" asp-action="Index">Cancel</a>
 </form>

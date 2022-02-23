@@ -1,11 +1,42 @@
 ﻿@model Incident
 @{
-    ViewData["Title"] = "Incident Manager";
+    ViewData["Title"] = "Delete Incident";
+    string technicianName = Model.Technician is not null ? Model.Technician.TechName : "";
 }
-<h1>Confirm Deletion</h1>
-<h2>@Model.Title</h2>
-<form asp-controller="Incident" asp-action="Delete">
+<h2>Confirm Deletion</h2>
+<table>
+    <tr>
+        <th>Customer Name</th>
+        <td>@Model.Customer.FirstName @Model.Customer.LastName</td>
+    </tr>
+    <tr>
+        <th>Product</th>
+        <td>@Model.Product.Name</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td>@Model.Title</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>@Model.Description</td>
+    </tr>
+    <tr>
+        <th>Technician</th>
+        <td>@technicianName</td>
+    </tr>
+    <tr>
+        <th>Date Opened</th>
+        <td>@Model.DateOpened</td>
+    </tr>
+    <tr>
+        <th>Date Closed</th>
+        <td>@Model.DateClosed</td>
+    </tr>
+</table>
+
+<form asp-controller="Incident" asp-action="Delete" method="post">
     <input type="hidden" asp-for="IncidentId"/>
     <button type="submit">Delete</button>
-    <a asp-controller="Incident" asp-action="List">Cancel</a>
+    <a asp-controller="Incident" asp-action="Index">Cancel</a>
 </form>

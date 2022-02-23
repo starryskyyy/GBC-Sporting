@@ -6,15 +6,21 @@ namespace GBCSporting_Flip_Framework.Models
     {
         [Key]
         public int ProductId { get; set; }
+
         [Required(ErrorMessage = "Please enter a code")]
         public string? Code { get; set; }
+
         [Required(ErrorMessage = "Please enter a name of the product")]
         public string? Name { get; set; }
+
         [Required(ErrorMessage = "Please enter a yearly price")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [Range(0, 1000000, ErrorMessage = "Price must be between 0 - 1000000")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public double? YearlyPrice  { get; set; }
+
         public DateTime ReleaseDate { get; set; } = DateTime.Now;
-        public String Slug => Code?.Replace(' ', '-').ToLower()
+
+        public string Slug => Code?.Replace(' ', '-').ToLower()
              + '-' + Name?.Replace(' ', '-').ToLower();
 
 
