@@ -2,6 +2,11 @@
 
 * {
     box-sizing: border-box;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
@@ -17,37 +22,74 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #3d405b;
     font-family: 'Roboto', sans-serif;
-    text-shadow: 2px 2px 7px rgba(4,1,33,0.71);
+    text-shadow: 1px 1px 3px rgba(4,1,33,0.25);
+    background-color: #A9C9FF;
+    background-image: linear-gradient(0deg, #A9C9FF 0%, #402238 100%);
 }
-
-nav a, .navfont, .navfont:hover{
+.navfont, .siteBranding .navfont, .navfont:hover {
     color: #f4f1de;
-    text-decoration: none;
+    font-size: 22px;
+    padding: .5rem;
+}
+.site-nav{
+    padding: .5rem;
+    height: 5rem;
+    margin: 0 1.5rem 0 4rem
 }
 
-.navsize {
-    height: 8vh;
-    background-color: #306F71;
+ul {
+    padding: 0;
+    list-style: none;
+    display: table;
+    text-align: center;
 }
-nav {
-    box-shadow: 2px 5px 25px 5px black;
-    border-bottom:2.5px solid orange;
-    z-index:5;
+
+li {
+    display: table-cell;
+    position: relative;
 }
+
+a .navfont{
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    display: inline-block;
+    padding: 15px 20px;
+    position: relative;
+}
+
+ .navfont:after {
+     background: none repeat scroll 0 0 transparent;
+     bottom: 0;
+     content: "";
+     display: block;
+     height: 2px;
+     left: 50%;
+     position: absolute;
+     background: #fff;
+     transition: width 0.3s ease 0s, left 0.3s ease 0s;
+     width: 0;
+ }
+
+a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
 
 .hero {
     position: relative;
-    top: 0;
+    top: -5.5rem;
     left: 0;
-    height: 110vh;
+    height: 100vh;
     width: auto;
-    background-image: url(/images/hero_splash.png);
+    background: url(/images/hero_splash.png);
     background-position: center center;
     background-size: cover;
     background-attachment:fixed;
     margin: 0;
+    z-index: -1;
 }
 
 .bannerText {
@@ -81,8 +123,77 @@ nav {
      text-shadow: 2px 2px 7px rgba(4,1,33,0.71);
  }
 .buttonsOnGrid{
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 250px;
     background-color: orange;
+    margin-left: 5em;
+    margin-bottom: 1em;
+    border: 2px solid white;
+    border-radius: 10px 10px 50px 10px;
+}
+
+.tableStyle {
+    margin: 0 auto 0 auto;
+    width: 75%;
+}
+table {
+    border: 1px solid white;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    border-radius: 10px;
+}
+thead{
+    background: white;
+    
+}
+
+.tablebg {
+    margin: 5em auto 5em auto;
+    background-color: hsla(216, 100%, 83%, .5);
+    padding: 1em;
+}
+button a {
+    text-decoration: none;
+    color: #f4f1de;
+}
+
+button a:hover{
+    color: white;
+}
+
+.formWrapping {
+    position: relative;
+    width: 60vw;
+    height: auto;
+    margin: 0 auto 0 auto;
+    padding: 1em;
+    background: hsla(300, 27%, 96%, .5); 
+    
+    border-radius: 1em;
+    border: 3px solid hsla(128, 20%, 83%, .6);
+    color: #292929;
+}
+
+    .formWrapping input[type = text],
+    .formWrapping select {
+        border: 1px solid hsla(132, 6%, 83%, 1);
+        background: hsla(0, 0%, 93%, .95);
+        box-shadow: inset 0 0 5px 1px hsla(132, 6%, 83%, 1);
+        color: #292929;
+        font-size: 15px;
+        margin-bottom: 1rem;
+        height: 3.5rem;
+    }
+
+.formbutton {
+    background: #292929;
+    width: 17rem;
+    height: 3rem;
+    color: white;
+}
+.formTitle {
+    color: #292929;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 

@@ -3,28 +3,35 @@
     ViewData["Title"] = "Customer Manager";
 }
 
-<h1>Customer Manager</h1>
-<table>
-    <thead>
-        <tr>
+<div class="container rounded-2 tablebg">
+    <h1>Customer Manager</h1>
+<table class="table table-responsive  tableStyle">
+    <thead class="rounded-2">
+        <tr class="tableHeader">
             <th>Name</th>
             <th>Email</th>
             <th>City</th>
-            <th></th>
-            <th></th>
+            <th colspan="2"></th>
         </tr>
     </thead>
     <tbody>
         @foreach (Customer c in Model)
         {
-            <tr>
+            <tr class="tableData">
                 <td>@c.FirstName @c.LastName</td>
                 <td>@c.CustEmail</td>
                 <td>@c.City</td>
-                <td><a asp-controller="Customer" asp-action="Edit" asp-route-id=@c.CustomerId>Edit</a></td>
-                <td><a asp-controller="Customer" asp-action="Delete" asp-route-id=@c.CustomerId>Delete</a></td>
+                <td>
+                    <a asp-controller="Customer" asp-action="Edit" asp-route-id=@c.CustomerId><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
+                </td>
+                <td>
+                    <a asp-controller="Customer" asp-action="Delete" asp-route-id=@c.CustomerId><i class="fa-solid fa-xmark fa-lg"></i></a>
+
+                </td>
             </tr>
         }
     </tbody>
 </table>
 <a asp-controller="Customer" asp-action="Add">Add Customer</a>
+
+</div>
