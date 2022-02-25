@@ -2,31 +2,45 @@
 @{
     ViewData["Title"] = "Incident Manager";
 }
-
-<h1>Incident Manager</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Customer</th>
-            <th>Product</th>
-            <th>Date Opened</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Incident i in Model)
-        {
-            <tr>
-                <td>@i.Title</td>
-                <td>@i.Customer.FirstName @i.Customer.LastName</td>
-                <td>@i.Product.Name</td>
-                <td>@i.DateOpened</td>
-                <td><a asp-controller="Incident" asp-action="Edit" asp-route-id=@i.IncidentId>Edit</a></td>
-                <td><a asp-controller="Incident" asp-action="Delete" asp-route-id=@i.IncidentId>Delete</a></td>
-            </tr>
-        }
-    </tbody>
-</table>
-<a asp-controller="Incident" asp-action="Add">Add Incident</a>
+<div class="container-fluid padding">
+    <div class="container mx-auto my-auto tablebg">
+        <ul class="responsive-table">
+            <li class="row d-md-flex d-block">
+                <h1>Incident Manager</h1>
+            </li>
+            <li class="row table-header d-md-flex d-none">
+                <div class="col col-3">Title</div>
+                <div class="col col-3">Customer</div>
+                <div class="col col-2">Product</div>
+                <div class="col col-2">Date Opened</div>
+                <div class="col col-2"></div>
+            </li>
+            @foreach (Incident i in Model)
+            {
+                <li class="row table-row d-md-flex d-block">
+                    <label class="col d-md-none sneakylabel">Title</label>
+                    <div class="col col-md-3 col-12 text-wrap">@i.Title</div>
+                    <label class="col d-md-none sneakylabel">Customer</label>
+                    <div class="col col-md-3 col-12 text-wrap">@i.Customer.FirstName @i.Customer.LastName</div>
+                    <label class="col d-md-none sneakylabel">Product</label>
+                    <div class="col col-md-2 col-12 text-wrap">@i.Product.Name</div>
+                     <label class="col d-md-none sneakylabel">Product</label>
+                    <div class="col col-md-2 col-12 text-wrap">@i.DateOpened</div>
+                    <div class="col-md-2 d-inline-flex justify-content-end">
+                        <a asp-controller="Incident" asp-action="Edit" asp-route-id=@i.IncidentId>
+                            <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
+                        </a>
+                        <a asp-controller="Incident" asp-action="Delete" asp-route-id=@i.IncidentId>
+                            <i class="fa-solid fa-xmark fa-lg" style="color:#CC0000; font-size:22px;"></i>
+                        </a>
+                    </div>
+                </li>
+            }
+            <li class="row d-md-flex d-block">
+                <div class="col col-12">
+                    <a asp-controller="Incident" asp-action="Add" class="btn formbutton rounded-pill" style="width: 100%;" role="button"> Add Incident</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

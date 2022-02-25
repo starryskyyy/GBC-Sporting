@@ -3,53 +3,69 @@
     string title = ViewBag.Action + " Incident";
     ViewBag.Title = title;
 }
+<div class="container-fluid padding">
+    <div class="formWrapping row-md g-2">
+        <form asp-controller="Incident" asp-action="Edit" method="post">
+            <span class="formTitle row justify-content-center">@title</span>
+            <div asp-validation-summary="All"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label asp-for="CustomerId" class="form-label">Customer</label>
+                    <select asp-for="CustomerId" class="form-select">
+                        <option value="0">SELECT CUSTOMER</option> 
+                        @foreach (Customer c in ViewBag.Customers)
+                        {
+                            <option value=@c.CustomerId>@c.FirstName @c.LastName</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label asp-for="ProductId" class="form-label">Product</label>
+                    <select asp-for="ProductId" class="form-select">
+                        <option value="0">SELECT PRODUCT</option> 
+                        @foreach (Product p in ViewBag.Products)
+                        {
+                            <option value=@p.ProductId>@p.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label asp-for="Title" class="form-label">Title</label>
+                    <input asp-for="Title" class="form-control"/>
+                </div>
+                <div class="col-md-12">
+                    <label asp-for="Description" class="form-label">Description</label>
+                    <input asp-for="Description" class="form-control"/>
+                </div>
+                <div class="col-md-12">
+                    <label asp-for="TechnicianId" class="form-label">Technician</label>
+                    <select asp-for="TechnicianId" class="form-control">
+                        <option value="0">SELECT A TECHNICIAN</option> 
+                        @foreach (Technician t in ViewBag.Technicians)
+                        {
+                            <option value=@t.TechnicianId>@t.TechName</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label asp-for="DateOpened" class="form-label">Date Opened</label>
+                    <input type="datetime-local" asp-for="DateOpened" class="form-control"/>
+                </div>
+                <div class="col-md-12">
+                     <label asp-for="DateClosed" class="form-label">Date Closed</label>
+                      <input type="datetime-local" class="form-control" asp-for="DateClosed" />
+                </div>
+            </div>
+            <input asp-for="IncidentId" type="hidden"/>
 
-<h1>@ViewBag.Action</h1>
-<form asp-controller="Incident" asp-action="Edit" method="post">
-    <div asp-validation-summary="All"></div>
+            @*action buttons*@
+            <div class="row">
+                <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
+                    <button type="submit" class="btn formbutton rounded-pill">@ViewBag.Action</button>
+                    <button class="btn formbutton rounded-pill" asp-controller="Incident" asp-action="Index">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
-    <label asp-for="CustomerId">Customer</label>
-    <select asp-for="CustomerId">
-        <option value="0">select a customer</option> 
-        @foreach (Customer c in ViewBag.Customers)
-        {
-            <option value=@c.CustomerId>@c.FirstName @c.LastName</option>
-        }
-    </select>
-
-    <label asp-for="ProductId">Product</label>
-    <select asp-for="ProductId">
-        <option value="0">select a product</option> 
-        @foreach (Product p in ViewBag.Products)
-        {
-            <option value=@p.ProductId>@p.Name</option>
-        }
-    </select>
-
-    <label asp-for="Title">Title</label>
-    <input asp-for="Title" />
-
-    <label asp-for="Description">Description</label>
-    <input asp-for="Description" />
-
-    <label asp-for="TechnicianId">Technician</label>
-    <select asp-for="TechnicianId">
-        <option value="">select a technician</option> 
-        @foreach (Technician t in ViewBag.Technicians)
-        {
-            <option value=@t.TechnicianId>@t.TechName</option>
-        }
-    </select>
-
-    <label asp-for="DateOpened">Date Opened</label>
-    <input asp-for="DateOpened" />
-
-    <label asp-for="DateClosed">Date Closed</label>
-    <input asp-for="DateClosed" />
-
-    <input asp-for="IncidentId" type="hidden"/>
-
-    @*action buttons*@
-    <button type="submit">@ViewBag.Action</button>
-    <a asp-controller="Incident" asp-action="Index">Cancel</a>
-</form>

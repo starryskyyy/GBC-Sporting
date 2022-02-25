@@ -1,13 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-   <!--Hero Banner section TODO: Keep on styling away and adding more elements
-                                 Stop using running puns in your writing. 
-   -->
    <div class="hero">
      <h1 class="bannerText">Step Up Your Game With Us</h1>
      <div class="d-flex justify-content-evenly bannerButtons">
-         <!-- Buttons are currently disabled for the time being -->
          <button type="button" class="btn btn-danger" disabled><a asp-controller="Registration" asp-action="Index">Register Here</a></button>
          <button type="button" class="btn btn-danger" disabled><a asp-controller="About" asp-action="Index">About Us</a></button>
      </div>
@@ -15,46 +11,7 @@
         <p class="fs-2 ">GBC Sporting strives to deliver you the tools you need to keep your games running</p>
     </div>
    </div>
-    
-    
-    <section>
-        <!--Linking area for the rest of the home page will go here-->
-        <!--TODO: -Land on a pallette for whole theme, pick a gradient for the link panel buttons
-                  -CSS custom to make buttons move when hovering over
-                  -CSS Custom shapes for button -> slanted corner in bottom right
-                  -Make fully responsive on media queries for text and image
-                  -Inline buttons when past tablet size
-        -->
-        <br />
-        <br />
-        <div class="container px-4 justify-content-center">
-            <div class="row justify-content-center">
-                <div class="col">
-                    <div class="p-3 border buttonsOnGrid">1</div>
-                </div>
-                <div class="col">
-                    <div class="p-3 border buttonsOnGrid">2</div>
-                </div>
-                <div class="col">
-                    <div class="p-3 border buttonsOnGrid">3</div>
-                </div>
-            </div>
-            <div class="row gy-2">
-                <div class="col">
-                    <div class="p-3 border buttonsOnGrid">4</div>
-                </div>
-                <div class="col">
-                    <div class="p-3 border buttonsOnGrid">5</div>
-                </div>
-                <div class="col">
-                    <div class="p-3 border buttonsOnGrid">6</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Style footer inside of the lay out, will be used across all pages - > Credits, links, contact, copyright, etc-->
-    <!-- Other TODO: -Test Modal system for a pop out when clicking add or edit instead of a whole new page when on those pages-->
 
 
 

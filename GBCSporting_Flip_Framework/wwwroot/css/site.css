@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
+/*General Styling Elements*/
 * {
     box-sizing: border-box;
     text-decoration: none;
@@ -27,25 +27,15 @@ body {
     background-color: #A9C9FF;
     background-image: linear-gradient(0deg, #A9C9FF 0%, #402238 100%);
 }
-.navfont, .siteBranding .navfont, .navfont:hover {
+
+/*Navigation styling elements*/
+.navfont, .navfont:hover, nav.navbar > .container-fluid > .navbar-brand {
     color: #f4f1de;
     font-size: 22px;
     padding: .5rem;
 }
-.site-nav{
-    padding: .5rem;
-    height: 5rem;
-    margin: 0 1.5rem 0 4rem
-}
 
-ul {
-    padding: 0;
-    list-style: none;
-    display: table;
-    text-align: center;
-}
-
-li {
+li.navlist-item {
     display: table-cell;
     position: relative;
 }
@@ -76,14 +66,27 @@ a:hover:after {
     width: 100%;
     left: 0;
 }
+@media screen and (max-width: 991px){
+    .offcanvas {
+        background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(90,92,106,1) 0%, rgba(32,45,58,1) 81.3% );
+    }
+}
 
+.offcanvas > .offcanvas-header{
+    background-color: white;
+}
 
+.offcanvas > .offcanvas-header > h5{
+    color: black;
+}
+
+/*Hero Banner Section Styling Elements*/
 .hero {
     position: relative;
-    top: -5.5rem;
+    top: -4.2rem;
     left: 0;
     height: 100vh;
-    width: auto;
+    width: 100%;
     background: url(/images/hero_splash.png);
     background-position: center center;
     background-size: cover;
@@ -122,71 +125,85 @@ a:hover:after {
      font-size: 1.75vw;
      text-shadow: 2px 2px 7px rgba(4,1,33,0.71);
  }
-.buttonsOnGrid{
-    width: 200px;
-    height: 250px;
-    background-color: orange;
-    margin-left: 5em;
-    margin-bottom: 1em;
-    border: 2px solid white;
-    border-radius: 10px 10px 50px 10px;
-}
+/*Body Section of Home*/
 
-.tableStyle {
-    margin: 0 auto 0 auto;
-    width: 75%;
-}
-table {
-    border: 1px solid white;
-    border-collapse: separate;
-    border-spacing: 0 10px;
-    border-radius: 10px;
-}
-thead{
-    background: white;
-    
-}
+/*Table Styling Elements*/
 
 .tablebg {
     margin: 5em auto 5em auto;
     background-color: hsla(216, 100%, 83%, .5);
     padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.7);
+    max-width: 1120px;
 }
-button a {
-    text-decoration: none;
-    color: #f4f1de;
+.responsive-table{
+    padding: 0 1rem;
+}
+.responsive-table li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    justify-content: space-between;
+    margin: 0 auto .5rem auto;
+}
+.table-header {
+    background-color: #95A5A6;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.6);
 }
 
-button a:hover{
-    color: white;
+.sneakylabel{
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.padding{
+    padding: 0 2.5rem;
 }
 
+@media only screen and (max-width: 767px){
+    .table-row{
+        max-width: 400px;
+    }
+}
+
+
+/*Form styling elements*/
 .formWrapping {
     position: relative;
-    width: 60vw;
+    max-width: 750px;
     height: auto;
     margin: 0 auto 0 auto;
     padding: 1em;
     background: hsla(300, 27%, 96%, .5); 
-    
     border-radius: 1em;
     border: 3px solid hsla(128, 20%, 83%, .6);
     color: #292929;
 }
 
     .formWrapping input[type = text],
-    .formWrapping select {
+    .formWrapping select,
+    .formWrapping input[type = datetime-local]{
         border: 1px solid hsla(132, 6%, 83%, 1);
         background: hsla(0, 0%, 93%, .95);
         box-shadow: inset 0 0 5px 1px hsla(132, 6%, 83%, 1);
         color: #292929;
         font-size: 15px;
         margin-bottom: 1rem;
-        height: 3.5rem;
+        height: 3rem;
+        padding: .5rem;
+        font-weight:bold;
+        text-transform:uppercase;
     }
 
 .formbutton {
     background: #292929;
+    padding: 10px;
     width: 17rem;
     height: 3rem;
     color: white;
@@ -195,5 +212,13 @@ button a:hover{
     color: #292929;
     font-size: 2.5rem;
     font-weight: bold;
+}
+button a {
+    text-decoration: none;
+    color: #f4f1de;
+}
+
+.formbutton:hover {
+    color: white;
 }
 

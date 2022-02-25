@@ -2,31 +2,47 @@
 @{
     ViewData["Title"] = "Product Manager";
 }
+<div class="container-fluid padding">
+    <div class="container mx-auto my-auto tablebg">
+        <ul class="responsive-table">
+            <li class="row d-md-flex d-block">
+                <div class="col col-12">
+                <h1>Product Manager</h1>
+            </div>
+            </li>
+            <li class="row table-header d-md-flex d-none">
+                <div class="col col-2">Code</div>
+                <div class="col col-3">Name</div>
+                <div class="col col-2">Price</div>
+                <div class="col col-5">Release Date</div>
+            </li>
+            @foreach (Product p in Model)
+            {
+              <li class="row table-row d-md-flex d-block">
+                  <label class="col d-md-none sneakylabel">Code</label>
+                  <div class="col col-md-2 col-12">@p.Code</div>
+                  <label class="col d-md-none sneakylabel">Name</label>
+                  <div class="col col-md-3 col-12">@p.Name</div>
+                  <label class="col d-md-none sneakylabel">Price</label>
+                  <div class="col col-md-2 col-12">@p.YearlyPrice</div>
+                  <label class="col d-md-none sneakylabel">Release Date</label>
+                  <div class="col col-md-4 col-12">@p.ReleaseDate</div>
+                  <div class="col-md-1 d-inline-flex">
+                      <a asp-controller="Product" asp-action="Edit" asp-route-id=@p.ProductId>
+                          <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
+                      </a>
+                      <a asp-controller="Product" asp-action="Delete" asp-route-id=@p.ProductId>
+                          <i class="fa-solid fa-xmark fa-lg" style="color:#CC0000; font-size:22px;"></i>
+                      </a>
+                  </div>
+              </li>  
+            }
+            <li class="row d-md-flex d-block">
+                <div class="col col-12">
+                    <a class="btn formbutton rounded-pill" style="width: 100%;" asp-controller="Product" asp-action="Add" role="button">Add</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 
-<h1>Product Manager</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Release Date</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Product p in Model)
-        {
-            <tr>
-                <td>@p.Code</td>
-                <td>@p.Name</td>
-                <td>@p.YearlyPrice</td>
-                <td>@p.ReleaseDate</td>
-                <td><a asp-controller="Product" asp-action="Edit" asp-route-id=@p.ProductId>Edit</a></td>
-                <td><a asp-controller="Product" asp-action="Delete" asp-route-id=@p.ProductId>Delete</a></td>
-            </tr>
-        }
-    </tbody>
-</table>
-<a asp-controller="Product" asp-action="Add">Add</a>

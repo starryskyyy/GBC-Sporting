@@ -1,30 +1,43 @@
 ﻿@model List<Technician>
 @{
-    ViewData["Title"] = "Technican Manager";
+    ViewData["Title"] = "Technician Manager";
 }
-
-<h1>Technician Manager</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Technician t in Model)
-        {
-            <tr>
-                <td>@t.TechName</td>
-                <td>@t.TechEmail</td>
-                <td>@t.TechPhone</td>
-                <td><a asp-controller="Technician" asp-action="Edit" asp-route-id=@t.TechnicianId>Edit</a></td>
-                <td><a asp-controller="Technician" asp-action="Delete" asp-route-id=@t.TechnicianId>Delete</a></td>
-            </tr>
-        }
-    </tbody>
-</table>
-<a asp-controller="Technician" asp-action="Add">Add</a>
+<div class="container-fluid padding">
+    <div class="container mx-auto my-auto tablebg">
+        <ul class="responsive-table">
+            <li class="row d-md-flex d-block">
+                <div class="col col-12"><h1>Technician Manager</h1></div>  
+            </li>
+            <li class="row table-header d-md-flex d-none">
+                <div class="col col-3">Name</div>
+                <div class="col col-3">Email</div>
+                <div class="col col-3">Phone</div>
+                <div class="col col-3"></div>
+            </li>
+            @foreach (Technician t in Model)
+            {
+                <li class="row table-row d-md-flex d-block">
+                    <label class="col d-md-none sneakylabel">Name</label>
+                    <div class="col col-md-3 col-12">@t.TechName</div>
+                    <label class="col d-md-none sneakylabel">Email</label>
+                    <div class="col col-md-3 col-12">@t.TechEmail</div>
+                    <label class="col d-md-none sneakylabel">Phone</label>
+                    <div class="col col-md-3 col-12">@t.TechPhone</div>
+                    <div class="col-md-3 d-inline-flex justify-content-end">
+                       <a asp-controller="Customer" asp-action="Edit" asp-route-id=@t.TechnicianId>
+                            <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
+                       </a>
+                       <a asp-controller="Customer" asp-action="Delete" asp-route-id=@t.TechnicianId>
+                            <i class="fa-solid fa-xmark fa-lg" style="color:#CC0000; font-size:22px;"></i>
+                       </a>
+                    </div>
+                </li>    
+            }
+            <li class="row d-md-flex d-block">
+                <div class="col col-12">
+                    <a class="btn formbutton rounded-pill" style="width: 100%;" asp-controller="Technician" asp-action="Add" role="button">Add</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
