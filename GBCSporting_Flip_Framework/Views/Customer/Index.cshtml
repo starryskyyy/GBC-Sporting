@@ -13,7 +13,8 @@
             <li class="row table-header d-md-flex d-none">
                 <div class="col col-3">Name</div>
                 <div class="col col-4">Email</div>
-                <div class="col col-5">City</div>
+                <div class="col col-3">City</div>
+                <div class="col col-2"></div>
             </li>
         
         @foreach (Customer c in Model)
@@ -24,8 +25,8 @@
                <label class="col d-md-none sneakylabel">Email</label>
                <div class="col col-md-4 col-12 text-break">@c.CustEmail</div>
                <label class="col d-md-none sneakylabel">City</label>
-               <div class="col col-md-4 col-12">@c.City</div>
-               <div class="col-md-1 d-inline-flex">
+               <div class="col col-md-3 col-12">@c.City</div>
+               <div class="col-md-2 d-inline-flex justify-content-center">
                    <a asp-controller="Customer" asp-action="Edit" asp-route-id=@c.CustomerId>
                        <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
                    </a>

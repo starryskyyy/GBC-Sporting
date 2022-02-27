@@ -11,9 +11,9 @@
             </li>
             <li class="row table-header d-md-flex d-none">
                 <div class="col col-3">Name</div>
-                <div class="col col-3">Email</div>
+                <div class="col col-4">Email</div>
                 <div class="col col-3">Phone</div>
-                <div class="col col-3"></div>
+                <div class="col col-2"></div>
             </li>
             @foreach (Technician t in Model)
             {
@@ -21,10 +21,10 @@
                     <label class="col d-md-none sneakylabel">Name</label>
                     <div class="col col-md-3 col-12">@t.TechName</div>
                     <label class="col d-md-none sneakylabel">Email</label>
-                    <div class="col col-md-3 col-12">@t.TechEmail</div>
+                    <div class="col col-md-4 col-12">@t.TechEmail</div>
                     <label class="col d-md-none sneakylabel">Phone</label>
                     <div class="col col-md-3 col-12">@t.TechPhone</div>
-                    <div class="col-md-3 d-inline-flex justify-content-end">
+                    <div class="col-md-2 d-inline-flex justify-content-center">
                        <a asp-controller="Technician" asp-action="Edit" asp-route-id=@t.TechnicianId>
                             <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
                        </a>

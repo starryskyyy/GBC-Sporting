@@ -12,7 +12,7 @@
                 <div class="col-md-12">
                     <label asp-for="CustomerId" class="form-label">Customer</label>
                     <select asp-for="CustomerId" class="form-select">
-                        <option value="0">SELECT CUSTOMER</option> 
+                        <option value="0" disabled>SELECT CUSTOMER</option> 
                         @foreach (Customer c in ViewBag.Customers)
                         {
                             <option value=@c.CustomerId>@c.FirstName @c.LastName</option>
@@ -39,8 +39,8 @@
                 </div>
                 <div class="col-md-12">
                     <label asp-for="TechnicianId" class="form-label">Technician</label>
-                    <select asp-for="TechnicianId" class="form-control">
-                        <option value="0">SELECT A TECHNICIAN</option> 
+                    <select asp-for="TechnicianId" class="form-select">
+                        <option>SELECT A TECHNICIAN</option> 
                         @foreach (Technician t in ViewBag.Technicians)
                         {
                             <option value=@t.TechnicianId>@t.TechName</option>
