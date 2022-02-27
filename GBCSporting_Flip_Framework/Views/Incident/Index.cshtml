@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Incident Manager";
 }
-<div class="container-fluid padding mb-5">
+<div class="container-fluid padding my-4">
     <div class="container mx-auto my-auto tablebg">
         <ul class="responsive-table">
             <li class="row d-md-flex d-block">
@@ -31,7 +31,7 @@
                             <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
                         </a>
                         <a asp-controller="Incident" asp-action="Delete" asp-route-id=@i.IncidentId>
-                            <i class="fa-solid fa-xmark fa-lg" style="color:#CC0000; font-size:22px;"></i>
+                            <i class="fa-solid fa-trash fa-lg" style="color:#CC0000; font-size:22px;"></i>
                         </a>
                     </div>
                 </li>

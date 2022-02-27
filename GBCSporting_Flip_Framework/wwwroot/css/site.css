@@ -59,9 +59,7 @@ a .navfont{
      transition: width 0.3s ease 0s, left 0.3s ease 0s;
      width: 0;
  }
- .offcanvas{
-     width: 15rem;
- }
+
 
 a:hover:after {
     width: 100%;
@@ -73,13 +71,12 @@ a:hover:after {
     margin-top: 20%;
 }
 
+
 .offcanvas > .offcanvas-header{
     background-color: white;
 }
 
-.offcanvas > .offcanvas-header > h5{
-    color: black;
-}
+
 
 /*Hero Banner Section Styling Elements*/
 .hero {
@@ -95,9 +92,6 @@ a:hover:after {
     
     z-index: -1;*/
     background: url(/images/hero_splash.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     height: 100vh;
     width: 100%;
@@ -110,11 +104,10 @@ main{
 
 .bannerText {
     position: relative;
-    top: 5rem;
-    left: 31%;
+    top:3rem;
     color: #FCA311;
-    font-size: 3.85vw;
-    width: 40vw;
+    font-size: 10vh;
+    width: 50vw;
     margin: 0;
     text-align: center;
 }
@@ -127,14 +120,15 @@ main{
     width: 25rem;
 }
 .flavourText {
-    position: relative;
-    top: 20vh;
-    left: 30vw;
+    position: absolute;
+    top: 35%;
+    right: 5rem;
     width: 40%;
-    height:30%;
+    height: auto;
     text-align: center;
 }
 .bannerButtons a, .flavourText > p {
+     
      text-decoration: none;
      color: #FCA311;
      font-size: 1.75vw;
@@ -243,7 +237,7 @@ button a {
 .formbutton:hover {
     color: white;
 }
-
+/*Footer styling*/
 footer{
     padding: 1rem; 
 }
@@ -263,17 +257,9 @@ footer{
     border-radius: 50px;
     background: #2E2E2E;
     border: 1px solid #2E2E2E;
+    color: white;
 }
 
-.dk-footer-form input::-webkit-input-placeholder, .dk-footer-form input::-moz-placeholder, .dk-footer-form input:-ms-input-placeholder, .dk-footer-form input::-ms-input-placeholder, .dk-footer-form input::-webkit-input-placeholder {
-    color: #878787;
-    font-size: 14px;
-}
-
-.dk-footer-form input::-webkit-input-placeholder, .dk-footer-form input::-moz-placeholder, .dk-footer-form input:-ms-input-placeholder, .dk-footer-form input::-ms-input-placeholder, .dk-footer-form input::placeholder {
-    color: #878787;
-    font-size: 14px;
-}
 
 .dk-footer-form button[type=submit] {
     position: absolute;
@@ -285,4 +271,36 @@ footer{
     border: 1px solid orange;
     background: orange;
     color: #fff;
+}
+
+@media only screen and (max-width: 991px) {
+    .offcanvas > .offcanvas-header > h5, .offcanvas > .offcanvas-body > ul > li > a {
+        color: black;
+    }
+
+    .offcanvas {
+        width: 12.5rem;
+        height: 25rem;
+        border-end-start-radius: 10px;
+    }
+
+
+    .bannerText {
+        position: relative;
+        top: 3rem;
+        color: #FCA311;
+        font-size: 3.5rem;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .flavourText {
+        position: absolute;
+        top: 30%;
+        right: 3rem;
+        width: 40%;
+        height: auto;
+        text-align: center;
+    }
 }

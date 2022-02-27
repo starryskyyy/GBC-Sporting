@@ -24,6 +24,10 @@
               </span>
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                 <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Flip Framework</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
               <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                      <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
@@ -70,6 +74,7 @@
                          <li class=""><a class=" " asp-area="" asp-controller="Customer" asp-action="Index">Customers</a></li>
                          <li class=""><a class=" " asp-area="" asp-controller="Incident" asp-action="Index">Incidents</a></li>
                          <li class=""><a class=" " asp-area="" asp-controller="Registration" asp-action="Index">Registration</a></li>
+                         <li class=""><a class=" " asp-area="" asp-controller="About" asp-action="Index">About</a></li> 
                          
                         </ul>
                     </div>
@@ -79,7 +84,7 @@
                             <li><a href="">Documentation</a></li>
                             <li><a href="">Support</a></li>
                             <li><a href="">Legal Terms</a></li>
-                            <li class=""><a class=" " asp-area="" asp-controller="About" asp-action="Index">About</a></li> 
+                            
                         </ul>
                     </div>
                     <div class="col-4 mb-3">
