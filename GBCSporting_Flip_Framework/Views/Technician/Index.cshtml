@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Technician Manager";
 }
-<div class="container-fluid padding">
+<div class="container-fluid padding mb-5">
     <div class="container mx-auto my-auto tablebg">
         <ul class="responsive-table">
             <li class="row d-md-flex d-block">
@@ -24,10 +24,10 @@
                     <label class="col d-md-none sneakylabel">Phone</label>
                     <div class="col col-md-3 col-12">@t.TechPhone</div>
                     <div class="col-md-3 d-inline-flex justify-content-end">
-                       <a asp-controller="Customer" asp-action="Edit" asp-route-id=@t.TechnicianId>
+                       <a asp-controller="Technician" asp-action="Edit" asp-route-id=@t.TechnicianId>
                             <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
                        </a>
-                       <a asp-controller="Customer" asp-action="Delete" asp-route-id=@t.TechnicianId>
+                       <a asp-controller="Technician" asp-action="Delete" asp-route-id=@t.TechnicianId>
                             <i class="fa-solid fa-xmark fa-lg" style="color:#CC0000; font-size:22px;"></i>
                        </a>
                     </div>

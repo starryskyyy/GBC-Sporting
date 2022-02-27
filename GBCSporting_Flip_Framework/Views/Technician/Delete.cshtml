@@ -2,24 +2,27 @@
 @{
     ViewData["Title"] = "Delete Technician";
 }
-<h2>Confirm Deletion</h2>
-<table>
-    <tr>
-        <th>Technician Name</th>
-        <td>@Model.TechName</td>
-    </tr>
-    <tr>
-        <th>Email</th>
-        <td>@Model.TechEmail</td>
-    </tr>
-    <tr>
-        <th>Phone</th>
-        <td>@Model.TechPhone</td>
-    </tr>
-</table>
-
-<form asp-controller="Technician" asp-action="Delete" method="post">
-    <input type="hidden" asp-for="TechnicianId"/>
-    <button type="submit">Delete</button>
-    <a asp-controller="Technician" asp-action="Index">Cancel</a>
-</form>
+<div class="container my-auto mx-auto">
+    <div class="card mx-auto  border-dark" style="width: 20rem;">
+      <div class="card-body text-center bg-black text-white h-auto">
+          <span class="card-header"><i class="fa-solid fa-id-badge fa-lg" style="font-size: 3.5rem;"></i></span>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Confirm Delete</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">@Model.TechName</li>
+        <li class="list-group-item">@Model.TechEmail</li>
+        <li class="list-group-item">@Model.TechPhone</li>
+      </ul>
+      <div class="card-body text-center bg-black">
+        <form asp-controller="Technician" asp-action="Delete" method="post">
+            <input type="hidden" asp-for="TechnicianId"/>
+            <p class="d-inline-flex my-auto">
+                <button type="submit" class="btn formbuttoncircle"><i class="fa-solid fa-circle-check fa-lg" style="color:black;"></i></button>
+                <button class="btn formbuttoncircle" asp-controller="Technician" asp-action="Index"><i class="fa-solid fa-xmark fa-lg" style="color:black; font-size: 22px;"></i></button>
+            </p>
+        </form>
+      </div>
+    </div>
+</div>

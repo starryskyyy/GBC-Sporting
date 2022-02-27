@@ -3,7 +3,7 @@
     string title = ViewBag.Action + " Product";
     ViewBag.Title = title;
 }
-<div class="container-fluid padding">
+<div class="container-fluid padding mb-5">
     <div class="formWrapping row-md g-2">
         <form asp-controller="Product" asp-action="Edit" method="post">
             <span class="formTitle row justify-content-center">@title</span>
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <label asp-for="ReleaseDate" class="form-label">Release Date</label>
-                    <input asp-for="ReleaseDate" class="form-control"/>
+                    <input type="datetime-local" asp-for="ReleaseDate" class="form-control"/>
                 </div>
             </div>
                 <input asp-for="ProductId" type="hidden"/>
