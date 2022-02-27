@@ -3,8 +3,8 @@
     ViewData["Title"] = "Delete Product";
 }
 <div class="container my-4 mx-auto">
-    <div class="card mx-auto  border-dark" style="width: 20rem;">
-      <div class="card-body text-center bg-black text-white h-auto">
+    <div class="card mx-auto bg-warning" style="width: 20rem;">
+      <div class="card-body text-center text-white h-auto">
           <span class="card-header"><i class="fa-solid fa-cart-shopping fa-lg" style="font-size: 3.5rem;"></i></span>
       </div>
       <div class="card-body">
@@ -16,7 +16,7 @@
         <li class="list-group-item">@Model.YearlyPrice.Value.ToString("C")</li>
         <li class="list-group-item">@Model.ReleaseDate</li>
       </ul>
-      <div class="card-body text-center bg-black">
+      <div class="card-body text-center">
         <form asp-controller="Product" asp-action="Delete" method="post">
             <input type="hidden" asp-for="ProductId"/>
             <p class="d-inline-flex my-auto">
