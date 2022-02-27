@@ -41,3 +41,43 @@
         </ul>
     </div>
 </div>
+
+    <div class="container-fluid padding" style="margin-top: 50px;">
+        <div class="container mx-auto my-auto tablebg">
+            <ul class="responsive-table">
+                <li class="row d-md-flex d-block">
+                    <div class="col col-12" style="color: #FCA311;"><h1>Technician Manager</h1></div>  
+                </li>
+                <li class="row table-header d-md-flex d-none">
+                    <div class="col col-3">Name</div>
+                    <div class="col col-3">Email</div>
+                    <div class="col col-3">Phone</div>
+                    <div class="col col-3"></div>
+                </li>
+                @foreach (Technician t in Model)
+                {
+                    <li class="row table-row d-md-flex d-block">
+                        <label class="col d-md-none sneakylabel">Name</label>
+                        <div class="col col-md-3 col-12">@t.TechName</div>
+                        <label class="col d-md-none sneakylabel">Email</label>
+                        <div class="col col-md-3 col-12">@t.TechEmail</div>
+                        <label class="col d-md-none sneakylabel">Phone</label>
+                        <div class="col col-md-3 col-12">@t.TechPhone</div>
+                        <div class="col-md-3 d-inline-flex justify-content-end">
+                           <a asp-controller="Customer" asp-action="Edit" asp-route-id=@t.TechnicianId>
+                                <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
+                           </a>
+                           <a asp-controller="Customer" asp-action="Delete" asp-route-id=@t.TechnicianId>
+                                <i class="fa-solid fa-xmark fa-lg" style="color:#CC0000; font-size:22px;"></i>
+                           </a>
+                        </div>
+                    </li>    
+                }
+                <li class="row d-md-flex d-block">
+                    <div style="margin-left: 35%;" class="col col-12">
+                        <a style="width: 30%;" class="btn formbutton rounded-pill" style="width: 100%;" asp-controller="Technician" asp-action="Add" role="button">ADD</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
