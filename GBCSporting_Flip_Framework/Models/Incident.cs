@@ -25,8 +25,6 @@ namespace GBCSporting_Flip_Framework.Models
 
         public DateTime? DateOpened     { get; set; }
 
-        [Required(ErrorMessage ="Please enter the closed date")]
-
         public DateTime? DateClosed { get; set; }
 
         public string? Slug => Title?.Replace(' ', '-').ToLower();
