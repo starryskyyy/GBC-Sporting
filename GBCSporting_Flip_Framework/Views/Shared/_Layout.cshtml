@@ -9,39 +9,39 @@
     <link rel="stylesheet" href="~/GBCSporting_Flip_Framework.styles.css" asp-append-version="true" />
     <script src="https://kit.fontawesome.com/bfc4362999.js" crossorigin="anonymous"></script>
 </head>
-<body class="d-flex flex-column min-vh-100">
-        <header class="siteNavigation" role="banner">
-            <nav class="navbar navbar-expand-lg">
-              <div class="container-fluid">
-                <a class="navbar-brand" href="#">Offcanvas navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                  <span class="navbar-toggler-icon">
-                      <i class="fas fa-bars" style="color:#f4f1de; font-size:28px;"></i>
-                  </span>
-                </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                  <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                  </div>
-                  <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                         <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                         <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Product" asp-action="Index">Products</a></li>
-                         <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Technician" asp-action="Index">Technicians</a></li>
-                         <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Customer" asp-action="Index">Customers</a></li>
-                         <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Incident" asp-action="Index">Incidents</a></li>
-                         <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Registration" asp-action="Index">Registration</a></li>
-                         <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="About" asp-action="Index">About</a></li>
-                    </ul>
-                  </div>
-                </div>
+<body>
+    <header class="siteNavigation" role="banner">
+        <nav class="navbar navbar-expand-lg" style="padding: 0;">
+          <div class="container-fluid" style="background-color: black; padding: 0;">
+              <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                   <div class="logo-image">
+                           <img src="/images/logo2.png" class="img-fluid" alt="logo">
+                   </div>
+              </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+              <span class="navbar-toggler-icon">
+                  <i class="fas fa-bars" style="color:#f4f1de; font-size:28px;"></i>
+              </span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                     <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                     <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Product" asp-action="Index">Products</a></li>
+                     <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Technician" asp-action="Index">Technicians</a></li>
+                     <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Customer" asp-action="Index">Customers</a></li>
+                     <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Incident" asp-action="Index">Incidents</a></li>
+                     <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Registration" asp-action="Index">Registration</a></li>
+                     <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="About" asp-action="Index">About</a></li>
+                </ul>
               </div>
-            </nav>
-        </header>
-  
-    <main role="main" class="">
-            @RenderBody()
+            </div>
+          </div>
+        </nav>
+    </header>
+        
+    <main role="main">
+        @RenderBody()
     </main>
 
         <footer class="bg-dark text-light mt-auto">

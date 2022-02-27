@@ -4164,16 +4164,20 @@ textarea.form-control-lg {
   .navbar-expand-lg {
     flex-wrap: nowrap;
     justify-content: flex-start;
+    padding: 0;
   }
   .navbar-expand-lg .navbar-nav {
+    padding: 0;
     flex-direction: row;
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     position: absolute;
+    padding: 0;
   }
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
+    padding-top: 0;
   }
   .navbar-expand-lg .navbar-nav-scroll {
     overflow: visible;
@@ -4199,12 +4203,14 @@ textarea.form-control-lg {
     border-left: 0;
     transition: none;
     transform: none;
+    padding-top: 0;
   }
   .navbar-expand-lg .offcanvas-top,
 .navbar-expand-lg .offcanvas-bottom {
     height: auto;
     border-top: 0;
     border-bottom: 0;
+    padding-top: 0;
   }
   .navbar-expand-lg .offcanvas-body {
     display: flex;
