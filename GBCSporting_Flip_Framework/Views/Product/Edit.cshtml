@@ -3,45 +3,46 @@
     string title = ViewBag.Action + " Product";
     ViewBag.Title = title;
 }
-<div class="container-fluid padding my-4">
-    <div class="formWrapping row-md g-2">
-        <form asp-controller="Product" asp-action="Edit" method="post">
-            <span class="formTitle row justify-content-center">@title</span>
-            <div asp-validation-summary="All"></div>
-            <div class="row">
-                <div class="col-md-12">
-                    <label asp-for="Code" class="form-label">Code</label>
-                    <input asp-for="Code" class="form-control"/>
+<div class="addmargins">
+    <div class="container-fluid padding my-4">
+        <div class="formWrapping row-md g-2">
+            <form asp-controller="Product" asp-action="Edit" method="post">
+                <span class="formTitle row justify-content-center">@title</span>
+                <div asp-validation-summary="All"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label asp-for="Code" class="form-label">Code</label>
+                        <input asp-for="Code" class="form-control"/>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <label asp-for="Name" class="form-label">Name</label>
-                    <input asp-for="Name" class="form-control"/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label asp-for="Name" class="form-label">Name</label>
+                        <input asp-for="Name" class="form-control"/>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <label asp-for="YearlyPrice" class="form-label">Yearly Price</label>
-                    <input asp-for="YearlyPrice" class="form-control"/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label asp-for="YearlyPrice" class="form-label">Yearly Price</label>
+                        <input asp-for="YearlyPrice" class="form-control"/>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <label asp-for="ReleaseDate" class="form-label">Release Date</label>
-                    <input type="datetime-local" asp-for="ReleaseDate" class="form-control"/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label asp-for="ReleaseDate" class="form-label">Release Date</label>
+                        <input type="datetime-local" asp-for="ReleaseDate" class="form-control"/>
+                    </div>
                 </div>
-            </div>
-                <input asp-for="ProductId" type="hidden"/>
+                    <input asp-for="ProductId" type="hidden"/>
 
-            @*action buttons*@
-            <div class="row">
-                <div class="col-md-12 d-grid gap-3 d-lg-flex justify-content-center">
-                    <button type="submit" class="btn formbutton rounded-pill">@ViewBag.Action</button>
-                    <button class="btn formbutton rounded-pill" asp-controller="Product" asp-action="Index">Cancel</button>
+                @*action buttons*@
+                <div class="row">
+                    <div class="col-md-12 d-grid gap-3 d-lg-flex justify-content-center">
+                        <button type="submit" class="btn formbutton rounded-pill">@ViewBag.Action</button>
+                        <button class="btn formbutton rounded-pill" asp-controller="Product" asp-action="Index">Cancel</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
-

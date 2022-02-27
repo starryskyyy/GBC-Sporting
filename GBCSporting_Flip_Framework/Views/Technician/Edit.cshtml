@@ -3,34 +3,36 @@
     string title = ViewBag.Action + " Technician";
     ViewBag.Title = title;
 }
-<div class="container-fluid padding my-4">
-    <div class="formWrapping row-cols-md-1 g-2">
-        <form asp-controller="Technician" asp-action="Edit" method="post">
-            <span class="formTitle row justify-content-center">@title</span>
-            <div asp-validation-summary="All"></div>
-            <div class="row">
-                <div class="col-md-12">
-                      <label asp-for="TechName" class="form-label">Name</label>
-                      <input asp-for="TechName" class="form-control"/>
+<div class="addmargins">
+    <div class="container-fluid padding my-4" >
+        <div class="formWrapping row-cols-md-1 g-2">
+            <form asp-controller="Technician" asp-action="Edit" method="post">
+                <span class="formTitle row justify-content-center">@title</span>
+                <div asp-validation-summary="All"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                          <label asp-for="TechName" class="form-label">Name</label>
+                          <input asp-for="TechName" class="form-control"/>
+                    </div>
+                    <div class="col-md-12">
+                        <label asp-for="TechEmail" class="form-label">Email</label>
+                        <input asp-for="TechEmail" class="form-control"/>
+                    </div>
+                    <div class="col-md-12">
+                        <label asp-for="TechPhone" class="form-label">Phone</label>
+                        <input asp-for="TechPhone" class="form-control"/>
+                    </div>
                 </div>
-                <div class="col-md-12">
-                    <label asp-for="TechEmail" class="form-label">Email</label>
-                    <input asp-for="TechEmail" class="form-control"/>
-                </div>
-                <div class="col-md-12">
-                    <label asp-for="TechPhone" class="form-label">Phone</label>
-                    <input asp-for="TechPhone" class="form-control"/>
-                </div>
-            </div>
-            <input asp-for="TechnicianId" type="hidden"/>
+                <input asp-for="TechnicianId" type="hidden"/>
 
-            @*action buttons*@
-            <div class="row">
-                <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
-                    <button type="submit" class="btn formbutton rounded-pill">@ViewBag.Action</button>
-                    <button class="btn formbutton rounded-pill" asp-controller="Technician" asp-action="Index">Cancel</button>
+                @*action buttons*@
+                <div class="row">
+                    <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
+                        <button type="submit" class="btn formbutton rounded-pill">@ViewBag.Action</button>
+                        <button class="btn formbutton rounded-pill" asp-controller="Technician" asp-action="Index">Cancel</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

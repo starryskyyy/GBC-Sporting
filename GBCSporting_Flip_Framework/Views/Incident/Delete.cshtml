@@ -3,32 +3,33 @@
     ViewData["Title"] = "Delete Incident";
     string technicianName = Model.Technician is not null ? Model.Technician.TechName : "";
 }
-
-<div class="container my-4 mx-auto">
-    <div class="card mx-auto  bg-warning" style="width: 20rem;">
-      <div class="card-body text-center text-white h-auto">
-          <span class="card-header"><i class="fa-solid fa-circle-exclamation fa-lg" style="font-size: 3.5rem;"></i></span>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Confirm Delete</h5>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">@Model.Customer.FirstName @Model.Customer.LastName</li>
-        <li class="list-group-item">@Model.Product.Name</li>
-        <li class="list-group-item">@Model.Title</li>
-        <li class="list-group-item">@Model.Description</li>
-        <li class="list-group-item">@technicianName</li>
-        <li class="list-group-item">@Model.DateOpened</li>
-        <li class="list-group-item">@Model.DateClosed</li>
-      </ul>
-      <div class="card-body text-center">
-        <form asp-controller="Incident" asp-action="Delete" method="post">
-            <input type="hidden" asp-for="IncidentId"/>
-            <p class="d-inline-flex my-auto">
-                <button type="submit" class="btn formbuttoncircle"><i class="fa-solid fa-circle-check fa-lg" style="color:black;"></i></button>
-                <button class="btn formbuttoncircle" asp-controller="Incident" asp-action="Index"><i class="fa-solid fa-xmark fa-lg" style="color:black; font-size: 22px;"></i></button>
-            </p>
-        </form>
-      </div>
+<div class="addmargins">
+    <div class="container my-4 mx-auto">
+        <div class="card mx-auto  bg-warning" style="width: 20rem;">
+          <div class="card-body text-center text-white h-auto">
+              <span class="card-header"><i class="fa-solid fa-circle-exclamation fa-lg" style="font-size: 3.5rem;"></i></span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Confirm Delete</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">@Model.Customer.FirstName @Model.Customer.LastName</li>
+            <li class="list-group-item">@Model.Product.Name</li>
+            <li class="list-group-item">@Model.Title</li>
+            <li class="list-group-item">@Model.Description</li>
+            <li class="list-group-item">@technicianName</li>
+            <li class="list-group-item">@Model.DateOpened</li>
+            <li class="list-group-item">@Model.DateClosed</li>
+          </ul>
+          <div class="card-body text-center">
+            <form asp-controller="Incident" asp-action="Delete" method="post">
+                <input type="hidden" asp-for="IncidentId"/>
+                <p class="d-inline-flex my-auto">
+                    <button type="submit" class="btn formbuttoncircle"><i class="fa-solid fa-circle-check fa-lg" style="color:black;"></i></button>
+                    <button class="btn formbuttoncircle" asp-controller="Incident" asp-action="Index"><i class="fa-solid fa-xmark fa-lg" style="color:black; font-size: 22px;"></i></button>
+                </p>
+            </form>
+          </div>
+        </div>
     </div>
 </div>

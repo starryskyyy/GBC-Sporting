@@ -3,72 +3,74 @@
     string title = ViewBag.Action + " Customer";
     ViewBag.Title = title;
 }
-<div class="container-fluid padding my-4">
-    <div class="formWrapping row-md g-2">
-        <form asp-controller="Customer" asp-action="Edit" method="post" >
-            <span class="formTitle row justify-content-center">@title</span>
-            <div asp-validation-summary="All"></div>
-            <div class="row">
-                <div class="col-md-6">
-                        <label asp-for="FirstName" class="form-label">First Name</label>
-                        <input asp-for="FirstName" class="form-control" id="floatingFN"/>
-                </div>
-                <div class="col-md-6">
-                    <label asp-for="LastName" class="form-label" for="floatingLN">Last Name</label>
-                    <input asp-for="LastName" class="form-control" id="floatingLN"/>
-                </div>
-            </div>
-            <div class="row">
-               <div class="col-md-8">
-                   <label asp-for="Address" class="form-label" for="floatingAddress">Address</label>
-                    <input asp-for="Address" class="form-control" id="floatingAddress"/>
-               </div>
-            </div>
-            <div class="row">
-                 <div class="col-md-6">
-                    <label asp-for="City" class="form-label" for="floatingCity">City</label>
-                    <input asp-for="City" class="form-control" id="floatingCity"/>
-                </div>
-                <div class="col-md-3">
-                    <label asp-for="State" class="form-label" for="floatingState">State</label>
-                    <input asp-for="State" class="form-control" id="floatingState"/>
-                </div>
-                <div class="col-md-3">
-                    <label asp-for="PostalCode" class="form-label" for="floatingPC">Postal Code</label>
-                    <input asp-for="PostalCode" class="form-control" id="floatingPC"/>
-                </div>
-                </div>
+<div class="addmargins">
+    <div class="container-fluid padding my-4">
+        <div class="formWrapping row-md g-2">
+            <form asp-controller="Customer" asp-action="Edit" method="post" >
+                <span class="formTitle row justify-content-center">@title</span>
+                <div asp-validation-summary="All"></div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="CountryId" class="form-label">Country</label>
-                        <select asp-for="CountryId" class="form-select">
-                            <option value="0">SELECT A COUNTRY</option> 
-                            @foreach (Country c in ViewBag.Countries)
-                            {
-                                <option value=@c.CountryId>@c.CountryName</option>
-                            }
-                        </select>
+                            <label asp-for="FirstName" class="form-label">First Name</label>
+                            <input asp-for="FirstName" class="form-control" id="floatingFN"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="LastName" class="form-label" for="floatingLN">Last Name</label>
+                        <input asp-for="LastName" class="form-control" id="floatingLN"/>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <label asp-for="CustEmail" class="form-label" for="floatingEmail">Email</label>
-                        <input asp-for="CustEmail" class="form-control" id="floatingEmail"/>
-                    </div>
-                    <div class="col-md-6">
-                         <label asp-for="CustPhone" class="form-label" for="floatingPhone">Phone</label>
-                         <input asp-for="CustPhone" class="form-control" id="floatingPhone"/>
-                    </div>
+                   <div class="col-md-8">
+                       <label asp-for="Address" class="form-label" for="floatingAddress">Address</label>
+                        <input asp-for="Address" class="form-control" id="floatingAddress"/>
+                   </div>
                 </div>
-            <input asp-for="CustomerId" type="hidden"/>
+                <div class="row">
+                     <div class="col-md-6">
+                        <label asp-for="City" class="form-label" for="floatingCity">City</label>
+                        <input asp-for="City" class="form-control" id="floatingCity"/>
+                    </div>
+                    <div class="col-md-3">
+                        <label asp-for="State" class="form-label" for="floatingState">State</label>
+                        <input asp-for="State" class="form-control" id="floatingState"/>
+                    </div>
+                    <div class="col-md-3">
+                        <label asp-for="PostalCode" class="form-label" for="floatingPC">Postal Code</label>
+                        <input asp-for="PostalCode" class="form-control" id="floatingPC"/>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="CountryId" class="form-label">Country</label>
+                            <select asp-for="CountryId" class="form-select">
+                                <option value="0">SELECT A COUNTRY</option> 
+                                @foreach (Country c in ViewBag.Countries)
+                                {
+                                    <option value=@c.CountryId>@c.CountryName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="CustEmail" class="form-label" for="floatingEmail">Email</label>
+                            <input asp-for="CustEmail" class="form-control" id="floatingEmail"/>
+                        </div>
+                        <div class="col-md-6">
+                             <label asp-for="CustPhone" class="form-label" for="floatingPhone">Phone</label>
+                             <input asp-for="CustPhone" class="form-control" id="floatingPhone"/>
+                        </div>
+                    </div>
+                <input asp-for="CustomerId" type="hidden"/>
 
-            @*action buttons*@
-            <div class="row">
-                <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
-                    <button type="submit" class="btn formbutton rounded-pill">@ViewBag.Action</button>
-                    <button class="btn formbutton rounded-pill" asp-controller="Customer" asp-action="Index">Back</button>
-                </div> 
-            </div>
-        </form>
+                @*action buttons*@
+                <div class="row">
+                    <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
+                        <button type="submit" class="btn formbutton rounded-pill">@ViewBag.Action</button>
+                        <button class="btn formbutton rounded-pill" asp-controller="Customer" asp-action="Index">Back</button>
+                    </div> 
+                </div>
+            </form>
+        </div>
     </div>
 </div>

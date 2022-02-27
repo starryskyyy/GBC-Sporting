@@ -77,8 +77,10 @@ a:hover:after {
     background-color: white;
 }
 
-
-
+.addmargins{
+    margin-top: 100px;
+    margin-bottom:300px;
+}
 /*Hero Banner Section Styling Elements*/
 .hero {
     /*position: relative;

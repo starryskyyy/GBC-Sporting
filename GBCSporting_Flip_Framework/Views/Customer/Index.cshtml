@@ -2,46 +2,47 @@
 @{
     ViewData["Title"] = "Customer Manager";
 }
-<div class="container-fluid padding my-4">
-    <div class="container mx-auto my-auto tablebg">
-        <ul class="responsive-table">
-            <li class="row d-md-flex d-block">
-                <div class="col col-12">
-                    <h1 style="color: #FCA311;">Customer Manager</h1>
-                </div>
-            </li>
-            <li class="row table-header d-md-flex d-none">
-                <div class="col col-3">Name</div>
-                <div class="col col-4">Email</div>
-                <div class="col col-5">City</div>
-            </li>
+<div class="addmargins">
+    <div class="container-fluid padding my-4">
+        <div class="container mx-auto my-auto tablebg">
+            <ul class="responsive-table">
+                <li class="row d-md-flex d-block">
+                    <div class="col col-12">
+                        <h1 style="color: #FCA311;">Customer Manager</h1>
+                    </div>
+                </li>
+                <li class="row table-header d-md-flex d-none">
+                    <div class="col col-3">Name</div>
+                    <div class="col col-4">Email</div>
+                    <div class="col col-5">City</div>
+                </li>
         
-        @foreach (Customer c in Model)
-        {
-           <li class="row table-row d-md-flex d-block">
-               <label class="col d-md-none sneakylabel">Name</label>
-               <div class="col col-md-3 col-12 text-wrap">@c.FirstName @c.LastName</div>
-               <label class="col d-md-none sneakylabel">Email</label>
-               <div class="col col-md-4 col-12 text-break">@c.CustEmail</div>
-               <label class="col d-md-none sneakylabel">City</label>
-               <div class="col col-md-4 col-12">@c.City</div>
-               <div class="col-md-1 d-inline-flex">
-                   <a asp-controller="Customer" asp-action="Edit" asp-route-id=@c.CustomerId>
-                       <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
-                   </a>
-                   <a asp-controller="Customer" asp-action="Delete" asp-route-id=@c.CustomerId>
-                        <i class="fa-solid fa-trash fa-lg" style="color:#CC0000; font-size:22px;"></i>
-                    </a>
-               </div>
-           </li>
-        }
-            <li class="row d-md-flex d-block">
-                <div class="col col-12">
-                    <a class="btn formbutton rounded-pill" style="width: 100%;" asp-controller="Customer" asp-action="Add" role="button">Add</a>
-                </div>
-             </li>
-        </ul>
+            @foreach (Customer c in Model)
+            {
+               <li class="row table-row d-md-flex d-block">
+                   <label class="col d-md-none sneakylabel">Name</label>
+                   <div class="col col-md-3 col-12 text-wrap">@c.FirstName @c.LastName</div>
+                   <label class="col d-md-none sneakylabel">Email</label>
+                   <div class="col col-md-4 col-12 text-break">@c.CustEmail</div>
+                   <label class="col d-md-none sneakylabel">City</label>
+                   <div class="col col-md-4 col-12">@c.City</div>
+                   <div class="col-md-1 d-inline-flex">
+                       <a asp-controller="Customer" asp-action="Edit" asp-route-id=@c.CustomerId>
+                           <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
+                       </a>
+                       <a asp-controller="Customer" asp-action="Delete" asp-route-id=@c.CustomerId>
+                            <i class="fa-solid fa-trash fa-lg" style="color:#CC0000; font-size:22px;"></i>
+                        </a>
+                   </div>
+               </li>
+            }
+                <li class="row d-md-flex d-block">
+                    <div class="col col-12" style="margin-left: 35%;">
+                        <a class="btn formbutton rounded-pill" style="width: 30%;" asp-controller="Customer" asp-action="Add" role="button">Add</a>
+                    </div>
+                 </li>
+            </ul>
+        </div>
     </div>
 </div>
-
 
