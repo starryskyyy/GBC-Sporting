@@ -11,19 +11,19 @@
 </head>
 <body>
     <header class="siteNavigation" role="banner">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">Offcanvas navbar</a>
+        <nav class="navbar navbar-expand-lg" style="padding: 0;">
+          <div class="container-fluid" style="background-color: black; padding: 0;">
+              <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                   <div class="logo-image">
+                           <img src="/images/logo2.png" class="img-fluid" alt="logo">
+                   </div>
+              </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
               <span class="navbar-toggler-icon">
                   <i class="fas fa-bars" style="color:#f4f1de; font-size:28px;"></i>
               </span>
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-              <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-              </div>
               <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                      <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
@@ -40,12 +40,12 @@
         </nav>
     </header>
         
-    <main role="main" class="pb-3">
+    <main role="main">
         @RenderBody()
     </main>
     
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top footer text-muted" style="background-color: black; text-align: center;">
+        <div class="container" style="color: #FCA311">
             &copy; 2022 - GBCSporting_Flip_Framework - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+
 /*General Styling Elements*/
 * {
     box-sizing: border-box;
@@ -6,7 +7,6 @@
     margin: 0;
     padding: 0;
     -webkit-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
@@ -24,15 +24,14 @@ body {
     margin-bottom: 60px;
     font-family: 'Roboto', sans-serif;
     text-shadow: 1px 1px 3px rgba(4,1,33,0.25);
-    background-color: #A9C9FF;
-    background-image: linear-gradient(0deg, #A9C9FF 0%, #402238 100%);
 }
 
 /*Navigation styling elements*/
 .navfont, .navfont:hover, nav.navbar > .container-fluid > .navbar-brand {
     color: #f4f1de;
     font-size: 22px;
-    padding: .5rem;
+    padding: 0;
+    margin-top: -5px;
 }
 
 li.navlist-item {
@@ -50,14 +49,13 @@ a .navfont{
 }
 
  .navfont:after {
-     background: none repeat scroll 0 0 transparent;
      bottom: 0;
      content: "";
      display: block;
      height: 2px;
      left: 50%;
      position: absolute;
-     background: #fff;
+     background: #FCA311;
      transition: width 0.3s ease 0s, left 0.3s ease 0s;
      width: 0;
  }
@@ -66,10 +64,10 @@ a:hover:after {
     width: 100%;
     left: 0;
 }
-@media screen and (max-width: 991px){
-    .offcanvas {
-        background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(90,92,106,1) 0%, rgba(32,45,58,1) 81.3% );
-    }
+.logo-image{
+    width: 60px;
+    height: 60px;
+    margin-top: 20%;
 }
 
 .offcanvas > .offcanvas-header{
@@ -82,28 +80,40 @@ a:hover:after {
 
 /*Hero Banner Section Styling Elements*/
 .hero {
-    position: relative;
+    /*position: relative;
     top: -4.2rem;
     left: 0;
-    height: 100vh;
-    width: 100%;
-    background: url(/images/hero_splash.png);
+    
+    
+    background: url(/images/hero_splash.jpg);
     background-position: center center;
     background-size: cover;
     background-attachment:fixed;
+    
+    z-index: -1;*/
+    background: url(/images/hero_splash.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
     margin: 0;
-    z-index: -1;
+}
+main{
+    width: 100%;
+    height: 100%;
 }
 
 .bannerText {
     position: relative;
-    top: 8rem;
-    left: 3rem;
-    color: #f4f1de;
+    top: 5rem;
+    left: 31%;
+    color: #FCA311;
     font-size: 3.85vw;
     width: 40vw;
     margin: 0;
-    text-shadow: 2px 2px 7px rgba(4,1,33,0.71);
+    text-align: center;
 }
 
 .bannerButtons {
@@ -115,15 +125,18 @@ a:hover:after {
 }
 .flavourText {
     position: relative;
-    top: 6.5vh;
-    left: 65vw;
-    width: 20rem;
+    top: 20vh;
+    left: 30vw;
+    width: 40%;
+    height:30%;
+    text-align: center;
 }
 .bannerButtons a, .flavourText > p {
      text-decoration: none;
-     color: #f4f1de;
+     color: #FCA311;
      font-size: 1.75vw;
-     text-shadow: 2px 2px 7px rgba(4,1,33,0.71);
+     background-color: rgba(0, 0, 0,0.70);
+     padding: 5%;
  }
 /*Body Section of Home*/
 
