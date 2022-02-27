@@ -3,7 +3,7 @@
     string title = ViewBag.Action + " Technician";
     ViewBag.Title = title;
 }
-<div class="container-fluid padding">
+<div class="container-fluid padding" style="margin-top: 50px; margin-bottom: 50px;">
     <div class="formWrapping row-cols-md-1 g-2">
         <form asp-controller="Technician" asp-action="Edit" method="post">
             <span class="formTitle row justify-content-center">@title</span>
