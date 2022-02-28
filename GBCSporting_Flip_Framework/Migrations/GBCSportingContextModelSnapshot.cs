@@ -36,7 +36,7 @@ namespace GBCSporting_Flip_Framework.Migrations
 
                     b.HasKey("CountryId");
 
-                    b.ToTable("Countries");
+                    b.ToTable("Countries", (string)null);
 
                     b.HasData(
                         new
@@ -161,7 +161,7 @@ namespace GBCSporting_Flip_Framework.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
 
                     b.HasData(
                         new
@@ -230,7 +230,6 @@ namespace GBCSporting_Flip_Framework.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DateClosed")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DateOpened")
@@ -258,7 +257,7 @@ namespace GBCSporting_Flip_Framework.Migrations
 
                     b.HasIndex("TechnicianId");
 
-                    b.ToTable("Incidents");
+                    b.ToTable("Incidents", (string)null);
 
                     b.HasData(
                         new
@@ -309,7 +308,7 @@ namespace GBCSporting_Flip_Framework.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -352,7 +351,7 @@ namespace GBCSporting_Flip_Framework.Migrations
 
                     b.HasKey("TechnicianId");
 
-                    b.ToTable("Technicians");
+                    b.ToTable("Technicians", (string)null);
 
                     b.HasData(
                         new

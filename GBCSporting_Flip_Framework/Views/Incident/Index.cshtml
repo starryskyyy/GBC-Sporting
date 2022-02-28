@@ -26,8 +26,9 @@
                         <label class="col d-md-none sneakylabel">Product</label>
                         <div class="col col-md-2 col-12 text-wrap">@i.Product.Name</div>
                          <label class="col d-md-none sneakylabel">Product</label>
+                         <label class="col d-md-none sneakylabel">Date Opened</label>
                         <div class="col col-md-2 col-12 text-wrap">@i.DateOpened</div>
-                        <div class="col-md-2 d-inline-flex justify-content-end">
+                        <div class="col-md-2 d-inline-flex justify-content-start">
                             <a asp-controller="Incident" asp-action="Edit" asp-route-id=@i.IncidentId>
                                 <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
                             </a>
@@ -38,8 +39,8 @@
                     </li>
                 }
                 <li class="row d-md-flex d-block">
-                    <div class="col col-12" style="margin-left: 35%;">
-                        <a asp-controller="Incident" asp-action="Add" class="btn formbutton rounded-pill" style="width: 30%;" role="button"> Add Incident</a>
+                    <div class="col col-12">
+                        <a asp-controller="Incident" asp-action="Add" class="btn formbutton rounded-pill" style="width: 100%;" role="button"> Add Incident</a>
                     </div>
                 </li>
             </ul>

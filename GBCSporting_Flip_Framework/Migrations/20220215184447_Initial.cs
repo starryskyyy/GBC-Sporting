@@ -92,7 +92,7 @@ namespace GBCSporting_Flip_Framework.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TechnicianId = table.Column<int>(type: "int", nullable: true),
                     DateOpened = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DateClosed = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DateClosed = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

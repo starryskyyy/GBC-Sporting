@@ -25,7 +25,7 @@
                         <div class="col col-md-3 col-12">@t.TechEmail</div>
                         <label class="col d-md-none sneakylabel">Phone</label>
                         <div class="col col-md-3 col-12">@t.TechPhone</div>
-                        <div class="col-md-3 d-inline-flex justify-content-end">
+                        <div class="col-md-3 d-inline-flex justify-content-start">
                            <a asp-controller="Technician" asp-action="Edit" asp-route-id=@t.TechnicianId>
                                 <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
                            </a>
@@ -36,8 +36,8 @@
                     </li>    
                 }
                 <li class="row d-md-flex d-block">
-                    <div class="col col-12" style="margin-left: 35%;">
-                        <a class="btn formbutton rounded-pill" style="width: 30%;" asp-controller="Technician" asp-action="Add" role="button">Add</a>
+                    <div class="col col-12">
+                        <a class="btn formbutton rounded-pill w-100" asp-controller="Technician" asp-action="Add" role="button">Add</a>
                     </div>
                 </li>
             </ul>

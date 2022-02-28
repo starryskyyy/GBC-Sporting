@@ -23,7 +23,7 @@ namespace GBCSporting_Flip_Framework.Models
         public int? TechnicianId { get; set; }
         public Technician? Technician { get; set; }
 
-        public DateTime? DateOpened     { get; set; }
+        public DateTime? DateOpened { get; set; } = DateTime.Now;
 
         public DateTime? DateClosed { get; set; }
 
