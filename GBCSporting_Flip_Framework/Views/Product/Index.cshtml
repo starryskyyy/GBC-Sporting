@@ -6,10 +6,8 @@
     <div class="container-fluid padding my-4">
         <div class="container mx-auto my-auto tablebg">
             <ul class="responsive-table">
-                <li class="row d-md-flex d-block">
-                    <div class="col col-12">
-                    <h1 style="color: #FCA311;">Product Manager</h1>
-                </div>
+                <li class="row d-md-flex d-block p-0">
+                    <h1 class="p-0" style="color: #FCA311;">Product Manager</h1>
                 </li>
                 <li class="row table-header d-md-flex d-none">
                     <div class="col col-2">Code</div>
@@ -28,7 +26,7 @@
                       <div class="col col-md-2 col-12">@p.YearlyPrice</div>
                       <label class="col d-md-none sneakylabel">Release Date</label>
                       <div class="col col-md-4 col-12">@p.ReleaseDate</div>
-                      <div class="col-md-1 d-inline-flex justify-content-start">
+                      <div class="col-md-1 d-inline-flex justify-content-end">
                           <a asp-controller="Product" asp-action="Edit" asp-route-id=@p.ProductId>
                               <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
                           </a>
@@ -38,10 +36,8 @@
                       </div>
                   </li>  
                 }
-                <li class="row d-md-flex d-block">
-                    <div class="col col-12">
-                        <a class="btn formbutton rounded-pill w-100" asp-controller="Product" asp-action="Add" role="button">ADD</a>
-                    </div>
+                <li class="row mt-4 d-md-flex d-block p-0">
+                        <a class="btn formbutton rounded-pill w-25" asp-controller="Product" asp-action="Add" role="button">ADD</a>
                 </li>
             </ul>
         </div>

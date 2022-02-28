@@ -6,15 +6,15 @@
     <div class="container-fluid padding my-4">
         <div class="container mx-auto my-auto tablebg">
             <ul class="responsive-table">
-                <li class="row d-md-flex d-block">
-                    <h1 style="color: #FCA311;">Incident Manager</h1>
+                <li class="row d-md-flex d-block p-0">
+                    <h1 class="p-0" style="color: #FCA311;">Incident Manager</h1>
                 </li>
                 <li class="row table-header d-md-flex d-none">
                     <div class="col col-3">Title</div>
                     <div class="col col-3">Customer</div>
                     <div class="col col-2">Product</div>
-                    <div class="col col-2">Date Opened</div>
-                    <div class="col col-2"></div>
+                    <div class="col col-3">Date Opened</div>
+                    <div class="col col-1"></div>
                 </li>
                 @foreach (Incident i in Model)
                 {
@@ -25,10 +25,9 @@
                         <div class="col col-md-3 col-12 text-wrap">@i.Customer.FirstName @i.Customer.LastName</div>
                         <label class="col d-md-none sneakylabel">Product</label>
                         <div class="col col-md-2 col-12 text-wrap">@i.Product.Name</div>
-                         <label class="col d-md-none sneakylabel">Product</label>
                          <label class="col d-md-none sneakylabel">Date Opened</label>
-                        <div class="col col-md-2 col-12 text-wrap">@i.DateOpened</div>
-                        <div class="col-md-2 d-inline-flex justify-content-start">
+                        <div class="col col-md-3 col-12 text-wrap">@i.DateOpened</div>
+                        <div class="col-md-1 d-inline-flex justify-content-end">
                             <a asp-controller="Incident" asp-action="Edit" asp-route-id=@i.IncidentId>
                                 <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
                             </a>
@@ -38,10 +37,8 @@
                         </div>
                     </li>
                 }
-                <li class="row d-md-flex d-block">
-                    <div class="col col-12">
-                        <a asp-controller="Incident" asp-action="Add" class="btn formbutton rounded-pill" style="width: 100%;" role="button"> Add Incident</a>
-                    </div>
+                <li class="row mt-4 d-md-flex d-block p-0">
+                     <a asp-controller="Incident" asp-action="Add" class="btn formbutton rounded-pill w-25" role="button"> Add Incident</a>  
                 </li>
             </ul>
         </div>

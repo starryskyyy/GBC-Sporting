@@ -5,7 +5,7 @@
 }
 <div class="addmargins">
     <div class="container my-4 mx-auto">
-        <div class="card mx-auto  bg-warning" style="width: 20rem;">
+        <div class="card mx-auto  bg-warning" style="width: 28rem;">
           <div class="card-body text-center text-white h-auto">
               <span class="card-header"><i class="fa-solid fa-circle-exclamation fa-lg" style="font-size: 3.5rem;"></i></span>
           </div>
@@ -13,13 +13,13 @@
             <h5 class="card-title">Confirm Delete</h5>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">@Model.Customer.FirstName @Model.Customer.LastName</li>
-            <li class="list-group-item">@Model.Product.Name</li>
-            <li class="list-group-item">@Model.Title</li>
-            <li class="list-group-item">@Model.Description</li>
-            <li class="list-group-item">@technicianName</li>
-            <li class="list-group-item">@Model.DateOpened</li>
-            <li class="list-group-item">@Model.DateClosed</li>
+            <li class="list-group-item"><strong>Name</strong> @Model.Customer.FirstName @Model.Customer.LastName</li>
+            <li class="list-group-item"><strong>Product</strong> @Model.Product.Name</li>
+            <li class="list-group-item"><strong>Title</strong> @Model.Title</li>
+            <li class="list-group-item"><strong>Description</strong> @Model.Description</li>
+            <li class="list-group-item"><strong>Techician Name</strong> @technicianName</li>
+            <li class="list-group-item"><strong>Opened</strong> @Model.DateOpened</li>
+            <li class="list-group-item"><strong>Closed</strong> @Model.DateClosed</li>
           </ul>
           <div class="card-body text-center">
             <form asp-controller="Incident" asp-action="Delete" method="post">

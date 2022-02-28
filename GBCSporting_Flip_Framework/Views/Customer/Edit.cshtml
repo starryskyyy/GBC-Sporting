@@ -20,27 +20,26 @@
                     </div>
                 </div>
                 <div class="row">
-                   <div class="col-md-8">
+                   <div class="col-md-12">
                        <label asp-for="Address" class="form-label" for="floatingAddress">Address</label>
                         <input asp-for="Address" class="form-control" id="floatingAddress"/>
                    </div>
                 </div>
                 <div class="row">
-                     <div class="col-md-6">
+                     <div class="col-md-4">
                         <label asp-for="City" class="form-label" for="floatingCity">City</label>
                         <input asp-for="City" class="form-control" id="floatingCity"/>
                     </div>
-                    <div class="col-md-3">
-                        <label asp-for="State" class="form-label" for="floatingState">State</label>
+                   
+                    <div class="col-md-2">
+                        <label asp-for="State" class="form-label" for="floatingState">Province</label>
                         <input asp-for="State" class="form-control" id="floatingState"/>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <label asp-for="PostalCode" class="form-label" for="floatingPC">Postal Code</label>
                         <input asp-for="PostalCode" class="form-control" id="floatingPC"/>
                     </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
+                      <div class="col-md-4">
                             <label asp-for="CountryId" class="form-label">Country</label>
                             <select asp-for="CountryId" class="form-select">
                                 <option value="0">SELECT A COUNTRY</option> 
