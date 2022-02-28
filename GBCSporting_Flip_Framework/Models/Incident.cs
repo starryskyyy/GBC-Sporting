@@ -23,7 +23,6 @@ namespace GBCSporting_Flip_Framework.Models
         public int? TechnicianId { get; set; }
         public Technician? Technician { get; set; }
 
-        [Required(ErrorMessage = "Please enter a date")]
         public DateTime? DateOpened { get; set; } = DateTime.Now;
 
         public DateTime? DateClosed { get; set; }

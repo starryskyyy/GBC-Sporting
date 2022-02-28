@@ -233,7 +233,6 @@ namespace GBCSporting_Flip_Framework.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DateOpened")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -265,8 +264,8 @@ namespace GBCSporting_Flip_Framework.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 2,
-                            DateClosed = new DateTime(2022, 2, 27, 23, 11, 24, 173, DateTimeKind.Local).AddTicks(1548),
-                            DateOpened = new DateTime(2022, 2, 27, 23, 11, 24, 173, DateTimeKind.Local).AddTicks(1546),
+                            DateClosed = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(724),
+                            DateOpened = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(722),
                             Description = "When trying to install getting error 123",
                             ProductId = 2,
                             TechnicianId = 1,
@@ -276,8 +275,8 @@ namespace GBCSporting_Flip_Framework.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 1,
-                            DateClosed = new DateTime(2022, 2, 27, 23, 11, 24, 173, DateTimeKind.Local).AddTicks(1551),
-                            DateOpened = new DateTime(2022, 2, 27, 23, 11, 24, 173, DateTimeKind.Local).AddTicks(1550),
+                            DateClosed = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(727),
+                            DateOpened = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(726),
                             Description = "Program crash almost instantly when I open it",
                             ProductId = 1,
                             TechnicianId = 2,
@@ -319,7 +318,7 @@ namespace GBCSporting_Flip_Framework.Migrations
                             ProductId = 1,
                             Code = "H332K",
                             Name = "Draft Manager 1.0",
-                            ReleaseDate = new DateTime(2022, 2, 27, 23, 11, 24, 173, DateTimeKind.Local).AddTicks(1504),
+                            ReleaseDate = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(708),
                             YearlyPrice = 6.6500000000000004
                         },
                         new
@@ -327,7 +326,7 @@ namespace GBCSporting_Flip_Framework.Migrations
                             ProductId = 2,
                             Code = "TVE32",
                             Name = "League Scheduler 1.0",
-                            ReleaseDate = new DateTime(2022, 2, 27, 23, 11, 24, 173, DateTimeKind.Local).AddTicks(1509),
+                            ReleaseDate = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(711),
                             YearlyPrice = 5.54
                         });
                 });

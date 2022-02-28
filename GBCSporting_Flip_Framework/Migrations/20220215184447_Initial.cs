@@ -113,7 +113,8 @@ namespace GBCSporting_Flip_Framework.Migrations
                         name: "FK_Incidents_Technicians_TechnicianId",
                         column: x => x.TechnicianId,
                         principalTable: "Technicians",
-                        principalColumn: "TechnicianId");
+                        principalColumn: "TechnicianId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
