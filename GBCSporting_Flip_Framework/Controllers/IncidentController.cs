@@ -19,7 +19,6 @@ namespace GBCSporting_Flip_Framework.Controllers
         {
             List<Incident> incidents;
             incidents = context.Incidents.Include(c => c.Customer).Include(p => p.Product).OrderBy(i => i.IncidentId).ToList();
-
             // bind incidents to view
             return View(incidents);
         }
@@ -70,8 +69,6 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            // Customer, Technician, Product objects are need to display details of incident
-            // Not sure if it should be coded like this
             var incident = context.Incidents
                 .Include(i => i.Customer)
                 .Include(i => i.Technician)
