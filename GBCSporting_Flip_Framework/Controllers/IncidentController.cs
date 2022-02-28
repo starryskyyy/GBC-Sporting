@@ -49,6 +49,10 @@ namespace GBCSporting_Flip_Framework.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (incident.DateOpened is null)
+                {
+                    incident.DateOpened = DateTime.Now;
+                }
                 if (incident.IncidentId == 0)
                     context.Incidents.Add(incident);
                 else
