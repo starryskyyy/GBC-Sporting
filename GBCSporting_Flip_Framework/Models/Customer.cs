@@ -10,7 +10,9 @@ namespace GBCSporting_Flip_Framework.Models
 
         [Required(ErrorMessage ="Please enter a last name")]
         public string? LastName { get; set; }
-        [Required(ErrorMessage ="Please enter a address")]
+        [Required(ErrorMessage = "Please enter a address")]
+
+        public string FullName { get { return this.FirstName + " " + this.LastName; } }
         public string? Address { get; set; }
 
         [Required(ErrorMessage ="Please enter a city")]
