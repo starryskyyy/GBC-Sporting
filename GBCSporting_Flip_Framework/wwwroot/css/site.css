@@ -300,3 +300,7 @@ footer{
     }
    
 }
+
+.active {
+    color: #FCA311;
+}
