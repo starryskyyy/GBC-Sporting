@@ -39,13 +39,13 @@
                      <li class="nav-item navlist-item"><a class="nav-link navfont 
                                                         @(controller == "Home" && action == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">Home</a></li>
                      <li class="nav-item navlist-item"><a class="nav-link navfont 
-                                                        @(controller == "Product" && (action == "Index" || action == "Edit" || action == "Add" || action == "Delete")  ? "active" : "")" asp-controller="Product" asp-action="Index">Products</a></li>
+                                                        @(controller == "Product" && (action == "Index" || action == ViewBag.Action || action == "Delete" )  ? "active" : "")" asp-controller="Product" asp-action="Index">Products</a></li>
                      <li class="nav-item navlist-item"><a class="nav-link navfont
-                                                        @(controller == "Technician" && (action == "Index" || action == "Edit" || action == "Add" || action == "Delete") ? "active" : "")" asp-controller="Technician" asp-action="Index">Technicians</a></li>
+                                                        @(controller == "Technician" && (action == "Index" || action == ViewBag.Action || action == "Delete") ? "active" : "")" asp-controller="Technician" asp-action="Index">Technicians</a></li>
                      <li class="nav-item navlist-item"><a class="nav-link navfont 
-                                                        @(controller == "Customer" && (action == "Index" || action == "Edit" || action == "Add" || action == "Delete") ? "active" : "")"  asp-controller="Customer" asp-action="Index">Customers</a></li>
+                                                        @(controller == "Customer" && (action == "Index" || action == ViewBag.Action || action == "Delete") ? "active" : "")"  asp-controller="Customer" asp-action="Index">Customers</a></li>
                      <li class="nav-item navlist-item"><a class="nav-link navfont
-                                                        @(controller == "Incident" && (action == "Index" || action == "Edit" || action == "Add" || action == "Delete") ? "active" : "")" asp-controller="Incident" asp-action="Index">Incidents</a></li>
+                                                        @(controller == "Incident" && (action == "Index" || action == ViewBag.Action || action == "Delete") ? "active" : "")" asp-controller="Incident" asp-action="Index">Incidents</a></li>
                      <li class="nav-item navlist-item"><a class="nav-link navfont disabled
                                                         @(controller == "Registration" && action == "Index" ? "active" : "")"  asp-controller="Registration" asp-action="Index" >Registration</a></li>
                      <li class="nav-item navlist-item"><a class="nav-link navfont disabled
