@@ -31,6 +31,7 @@ namespace GBCSporting_Flip_Framework.Models
         public string? CustEmail { get; set; }
         public string? CustPhone { get; set; }
 
+        public ICollection<Registration> Registrations { get; set; }
         public string Slug => FirstName?.Replace(' ', '-').ToLower()
              + '-' + LastName?.Replace(' ', '-').ToLower();
     }

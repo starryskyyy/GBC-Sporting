@@ -21,6 +21,7 @@ namespace GBCSporting_Flip_Framework.Models
         [Required(ErrorMessage = "Please enter a date")]
         public DateTime? ReleaseDate { get; set; } = DateTime.Now;
 
+        public ICollection<Registration> Registrations { get; set; }
         public string Slug => Code?.Replace(' ', '-').ToLower()
              + '-' + Name?.Replace(' ', '-').ToLower();
 
