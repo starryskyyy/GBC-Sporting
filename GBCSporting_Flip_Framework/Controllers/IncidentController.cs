@@ -54,10 +54,20 @@ namespace GBCSporting_Flip_Framework.Controllers
                     incident.DateOpened = DateTime.Now;
                 }
                 if (incident.IncidentId == 0)
+                {
                     context.Incidents.Add(incident);
+                    TempData["confirmMessage"] = $"New Incident Added";
+                }
+
                 else
+                {
                     context.Incidents.Update(incident);
+                    TempData["confirmMessage"] = $"Incident Edited";
+                }
+                   
+
                 context.SaveChanges();
+                
                 return RedirectToAction("Index", "Incident");
             }
             else

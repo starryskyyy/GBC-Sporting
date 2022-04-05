@@ -1,10 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string controller = ViewContext.RouteData.Values["controller"].ToString();
+    string action = ViewContext.RouteData.Values["action"].ToString();
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - GBCSporting_Flip_Framework</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GBCSporting_Flip_Framework.styles.css" asp-append-version="true" />
     <script src="https://kit.fontawesome.com/bfc4362999.js" crossorigin="anonymous"></script>
@@ -30,8 +35,8 @@
                   </div>
               <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                     <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                     <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Product" asp-action="Index">Products</a></li>
+                     <li class="nav-item navlist-item"><a class="nav-link navfont @(controller == "Home" && action == "Index" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                     <li class="nav-item navlist-item"><a class="nav-link navfont @(controller == "Product" && (action == "Index" || action == ViewBag.Action) ? "active" : "")" asp-area="" asp-controller="Product" asp-action="Index">Products</a></li>
                      <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Technician" asp-action="Index">Technicians</a></li>
                      <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Customer" asp-action="Index">Customers</a></li>
                      <li class="nav-item navlist-item"><a class="nav-link navfont" asp-area="" asp-controller="Incident" asp-action="Index">Incidents</a></li>

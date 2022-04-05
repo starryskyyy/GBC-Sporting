@@ -1,5 +1,6 @@
 ﻿using GBCSporting_Flip_Framework.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace GBCSporting_Flip_Framework.Controllers
 {
@@ -43,18 +44,27 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpPost]
         public IActionResult Edit(Product product)
         {
+
             if (ModelState.IsValid)
             {
                 if (product.ProductId == 0)
+                {
                     context.Products.Add(product);
+                    TempData["confirmMessage"] = $"New Product Added";
+                }
                 else
+                {
                     context.Products.Update(product);
+                    TempData["confirmMessage"] = $"Prodcut Updated";
+                }
+                    
                 context.SaveChanges();
                 return RedirectToAction("Index", "Product");
             }
             else
             {
                 ViewBag.Action = (product.ProductId == 0) ? "Add" : "Edit";
+                ModelState.AddModelError("", "There are errors in the form.");
                 return View(product);
             }
         }
@@ -62,6 +72,7 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
+            ViewBag.Action = "Delete";
             var product = context.Products.Find(id);
             return View(product);
         }
@@ -72,6 +83,7 @@ namespace GBCSporting_Flip_Framework.Controllers
             context.SaveChanges();
             return RedirectToAction("Index", "Product");
         }
+
 
     }
 }

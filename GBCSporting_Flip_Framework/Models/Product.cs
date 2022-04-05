@@ -7,10 +7,13 @@ namespace GBCSporting_Flip_Framework.Models
         [Key]
         public int ProductId { get; set; }
 
+        
         [Required(ErrorMessage = "Please enter a code")]
+        [RegularExpression("^[a-zA-Z0-9]+$", ErrorMessage = "Name may not contain any special characters.")]
         public string? Code { get; set; }
 
         [Required(ErrorMessage = "Please enter a name of the product")]
+        [RegularExpression("^[a-zA-Z0-9]+$", ErrorMessage = "Name may not contain any special characters.")]
         public string? Name { get; set; }
 
         [Required(ErrorMessage = "Please enter a yearly price")]
@@ -19,6 +22,7 @@ namespace GBCSporting_Flip_Framework.Models
         public double? YearlyPrice  { get; set; }
 
         [Required(ErrorMessage = "Please enter a date")]
+        [Range(typeof(DateTime),"1/1/1900", "12/31/9999", ErrorMessage = "Release date must be after 1/1/1900.")]
         public DateTime? ReleaseDate { get; set; } = DateTime.Now;
 
         public string Slug => Code?.Replace(' ', '-').ToLower()

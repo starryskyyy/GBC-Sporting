@@ -24,6 +24,7 @@ namespace GBCSporting_Flip_Framework.Controllers
             return View(customers);
         }
 
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -38,12 +39,22 @@ namespace GBCSporting_Flip_Framework.Controllers
             ViewBag.Action = "Edit";
             ViewBag.Countries = context.Countries.OrderBy(c => c.CountryName).ToList();
             var customer = context.Customers.Find(id);
+
             return View(customer);
         }
 
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
+            if (TempData["okEmail"] == null)
+            {
+                string message = Check.EmailExists(context, customer.CustEmail);
+                if (!String.IsNullOrEmpty(message))
+                {
+                    ModelState.AddModelError(nameof(Customer.CustEmail), message);
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 if (customer.CustomerId == 0)
@@ -76,5 +87,6 @@ namespace GBCSporting_Flip_Framework.Controllers
             context.SaveChanges();
             return RedirectToAction("Index", "Customer");
         }
+
     }
 }

@@ -2,6 +2,12 @@
 @{
     ViewData["Title"] = "Product Manager";
 }
+@if (TempData.Keys.Contains("confirmMessage"))
+{
+    <h4 class="bg-info text-center text-white p-2">
+        @TempData["confirmMessage"]
+    </h4>
+}
 <div class="addmargins">
     <div class="container-fluid padding my-4">
         <div class="container mx-auto my-auto tablebg">
@@ -17,7 +23,8 @@
                 </li>
                 @foreach (Product p in Model)
                 {
-                  <li class="row table-row d-md-flex d-block">
+                    
+                  <li id="hoverMe" class="row table-row d-md-flex d-block">
                       <label class="col d-md-none sneakylabel">Code</label>
                       <div class="col col-md-2 col-12">@p.Code</div>
                       <label class="col d-md-none sneakylabel">Name</label>

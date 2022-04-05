@@ -1,6 +1,7 @@
 ﻿@model Product
 @{
-    ViewData["Title"] = "Delete Product";
+    string title = ViewBag.Action + "Delete";
+    ViewBag.Title = title;
 }
 <div class="addmargins">
     <div class="container my-4 mx-auto">

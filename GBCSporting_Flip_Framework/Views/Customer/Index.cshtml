@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Customer Manager";
 }
+
 <div class="addmargins">
     <div class="container-fluid padding my-4">
         <div class="container mx-auto my-auto tablebg">
@@ -18,7 +19,7 @@
         
         @foreach (Customer c in Model)
         {
-           <li class="row table-row d-md-flex d-block">
+           <li class="row table-row d-md-flex d-block hoverMe">
                <label class="col d-md-none sneakylabel">Name</label>
                <div class="col col-md-3 col-12 text-wrap">@c.FirstName @c.LastName</div>
                <label class="col d-md-none sneakylabel">Email</label>

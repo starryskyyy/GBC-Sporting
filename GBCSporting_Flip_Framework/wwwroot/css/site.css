@@ -7,7 +7,6 @@
     text-decoration: none;
     margin: 0;
     padding: 0;
-    -webkit-box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
@@ -29,8 +28,8 @@ body {
 
 
 /*Navigation styling elements*/
-.navfont, .navfont:hover, nav.navbar > .container-fluid > .navbar-brand {
-    color: white;
+.navfont,  nav.navbar > .container-fluid > .navbar-brand {
+    color: red;
     font-size: 22px;
     padding: 0;
     margin-top: -5px;
@@ -41,13 +40,19 @@ li.navlist-item {
     position: relative;
 }
 
-a .navfont{
+a.navfont:hover{
+    color: red;
+}
+
+a.navfont {
     text-transform: uppercase;
+    font-weight: bolder;
     text-decoration: none;
     letter-spacing: 0.15em;
     display: inline-block;
     padding: 15px 20px;
     position: relative;
+    -webkit-backface-visibility: hidden;
 }
 
  .navfont:after {
@@ -61,7 +66,6 @@ a .navfont{
      transition: width 0.3s ease 0s, left 0.3s ease 0s;
      width: 0;
  }
-
 
 a:hover:after {
     width: 100%;
@@ -84,17 +88,7 @@ a:hover:after {
 }
 /*Hero Banner Section Styling Elements*/
 .hero {
-    /*position: relative;
-    top: -4.2rem;
-    left: 0;
-    
-    
-    background: url(/images/hero_splash.jpg);
-    background-position: center center;
-    background-size: cover;
-    background-attachment:fixed;
-    
-    z-index: -1;*/
+
     background: url(/images/hero_splash.jpg) no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
@@ -160,7 +154,7 @@ main{
     border-radius: 3px;
     padding: 25px 30px;
     justify-content: space-between;
-    margin: 0 auto .5rem auto;
+    margin: 0 auto 1rem auto;
 }
 .table-header {
     background-color: black;
@@ -185,6 +179,12 @@ main{
     padding: 0 2.5rem;
 }
 
+
+.responsive-table > #hoverMe:hover {
+    transition: ease 0.4s;
+    transform: translateY(-10px);
+}
+
 @media only screen and (max-width: 767px){
     .table-row{
         max-width: 400px;
@@ -206,7 +206,8 @@ main{
 
     .formWrapping input[type = text],
     .formWrapping select,
-    .formWrapping input[type = datetime-local]{
+    .formWrapping input[type = datetime-local],
+    .formWrapping input[type = email]{
         border: 1px solid hsla(132, 6%, 83%, 1);
         background: hsla(0, 0%, 93%, .95);
         box-shadow: inset 0 0 5px 1px hsla(132, 6%, 83%, 1);
@@ -219,14 +220,78 @@ main{
     }
 
 .formbutton {
-    background: #FCA311;
-    padding: 10px;
-    width: 5rem;
+    background: #FCA311; 
+    width: 6.5rem;
     height: 3rem;
     color: black;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+    position: relative;
+    padding: 10px;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
 }
+
+.formbutton:hover {
+    color: white;
+    padding-right: 35px;
+    padding-left: 8px;
+    padding-top: 10px;
+    opacity: 1;
+    transition: all 0.25s;
+}
+
+.formbutton.accept_color::after{
+    font-family: "Font Awesome 5 Free";
+    content: "\f0a9";
+    background: lightgreen;
+    position: absolute;
+    z-index: -1;
+    display: block;
+}
+
+.formbutton.cancel_color::after{
+    background: red;
+    position: absolute;
+    z-index: -1;
+    display: block;
+    font-family: "Font Awesome 5 Free";
+    content: "\f057";
+}
+
+
+.formbutton.grow::after{
+    transition: all 0.5s;
+}
+
+.formbutton.grow.accept_color:hover::after {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: all 0.35s;
+    padding-left: 30px;
+    padding-top: 11px;
+}
+
+.formbutton.grow.cancel_color:hover::after{
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: all 0.35s;
+    padding-left: 50px;
+    padding-top: 11px;
+}
+
+.formbutton.grow::after{
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    right: -100%;
+}
+
 .formbuttoncircle{
     width: 3rem;
     height: 3rem;
@@ -245,9 +310,7 @@ button a {
     color: #f4f1de;
 }
 
-.formbutton:hover {
-    color: white;
-}
+
 /*Footer styling*/
 footer{
     padding: 1rem; 
@@ -299,4 +362,22 @@ footer{
         border-end-start-radius: 10px;
     }
    
+}
+
+/*Validation styling for invalid inputs*/
+.formWrapping  input.input-validation-error, .formWrapping select.input-validation-error{
+    border: 2px solid #dc3545;
+    background-color: #faebd7;
+    animation: shake 300ms;
+}
+
+
+.validation-summary-errors ul{list-style: none;}
+
+/*Animations*/
+
+@keyframes shake{
+    25% {transform: translateX(4px);}
+    50% {transform: translateX(-4px);}
+    75% {transform: translateX(4px);}
 }

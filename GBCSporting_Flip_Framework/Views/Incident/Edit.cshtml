@@ -8,7 +8,7 @@
         <div class="formWrapping row-md g-2">
             <form asp-controller="Incident" asp-action="Edit" method="post">
                 <span class="formTitle row justify-content-center">@title</span>
-                <div asp-validation-summary="All"></div>
+                <div asp-validation-summary="ModelOnly"></div>
                 <div class="row">
                     <div class="col-md-12">
                         <label asp-for="CustomerId" class="form-label">Customer</label>
@@ -19,6 +19,7 @@
                                 <option value=@c.CustomerId>@c.FirstName @c.LastName</option>
                             }
                         </select>
+                        <span asp-validation-for="CustomerId" class="text-danger"></span>
                     </div>
                     <div class="col-md-12">
                         <label asp-for="ProductId" class="form-label">Product</label>
@@ -29,14 +30,17 @@
                                 <option value=@p.ProductId>@p.Name</option>
                             }
                         </select>
+                        <span asp-validation-for="ProductId" class="text-danger"></span>
                     </div>
                     <div class="col-md-12">
                         <label asp-for="Title" class="form-label">Title</label>
                         <input asp-for="Title" class="form-control"/>
+                        <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                     <div class="col-md-12">
                         <label asp-for="Description" class="form-label">Description</label>
                         <input asp-for="Description" class="form-control"/>
+                        <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                     <div class="col-md-12">
                         <label asp-for="TechnicianId" class="form-label">Technician</label>
@@ -62,8 +66,8 @@
                 @*action buttons*@
                 <div class="row">
                     <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
-                        <button type="submit" class="btn formbutton rounded-pill">@ViewBag.Action</button>
-                        <button class="btn formbutton rounded-pill" asp-controller="Incident" asp-action="Index">Cancel</button>
+                        <button type="submit" class="btn formbutton rounded-pill accept_color grow">@ViewBag.Action</button>
+                        <button class="btn formbutton rounded-pill cancel_color grow" asp-controller="Incident" asp-action="Index">Cancel</button>
                     </div>
                 </div>
             </form>
