@@ -16,6 +16,8 @@ namespace GBCSporting_Flip_Framework.Models
         [StringLength(51)]
         public string? LastName { get; set; }
 
+        public string FullName { get { return this.FirstName + " " + this.LastName; } }
+
         [Required(ErrorMessage ="Please enter a address")]
         [StringLength(51)]
         public string? Address { get; set; }
@@ -47,6 +49,7 @@ namespace GBCSporting_Flip_Framework.Models
             ErrorMessage = "Phone number format must be ### ###-####")]
         public string? CustPhone { get; set; }
 
+        public ICollection<Registration> Registrations { get; set; }
         public string Slug => FirstName?.Replace(' ', '-').ToLower()
              + '-' + LastName?.Replace(' ', '-').ToLower();
 

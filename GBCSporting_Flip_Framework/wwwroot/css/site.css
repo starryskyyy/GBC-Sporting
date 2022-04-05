@@ -381,3 +381,9 @@ footer{
     50% {transform: translateX(-4px);}
     75% {transform: translateX(4px);}
 }
+   
+}
+
+.active {
+    color: #FCA311;
+}

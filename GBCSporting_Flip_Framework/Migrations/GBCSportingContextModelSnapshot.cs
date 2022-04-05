@@ -125,7 +125,6 @@ namespace GBCSporting_Flip_Framework.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"), 1L, 1);
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
@@ -264,8 +263,8 @@ namespace GBCSporting_Flip_Framework.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 2,
-                            DateClosed = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(724),
-                            DateOpened = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(722),
+                            DateClosed = new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6898),
+                            DateOpened = new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6895),
                             Description = "When trying to install getting error 123",
                             ProductId = 2,
                             TechnicianId = 1,
@@ -275,8 +274,8 @@ namespace GBCSporting_Flip_Framework.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 1,
-                            DateClosed = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(727),
-                            DateOpened = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(726),
+                            DateClosed = new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6902),
+                            DateOpened = new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6900),
                             Description = "Program crash almost instantly when I open it",
                             ProductId = 1,
                             TechnicianId = 2,
@@ -318,7 +317,7 @@ namespace GBCSporting_Flip_Framework.Migrations
                             ProductId = 1,
                             Code = "H332K",
                             Name = "Draft Manager 1.0",
-                            ReleaseDate = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(708),
+                            ReleaseDate = new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6879),
                             YearlyPrice = 6.6500000000000004
                         },
                         new
@@ -326,8 +325,35 @@ namespace GBCSporting_Flip_Framework.Migrations
                             ProductId = 2,
                             Code = "TVE32",
                             Name = "League Scheduler 1.0",
-                            ReleaseDate = new DateTime(2022, 2, 27, 23, 45, 16, 901, DateTimeKind.Local).AddTicks(711),
+                            ReleaseDate = new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6882),
                             YearlyPrice = 5.54
+                        });
+                });
+
+            modelBuilder.Entity("GBCSporting_Flip_Framework.Models.Registration", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CustomerId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Registrations");
+
+                    b.HasData(
+                        new
+                        {
+                            CustomerId = 1,
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            CustomerId = 2,
+                            ProductId = 2
                         });
                 });
 
@@ -406,6 +432,35 @@ namespace GBCSporting_Flip_Framework.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("Technician");
+                });
+
+            modelBuilder.Entity("GBCSporting_Flip_Framework.Models.Registration", b =>
+                {
+                    b.HasOne("GBCSporting_Flip_Framework.Models.Customer", "Customer")
+                        .WithMany("Registrations")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GBCSporting_Flip_Framework.Models.Product", "Product")
+                        .WithMany("Registrations")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("GBCSporting_Flip_Framework.Models.Customer", b =>
+                {
+                    b.Navigation("Registrations");
+                });
+
+            modelBuilder.Entity("GBCSporting_Flip_Framework.Models.Product", b =>
+                {
+                    b.Navigation("Registrations");
                 });
 #pragma warning restore 612, 618
         }

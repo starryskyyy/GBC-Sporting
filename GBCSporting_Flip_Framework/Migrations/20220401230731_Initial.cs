@@ -61,7 +61,7 @@ namespace GBCSporting_Flip_Framework.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     State = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -113,7 +113,30 @@ namespace GBCSporting_Flip_Framework.Migrations
                         name: "FK_Incidents_Technicians_TechnicianId",
                         column: x => x.TechnicianId,
                         principalTable: "Technicians",
-                        principalColumn: "TechnicianId",
+                        principalColumn: "TechnicianId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Registrations",
+                columns: table => new
+                {
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Registrations", x => new { x.CustomerId, x.ProductId });
+                    table.ForeignKey(
+                        name: "FK_Registrations_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "CustomerId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Registrations_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -144,8 +167,8 @@ namespace GBCSporting_Flip_Framework.Migrations
                 columns: new[] { "ProductId", "Code", "Name", "ReleaseDate", "YearlyPrice" },
                 values: new object[,]
                 {
-                    { 1, "H332K", "Draft Manager 1.0", new DateTime(2022, 2, 15, 13, 44, 47, 155, DateTimeKind.Local).AddTicks(8196), 6.6500000000000004 },
-                    { 2, "TVE32", "League Scheduler 1.0", new DateTime(2022, 2, 15, 13, 44, 47, 155, DateTimeKind.Local).AddTicks(8200), 5.54 }
+                    { 1, "H332K", "Draft Manager 1.0", new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6879), 6.6500000000000004 },
+                    { 2, "TVE32", "League Scheduler 1.0", new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6882), 5.54 }
                 });
 
             migrationBuilder.InsertData(
@@ -171,12 +194,20 @@ namespace GBCSporting_Flip_Framework.Migrations
             migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
-                values: new object[] { 1, 2, new DateTime(2022, 2, 15, 13, 44, 47, 155, DateTimeKind.Local).AddTicks(8215), null, "When trying to install getting error 123", 2, 1, "Could not install" });
+                values: new object[,]
+                {
+                    { 1, 2, new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6898), new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6895), "When trying to install getting error 123", 2, 1, "Could not install" },
+                    { 2, 1, new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6902), new DateTime(2022, 4, 1, 19, 7, 31, 416, DateTimeKind.Local).AddTicks(6900), "Program crash almost instantly when I open it", 1, 2, "Error launching program" }
+                });
 
             migrationBuilder.InsertData(
-                table: "Incidents",
-                columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
-                values: new object[] { 2, 1, new DateTime(2022, 2, 15, 13, 44, 47, 155, DateTimeKind.Local).AddTicks(8244), null, "Program crash almost instantly when I open it", 1, 2, "Error launching program" });
+                table: "Registrations",
+                columns: new[] { "CustomerId", "ProductId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 2 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_CountryId",
@@ -197,6 +228,11 @@ namespace GBCSporting_Flip_Framework.Migrations
                 name: "IX_Incidents_TechnicianId",
                 table: "Incidents",
                 column: "TechnicianId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Registrations_ProductId",
+                table: "Registrations",
+                column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -205,13 +241,16 @@ namespace GBCSporting_Flip_Framework.Migrations
                 name: "Incidents");
 
             migrationBuilder.DropTable(
+                name: "Registrations");
+
+            migrationBuilder.DropTable(
+                name: "Technicians");
+
+            migrationBuilder.DropTable(
                 name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "Technicians");
 
             migrationBuilder.DropTable(
                 name: "Countries");
