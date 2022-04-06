@@ -15,7 +15,7 @@ namespace GBCSporting_Flip_Framework.Controllers
 
 
         [Route("[controller]s")]
-        public IActionResult Index()
+        public ViewResult Index()
         {
             List<Customer> customers;
             customers = context.Customers.OrderBy(c => c.CustomerId).ToList();
@@ -26,7 +26,7 @@ namespace GBCSporting_Flip_Framework.Controllers
 
 
         [HttpGet]
-        public IActionResult Add()
+        public ViewResult Add()
         {
             ViewBag.Action = "Add";
             ViewBag.Countries = context.Countries.OrderBy(c => c.CountryName).ToList();
@@ -34,7 +34,7 @@ namespace GBCSporting_Flip_Framework.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public ViewResult Edit(int id)
         {
             ViewBag.Action = "Edit";
             ViewBag.Countries = context.Countries.OrderBy(c => c.CountryName).ToList();
@@ -73,7 +73,7 @@ namespace GBCSporting_Flip_Framework.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public ViewResult Delete(int id)
         {
             var customer = context.Customers
                 .Include(c => c.Country)
@@ -81,7 +81,7 @@ namespace GBCSporting_Flip_Framework.Controllers
             return View(customer);
         }
         [HttpPost]
-        public IActionResult Delete(Customer customer)
+        public RedirectToActionResult Delete(Customer customer)
         {
             context.Customers.Remove(customer);
             context.SaveChanges();

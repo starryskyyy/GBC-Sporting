@@ -1,6 +1,7 @@
 ﻿using GBCSporting_Flip_Framework.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 
 namespace GBCSporting_Flip_Framework.Controllers
 {
@@ -16,7 +17,7 @@ namespace GBCSporting_Flip_Framework.Controllers
 
 
         [Route("[controller]s")]
-        public IActionResult Index()
+        public ViewResult Index()
         {
             
             List<Product> products;
@@ -27,14 +28,14 @@ namespace GBCSporting_Flip_Framework.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public ViewResult Add()
         {
             ViewBag.Action = "Add";
             return View("Edit", new Product());
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public ViewResult Edit(int id)
         {
             ViewBag.Action = "Edit";
             var product = context.Products.Find(id);
@@ -50,12 +51,14 @@ namespace GBCSporting_Flip_Framework.Controllers
                 if (product.ProductId == 0)
                 {
                     context.Products.Add(product);
-                    TempData["confirmMessage"] = $"New Product Added";
+                    TempData["confirmMessage"] = $"New Product {product.Name} Added";
                 }
                 else
                 {
+                    Product oldProduct = context.Products.Where(p => p.ProductId == product.ProductId).AsNoTracking().FirstOrDefault();
+
                     context.Products.Update(product);
-                    TempData["confirmMessage"] = $"Prodcut Updated";
+                    TempData["confirmMessage"] = $"Product {oldProduct.Name} Updated";
                 }
                     
                 context.SaveChanges();
@@ -70,16 +73,17 @@ namespace GBCSporting_Flip_Framework.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public ViewResult Delete(int id)
         {
             ViewBag.Action = "Delete";
             var product = context.Products.Find(id);
             return View(product);
         }
         [HttpPost]
-        public IActionResult Delete(Product product)
+        public RedirectToActionResult Delete(Product product)
         {
             context.Products.Remove(product);
+            TempData["confirmMessage"] = $"{product.Name} Deleted";
             context.SaveChanges();
             return RedirectToAction("Index", "Product");
         }

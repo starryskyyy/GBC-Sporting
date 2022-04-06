@@ -15,26 +15,22 @@ namespace GBCSporting_Flip_Framework.Controllers
 
 
         [Route("[controller]s")]
-        public IActionResult Index(string activeStatus = "all")
+        public ViewResult Index(string activeStatus = "all")
         {
-            List<Incident> incidents;
 
+            IQueryable<Incident> incidents = context.Incidents.Include(c => c.Customer).Include(p => p.Product).OrderBy(i => i.IncidentId);
            
-            if (activeStatus == "unassigned")
+            if (activeStatus.Equals("unassigned"))
             {
-                incidents = context.Incidents.Where(i => i.Technician == null).Include(c => c.Customer).Include(p => p.Product).OrderBy(i => i.IncidentId).ToList();
-            } else if (activeStatus == "open")
+                incidents = incidents.Where(i => i.TechnicianId == null);
+            } else if (activeStatus.Equals("open"))
             {
-                incidents = context.Incidents.Where(i => i.DateClosed == null).Include(c => c.Customer).Include(p => p.Product).OrderBy(i => i.IncidentId).ToList();
-            }
-            else
-            {
-                incidents = context.Incidents.Include(c => c.Customer).Include(p => p.Product).OrderBy(i => i.IncidentId).ToList();
+                incidents = incidents.Where(i => i.DateClosed == null);
             }
 
             var model = new IncidentListViewModel
             {
-                Incidents = incidents,
+                Incidents = incidents.ToList(),
                 SelectedStatus = activeStatus,
             };
 
@@ -42,7 +38,7 @@ namespace GBCSporting_Flip_Framework.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public ViewResult Add()
         {
             var model = new IncidentEditViewModel
             {
@@ -56,10 +52,8 @@ namespace GBCSporting_Flip_Framework.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public ViewResult Edit(int id)
         {
-            List<Incident> incidents;
-            incidents = context.Incidents.Include(c => c.Customer).Include(p => p.Product).OrderBy(i => i.IncidentId).ToList();
             var i = context.Incidents.Find(id);
 
             var model = new IncidentEditViewModel
@@ -86,15 +80,14 @@ namespace GBCSporting_Flip_Framework.Controllers
                 if (incident.IncidentId == 0)
                 {
                     context.Incidents.Add(incident);
-                    TempData["confirmMessage"] = $"New Incident Added";
+                    TempData["confirmMessage"] = $"New Incident \"{incident.Title}\" Added";
                 }
-
                 else
                 {
+                    Incident oldIncident = context.Incidents.Where(i => i.IncidentId == incident.IncidentId).AsNoTracking().FirstOrDefault();
                     context.Incidents.Update(incident);
-                    TempData["confirmMessage"] = $"Incident Edited";
+                    TempData["confirmMessage"] = $"Incident \"{oldIncident.Title}\" Edited";
                 }
-                   
 
                 context.SaveChanges();
                 
@@ -115,7 +108,7 @@ namespace GBCSporting_Flip_Framework.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public ViewResult Delete(int id)
         {
             var incident = context.Incidents
                 .Include(i => i.Customer)
@@ -125,9 +118,11 @@ namespace GBCSporting_Flip_Framework.Controllers
             return View(incident);
         }
         [HttpPost]
-        public IActionResult Delete(Incident incident)
+        public RedirectToActionResult Delete(Incident incident)
         {
             context.Incidents.Remove(incident);
+            TempData["confirmMessage"] = $"Incident \"{incident.Title}\" Deleted";
+
             context.SaveChanges();
             return RedirectToAction("Index", "Incident");
         }

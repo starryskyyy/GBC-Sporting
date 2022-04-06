@@ -24,6 +24,7 @@
           <div class="card-body text-center">
             <form asp-controller="Incident" asp-action="Delete" method="post">
                 <input type="hidden" asp-for="IncidentId"/>
+                <input type="hidden" asp-for="Title"/>
                 <p class="d-inline-flex my-auto">
                     <button type="submit" class="btn formbuttoncircle"><i class="fa-solid fa-circle-check fa-lg" style="color:black;"></i></button>
                     <button class="btn formbuttoncircle" asp-controller="Incident" asp-action="Index"><i class="fa-solid fa-xmark fa-lg" style="color:black; font-size: 22px;"></i></button>

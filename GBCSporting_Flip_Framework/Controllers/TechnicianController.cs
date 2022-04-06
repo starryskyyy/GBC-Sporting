@@ -15,7 +15,7 @@ namespace GBCSporting_Flip_Framework.Controllers
 
 
         [Route("[controller]s")]
-        public IActionResult Index()
+        public ViewResult Index()
         {
             List<Technician> technicians;
             technicians = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
@@ -25,14 +25,14 @@ namespace GBCSporting_Flip_Framework.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public ViewResult Add()
         {
             ViewBag.Action = "Add";
             return View("Edit", new Technician());
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public ViewResult Edit(int id)
         {
             ViewBag.Action = "Edit";
             var technician = context.Technicians.Find(id);
@@ -68,13 +68,13 @@ namespace GBCSporting_Flip_Framework.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public ViewResult Delete(int id)
         {
             var technician = context.Technicians.Find(id);
             return View(technician);
         }
         [HttpPost]
-        public IActionResult Delete(Technician technician)
+        public RedirectToActionResult Delete(Technician technician)
         {
             context.Technicians.Remove(technician);
             context.SaveChanges();
