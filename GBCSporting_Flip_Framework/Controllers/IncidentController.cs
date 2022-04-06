@@ -15,33 +15,63 @@ namespace GBCSporting_Flip_Framework.Controllers
 
 
         [Route("[controller]s")]
-        public IActionResult Index()
+        public IActionResult Index(string activeStatus = "all")
         {
             List<Incident> incidents;
-            incidents = context.Incidents.Include(c => c.Customer).Include(p => p.Product).OrderBy(i => i.IncidentId).ToList();
-            // bind incidents to view
-            return View(incidents);
+
+           
+            if (activeStatus == "unassigned")
+            {
+                incidents = context.Incidents.Where(i => i.Technician == null).Include(c => c.Customer).Include(p => p.Product).OrderBy(i => i.IncidentId).ToList();
+            } else if (activeStatus == "open")
+            {
+                incidents = context.Incidents.Where(i => i.DateClosed == null).Include(c => c.Customer).Include(p => p.Product).OrderBy(i => i.IncidentId).ToList();
+            }
+            else
+            {
+                incidents = context.Incidents.Include(c => c.Customer).Include(p => p.Product).OrderBy(i => i.IncidentId).ToList();
+            }
+
+            var model = new IncidentListViewModel
+            {
+                Incidents = incidents,
+                SelectedStatus = activeStatus,
+            };
+
+            return View(model);
         }
 
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.Action = "Add";
-            ViewBag.Customers = context.Customers.OrderBy(c => c.FirstName).ToList();
-            ViewBag.Technicians = context.Technicians.OrderBy(t => t.TechName).ToList();
-            ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
-            return View("Edit", new Incident());
+            var model = new IncidentEditViewModel
+            {
+                operation = "Add",
+                Incident = new Incident(),
+                Customers = context.Customers.OrderBy(c => c.FirstName).ToList(),
+                Technicians = context.Technicians.OrderBy(t => t.TechName).ToList(),
+                Products = context.Products.OrderBy(p => p.Name).ToList()
+            };
+            return View("Edit", model);
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.Action = "Edit";
-            ViewBag.Customers = context.Customers.OrderBy(c => c.FirstName).ToList();
-            ViewBag.Technicians = context.Technicians.OrderBy(t => t.TechName).ToList();
-            ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
-            var incident = context.Incidents.Find(id);
-            return View(incident);
+            List<Incident> incidents;
+            incidents = context.Incidents.Include(c => c.Customer).Include(p => p.Product).OrderBy(i => i.IncidentId).ToList();
+            var i = context.Incidents.Find(id);
+
+            var model = new IncidentEditViewModel
+            {
+                operation = "Edit",
+                Incident = i,
+                Customers = context.Customers.OrderBy(c => c.FirstName).ToList(),
+                Technicians = context.Technicians.OrderBy(t => t.TechName).ToList(),
+                Products = context.Products.OrderBy(p => p.Name).ToList()
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -72,11 +102,15 @@ namespace GBCSporting_Flip_Framework.Controllers
             }
             else
             {
-                ViewBag.Action = (incident.IncidentId == 0) ? "Add" : "Edit";
-                ViewBag.Customers = context.Customers.OrderBy(c => c.FirstName).ToList();
-                ViewBag.Technicians = context.Technicians.OrderBy(t => t.TechName).ToList();
-                ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
-                return View(incident);
+                var model = new IncidentEditViewModel
+                {
+                    operation = (incident.IncidentId == 0) ? "Add" : "Edit",
+                    Incident = incident,
+                    Customers = context.Customers.OrderBy(c => c.FirstName).ToList(),
+                    Technicians = context.Technicians.OrderBy(t => t.TechName).ToList(),
+                    Products = context.Products.OrderBy(p => p.Name).ToList()
+                };
+                return View(model);
             }
         }
 

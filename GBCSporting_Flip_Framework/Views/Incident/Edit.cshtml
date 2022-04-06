@@ -1,6 +1,6 @@
-﻿@model Incident
+﻿@model IncidentEditViewModel
 @{
-    string title = ViewBag.Action + " Incident";
+    string title = Model.operation + " Incident";
     ViewBag.Title = title;
 }
 <div class="addmargins">
@@ -11,58 +11,58 @@
                 <div asp-validation-summary="ModelOnly"></div>
                 <div class="row">
                     <div class="col-md-12">
-                        <label asp-for="CustomerId" class="form-label">Customer</label>
+                        <label asp-for="Incident.CustomerId" class="form-label">Customer</label>
                         
-                        <select asp-for="CustomerId"  
-                                asp-items="@(new SelectList(ViewBag.Customers,
-"CustomerId", "FullName", Model.CustomerId.ToString()))" class="form-select">
+                        <select asp-for="Incident.CustomerId"  
+                                asp-items="@(new SelectList(Model.Customers,
+"CustomerId", "FullName", Model.Incident.CustomerId.ToString()))" class="form-select">
                                 <option value="0">SELECT CUSTOMER</option>
                         </select>
-                        <span asp-validation-for="CustomerId" class="text-danger"></span>
+                        <span asp-validation-for="Incident.CustomerId" class="text-danger"></span>
                     </div>
                     <div class="col-md-12">
-                        <label asp-for="ProductId" class="form-label">Product</label>
-                        <select asp-for="ProductId" 
-                                asp-items="@(new SelectList(ViewBag.Products,
-"ProductId", "Name", Model.ProductId.ToString()))" class="form-select">
+                        <label asp-for="Incident.ProductId" class="form-label">Product</label>
+                        <select asp-for="Incident.ProductId" 
+                                asp-items="@(new SelectList(Model.Products,
+"ProductId", "Name", Model.Incident.ProductId.ToString()))" class="form-select">
                             <option value="0">SELECT PRODUCT</option> 
                         </select>
-                        <span asp-validation-for="ProductId" class="text-danger"></span>
+                        <span asp-validation-for="Incident.ProductId" class="text-danger"></span>
                     </div>
                     <div class="col-md-12">
-                        <label asp-for="Title" class="form-label">Title</label>
-                        <input asp-for="Title" class="form-control"/>
-                        <span asp-validation-for="Title" class="text-danger"></span>
+                        <label asp-for="Incident.Title" class="form-label">Title</label>
+                        <input asp-for="Incident.Title" class="form-control"/>
+                        <span asp-validation-for="Incident.Title" class="text-danger"></span>
                     </div>
                     <div class="col-md-12">
-                        <label asp-for="Description" class="form-label">Description</label>
-                        <input asp-for="Description" class="form-control"/>
-                        <span asp-validation-for="Description" class="text-danger"></span>
+                        <label asp-for="Incident.Description" class="form-label">Description</label>
+                        <input asp-for="Incident.Description" class="form-control"/>
+                        <span asp-validation-for="Incident.Description" class="text-danger"></span>
                     </div>
                     <div class="col-md-12">
-                        <label asp-for="TechnicianId" class="form-label">Technician</label>
-                        <select asp-for="TechnicianId"
-                                asp-items="@(new SelectList(ViewBag.Technicians,
-"TechnicianId", "TechName", Model.TechnicianId.ToString()))" class="form-control">
+                        <label asp-for="Incident.TechnicianId" class="form-label">Technician</label>
+                        <select asp-for="Incident.TechnicianId"
+                                asp-items="@(new SelectList(Model.Technicians,
+"TechnicianId", "TechName", Model.Incident.TechnicianId.ToString()))" class="form-control">
                             <option value="">SELECT A TECHNICIAN</option> 
                             
                         </select>
                     </div>
                     <div class="col-md-12">
-                        <label asp-for="DateOpened" class="form-label">Date Opened</label>
-                        <input type="datetime-local" asp-for="DateOpened" class="form-control"/>
+                        <label asp-for="Incident.DateOpened" class="form-label">Date Opened</label>
+                        <input type="datetime-local" asp-for="Incident.DateOpened" class="form-control"/>
                     </div>
                     <div class="col-md-12">
-                         <label asp-for="DateClosed" class="form-label">Date Closed</label>
-                          <input type="datetime-local" class="form-control" asp-for="DateClosed" />
+                         <label asp-for="Incident.DateClosed" class="form-label">Date Closed</label>
+                          <input type="datetime-local" class="form-control" asp-for="Incident.DateClosed" />
                     </div>
                 </div>
-                <input asp-for="IncidentId" type="hidden"/>
+                <input asp-for="Incident.IncidentId" type="hidden"/>
 
                 @*action buttons*@
                 <div class="row">
                     <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
-                        <button type="submit" class="btn formbutton rounded-pill accept_color grow">@ViewBag.Action</button>
+                        <button type="submit" class="btn formbutton rounded-pill accept_color grow">@Model.operation</button>
                         <button class="btn formbutton rounded-pill cancel_color grow" asp-controller="Incident" asp-action="Index">Cancel</button>
                     </div>
                 </div>

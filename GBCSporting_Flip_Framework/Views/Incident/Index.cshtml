@@ -1,6 +1,7 @@
-﻿@model IEnumerable<Incident>
+﻿@model IncidentListViewModel
 @{
     ViewData["Title"] = "Incident Manager";
+    var status = new List<string>() {"All Incidents", "Unassigned Incidents", "Open Incidents"};
 }
 @if (TempData.Keys.Contains("confirmMessage"))
 {
@@ -9,6 +10,13 @@
     </h4>
 }
 <div class="addmargins">
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a class="nav-link @(Model.SelectedStatus == "all" ? "active" : "")" asp-action="Index" asp-route-activeStatus="all">All Incidents</a></li>
+        <li class="nav-item"><a class="nav-link @(Model.SelectedStatus == "unassigned" ? "active" : "")" asp-action="Index" asp-route-activeStatus="unassigned">Unassigned Incidents</a></li>
+        <li class="nav-item"><a class="nav-link @(Model.SelectedStatus == "open" ? "active" : "")" asp-action="Index" asp-route-activeStatus="open">Open Incidents</a></li>
+    </ul>
+
+
     <div class="container-fluid padding my-4">
         <div class="container mx-auto my-auto tablebg">
             <ul class="responsive-table">
@@ -22,7 +30,7 @@
                     <div class="col col-3">Date Opened</div>
                     <div class="col col-1"></div>
                 </li>
-                @foreach (Incident i in Model)
+                @foreach (Incident i in Model.Incidents)
                 {
                     <li class="row table-row d-md-flex d-block hoverMe">
                         <label class="col d-md-none sneakylabel">Title</label>
@@ -43,6 +51,7 @@
                         </div>
                     </li>
                 }
+
                 <li class="row mt-4 d-md-flex d-block p-0">
                      <a asp-controller="Incident" asp-action="Add" class="btn formbutton rounded-pill w-25" role="button">Add New Incident</a>  
                 </li>
