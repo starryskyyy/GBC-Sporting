@@ -13,9 +13,5 @@ namespace GBCSporting_Flip_Framework.Models.DataLayer.Repositories
         T Get(int id);
         T Get(string id);
 
-        void Insert(T entity);
-        void Delete(T entity);
-
-        void Save();
     }
 }

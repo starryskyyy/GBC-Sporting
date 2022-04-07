@@ -26,7 +26,11 @@ namespace GBCSporting_Flip_Framework.Models.DataLayer.Repositories
             IQueryable<T> query = BuildQuery(options);
             return query.ToList();
         }
-
+        public virtual IEnumerable<T> List()
+        {
+            IQueryable<T> query = BuildQuery();
+            return query.ToList();
+        }
         // retrieve a single entity (3 overloads)
         public virtual T Get(int id) => dbset.Find(id);
         public virtual T Get(string id) => dbset.Find(id);
@@ -36,10 +40,6 @@ namespace GBCSporting_Flip_Framework.Models.DataLayer.Repositories
             return query.FirstOrDefault();
         }
 
-        // insert, update, delete, save
-        public virtual void Insert(T entity) => dbset.Add(entity);
-        public virtual void Delete(T entity) => dbset.Remove(entity);
-        public virtual void Save() => context.SaveChanges();
 
         // private helper method to build query expression
         private IQueryable<T> BuildQuery(QueryOptions<T> options)
@@ -55,7 +55,7 @@ namespace GBCSporting_Flip_Framework.Models.DataLayer.Repositories
                 {
                     query = query.Where(clause);
                 }
-                count = query.Count(); // get filtered count
+                //count = query.Count(); // get filtered count
             }
             if (options.HasOrderBy)
             {
@@ -66,6 +66,12 @@ namespace GBCSporting_Flip_Framework.Models.DataLayer.Repositories
             }
 
 
+            return query;
+        }
+
+        private IQueryable<T> BuildQuery()
+        {
+            IQueryable<T> query = dbset;
             return query;
         }
     }

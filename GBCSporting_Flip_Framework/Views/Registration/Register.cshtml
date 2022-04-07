@@ -1,0 +1,45 @@
+﻿@model ProductsViewModel
+
+@{
+    ViewData["Title"] = "Registration Manager";
+}
+<div class="addmargins">
+    <div class="container-fluid padding my-4">
+        <div class="container mx-auto my-auto tablebg">
+            <ul class="responsive-table">
+                <li class="row d-md-flex d-block p-0">
+                    <h1 class="p-0" style="color: #FCA311;">@Model.Header</h1>
+                </li>
+                <li class="row table-header d-md-flex d-none">
+                    <div class="col col-4">Product</div>
+                    <div class="col col-2"></div>
+                </li>
+
+                @foreach (var product in Model.Products)
+                {
+                    <li class="row table-row d-md-flex d-block">
+                        <label class="col d-md-none sneakylabel">Name</label>
+                        <div class="col col-md-3 col-12 text-wrap">@product.Name</div>
+                        <div class="col-md-2 d-inline-flex justify-content-end">
+                            <a asp-controller="Registration" asp-action="Delete" asp-route-id=@product.ProductId>
+                                <i class="fa-solid fa-trash fa-lg" style="color:#CC0000; font-size:22px;"></i>
+                            </a>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <h1 class="p-0" style="color: #FCA311;">Product</h1>
+            <select name="id" asp-items='@new SelectList(Model.AllProducts,
+"ProductId", "Name")' class="form-select">
+                <option value="0">SELECT PRODUCT</option>
+            </select>
+            <br /><br>
+            @*action buttons*@
+            <div class="row">
+                <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
+                    <input class="btn formbutton rounded-pill w-25" type="submit" name="Operation" value="Select" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
