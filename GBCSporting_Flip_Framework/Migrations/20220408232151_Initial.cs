@@ -113,7 +113,34 @@ namespace GBCSporting_Flip_Framework.Migrations
                         name: "FK_Incidents_Technicians_TechnicianId",
                         column: x => x.TechnicianId,
                         principalTable: "Technicians",
-                        principalColumn: "TechnicianId");
+                        principalColumn: "TechnicianId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Registrations",
+                columns: table => new
+                {
+                    RegistrationId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Registrations", x => x.RegistrationId);
+                    table.ForeignKey(
+                        name: "FK_Registrations_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "CustomerId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Registrations_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -143,8 +170,8 @@ namespace GBCSporting_Flip_Framework.Migrations
                 columns: new[] { "ProductId", "Code", "Name", "ReleaseDate", "YearlyPrice" },
                 values: new object[,]
                 {
-                    { 1, "H332K", "Draft Manager 1.0", new DateTime(2022, 4, 8, 1, 53, 29, 216, DateTimeKind.Local).AddTicks(5644), 6.6500000000000004 },
-                    { 2, "TVE32", "League Scheduler 1.0", new DateTime(2022, 4, 8, 1, 53, 29, 216, DateTimeKind.Local).AddTicks(5648), 5.54 }
+                    { 1, "H332K", "Draft Manager 1.0", new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(205), 6.6500000000000004 },
+                    { 2, "TVE32", "League Scheduler 1.0", new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(208), 5.54 }
                 });
 
             migrationBuilder.InsertData(
@@ -170,12 +197,20 @@ namespace GBCSporting_Flip_Framework.Migrations
             migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
-                values: new object[] { 1, 2, new DateTime(2022, 4, 8, 1, 53, 29, 216, DateTimeKind.Local).AddTicks(5664), new DateTime(2022, 4, 8, 1, 53, 29, 216, DateTimeKind.Local).AddTicks(5661), "When trying to install getting error 123", 2, 1, "Could not install" });
+                values: new object[,]
+                {
+                    { 1, 2, new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(224), new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(222), "When trying to install getting error 123", 2, 1, "Could not install" },
+                    { 2, 1, new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(227), new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(225), "Program crash almost instantly when I open it", 1, 2, "Error launching program" }
+                });
 
             migrationBuilder.InsertData(
-                table: "Incidents",
-                columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
-                values: new object[] { 2, 1, new DateTime(2022, 4, 8, 1, 53, 29, 216, DateTimeKind.Local).AddTicks(5667), new DateTime(2022, 4, 8, 1, 53, 29, 216, DateTimeKind.Local).AddTicks(5665), "Program crash almost instantly when I open it", 1, 2, "Error launching program" });
+                table: "Registrations",
+                columns: new[] { "RegistrationId", "CustomerId", "ProductId" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 2 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_CountryId",
@@ -196,6 +231,16 @@ namespace GBCSporting_Flip_Framework.Migrations
                 name: "IX_Incidents_TechnicianId",
                 table: "Incidents",
                 column: "TechnicianId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Registrations_CustomerId",
+                table: "Registrations",
+                column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Registrations_ProductId",
+                table: "Registrations",
+                column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -204,13 +249,16 @@ namespace GBCSporting_Flip_Framework.Migrations
                 name: "Incidents");
 
             migrationBuilder.DropTable(
+                name: "Registrations");
+
+            migrationBuilder.DropTable(
+                name: "Technicians");
+
+            migrationBuilder.DropTable(
                 name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "Technicians");
 
             migrationBuilder.DropTable(
                 name: "Countries");
