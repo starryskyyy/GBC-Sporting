@@ -4,22 +4,18 @@
     ViewData["Title"] = "Registration Manager";
 }
 <div class="addmargins">
-    @if (TempData.Keys.Contains("ErrorMessage"))
-    {
-        <h4 class="bg-danger text-center text-white p-2">
-            @TempData["ErrorMessage"]
-        </h4>
-    }
+
     <div class="container-fluid padding my-4">
         <div class="container mx-auto my-auto tablebg w-50">
-            @if (TempData.Keys.Contains("SuccessMessage"))
-            {
-               <span class="slide_up_notification">@TempData["SuccessMessage"]</span>
-            }
+
             <ul class="responsive-table">
                 <li class="row d-md-flex d-block p-0">
                     <h1 class="p-0" style="color: #FCA311;">@ViewBag.Customer.FullName</h1>
                 </li>
+                @if (TempData.Keys.Contains("SuccessMessage"))
+                {
+                    <span class="slide_up_notification">@TempData["SuccessMessage"]</span>
+                }
                 <li class="row table-header d-md-flex d-none">
                     <div class="col col-4">Product</div>
                     <div class="col col-2"></div>
@@ -44,6 +40,10 @@
                         <select name="productId" asp-items='@new SelectList(ViewBag.Products, "ProductId", "Name")' class="form-select">
                             <option value="0">SELECT PRODUCT</option>
                         </select>
+                        @if (TempData.Keys.Contains("ErrorMessage"))
+                        {
+                            <span class="text-danger">@TempData["ErrorMessage"]</span>
+                        }
                         <br /><br>
                         @*action buttons*@
                         <div class="row">

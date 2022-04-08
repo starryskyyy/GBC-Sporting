@@ -26,6 +26,11 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpPost]
         public IActionResult Register(int customerId)
         {
+            if (customerId == 0)
+            {
+                TempData["ErrorMessage"] = "Please choose a customer";
+                return RedirectToAction("Get");
+            }
             HttpContext.Session.SetInt32("customerId", customerId);
             IEnumerable<Registration> registrations = context.Registrations.Where(c => c.CustomerId == customerId).Include(c => c.Product).OrderBy(c => c.ProductId);
             ViewBag.Products = context.Products.OrderBy(c => c.ProductId).ToList();
@@ -67,14 +72,12 @@ namespace GBCSporting_Flip_Framework.Controllers
         public IActionResult Delete(int id)
         {
             int customerId = (int)HttpContext.Session.GetInt32("customerId");
-
             Registration reg = context.Registrations.Find(id);
             context.Registrations.Remove(reg);
+            TempData["SuccessMessage"] = "Registration deleted";
             context.SaveChanges();
-            TempData["SuccessMessage"] = $"Product removed";
+            TempData["SuccessMessage"] = $"Product removed from registration";
             return RedirectToAction("Register", new {id=customerId});
         }
-
-       
     }
 }

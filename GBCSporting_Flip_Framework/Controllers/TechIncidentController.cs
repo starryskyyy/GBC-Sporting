@@ -83,7 +83,7 @@ namespace GBCSporting_Flip_Framework.Controllers
             {
                 context.Incidents.Update(i);
                 context.SaveChanges();
-                TempData["confirmMessage"] = $"Incident {i.Title} added";
+                TempData["confirmMessage"] = $"Incident \"{i.Title}\" updated";
                 return RedirectToAction("List", new {id=id});
 
             }

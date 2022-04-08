@@ -84,13 +84,11 @@ namespace GBCSporting_Flip_Framework.Controllers
                 }
                 else
                 {
-                    Incident oldIncident = context.Incidents.Where(i => i.IncidentId == incident.IncidentId).AsNoTracking().FirstOrDefault();
                     context.Incidents.Update(incident);
-                    TempData["confirmMessage"] = $"Incident \"{oldIncident.Title}\" Edited";
+                    TempData["confirmMessage"] = $"Incident \"{incident.Title}\" Edited";
                 }
 
                 context.SaveChanges();
-                
                 return RedirectToAction("Index", "Incident");
             }
             else
