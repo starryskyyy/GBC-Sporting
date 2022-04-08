@@ -34,8 +34,7 @@
                     </li>
                 }
 
-
-                <li class="row table-row d-md-flex d-block" style="background: none;">
+                <li class="row table-row d-md-flex d-block p-0" style="background: none;">
                     <h1 class="p-0" style="color: #FCA311;">Product</h1>
                     <form asp-action="Add">
                         <select name="productId" asp-items='@new SelectList(ViewBag.Products, "ProductId", "Name")' class="form-select">
@@ -49,7 +48,7 @@
                         @*action buttons*@
                         <div class="row">
                             <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
-                                <input class="btn formbutton rounded-pill" type="submit"/>
+                                <button class="btn formbutton rounded-pill accept_color_add grow" type="submit">Register</button>
                             </div>
                         </div>
                     </form>

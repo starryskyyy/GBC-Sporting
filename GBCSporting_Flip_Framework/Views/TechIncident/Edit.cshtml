@@ -61,8 +61,8 @@
                 @*action buttons*@
                 <div class="row">
                     <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
-                        <input value="Save" type="submit" class="btn formbutton rounded-pill accept_color grow"/>
-                        <a asp-action="List" asp-route-Id="@Model.TechnicianId" class="btn formbutton rounded-pill cancel_color grow">Cancel</a>
+                        <button value="Save" type="submit" class="btn formbutton rounded-pill accept_color grow">Save</button>
+                        <button asp-action="List" asp-route-Id="@Model.TechnicianId" class="btn formbutton rounded-pill cancel_color grow">Cancel</button>
                     </div>
                 </div>
             </form>
