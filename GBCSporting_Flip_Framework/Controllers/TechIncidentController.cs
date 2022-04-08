@@ -48,7 +48,9 @@ namespace GBCSporting_Flip_Framework.Controllers
             if (Id != 0)
             { 
                 var TechIncidents = context.Incidents.Where(g => g.TechnicianId == Id).ToList();
+
                 ViewBag.name = context.Technicians.Find(Id).TechName;
+
                 if (TechIncidents.Count == 0)
                 {
                     ViewBag.Error = "There is no incidents available for " + ViewBag.Name;
@@ -81,7 +83,7 @@ namespace GBCSporting_Flip_Framework.Controllers
             {
                 context.Incidents.Update(i);
                 context.SaveChanges();
-                
+                TempData["confirmMessage"] = $"Incident {i.Title} added";
                 return RedirectToAction("List", new {id=id});
 
             }

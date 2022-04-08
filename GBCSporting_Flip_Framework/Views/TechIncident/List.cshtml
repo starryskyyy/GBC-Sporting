@@ -6,11 +6,14 @@
 <div class="addmargins">
     <div class="container-fluid padding my-4">
         <div class="container mx-auto my-auto tablebg">
+            @if (TempData.Keys.Contains("confirmMessage"))
+            {
+               <span class="slide_up_notification">@TempData["confirmMessage"]</span>
+            }
             <ul class="responsive-table">
                 <li class="row d-md-flex d-block p-0">
-                    <h2>Technician: @ViewBag.Name</h2>
+                    <h1 class="p-0" style="color: #FCA311;">Technician: @ViewBag.Name Assigned/Open Incidents</h1>
                     <p>@ViewBag.Error</p>
-                    <h2>Assigned/Open Incidents</h2>
                 </li>
                 @if (Model.Count() > 0)
                 {
@@ -42,7 +45,7 @@
                 }
                 
                 <li class="row mt-4 d-md-flex d-block p-0">
-                        <a asp-action="Get" class="btn formbutton rounded-pill w-25" role="button">Switch Technician</a>
+                        <a asp-action="Get" class="btn formbutton rounded-pill" role="button">Switch Technician</a>
                 </li>
             </ul>
         </div>

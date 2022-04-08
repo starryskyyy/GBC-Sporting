@@ -15,7 +15,7 @@
                         
                         <select asp-for="Incident.CustomerId"  
                                 asp-items="@(new SelectList(Model.Customers,
-"CustomerId", "FullName", Model.Incident.CustomerId.ToString()))" class="form-select">
+                                    "CustomerId", "FullName", Model.Incident.CustomerId.ToString()))" class="form-select">
                                 <option value="0">SELECT CUSTOMER</option>
                         </select>
                         <span asp-validation-for="Incident.CustomerId" class="text-danger"></span>
@@ -24,7 +24,7 @@
                         <label asp-for="Incident.ProductId" class="form-label">Product</label>
                         <select asp-for="Incident.ProductId" 
                                 asp-items="@(new SelectList(Model.Products,
-"ProductId", "Name", Model.Incident.ProductId.ToString()))" class="form-select">
+                                    "ProductId", "Name", Model.Incident.ProductId.ToString()))" class="form-select">
                             <option value="0">SELECT PRODUCT</option> 
                         </select>
                         <span asp-validation-for="Incident.ProductId" class="text-danger"></span>
