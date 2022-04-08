@@ -13,7 +13,7 @@
                     <div class="col-md-12">
                             <label asp-for="FirstName" class="form-label">First Name</label>
                             <input asp-for="FirstName" class="form-control" id="floatingFN"/>
-                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                            <span asp-validation-for="FirstName" class="text-danger paddingError"></span>
                     </div>
                     <div class="col-md-12">
                         <label asp-for="LastName" class="form-label" for="floatingLN">Last Name</label>
@@ -48,7 +48,7 @@
                             <label asp-for="CountryId" class="form-label">Country</label>
                             <select asp-for="CountryId" 
                                     asp-items="@(new SelectList(ViewBag.Countries,
-"CountryId", "CountryName", Model.CountryId.ToString()))" class="form-select">
+                                        "CountryId", "CountryName", Model.CountryId.ToString()))" class="form-select">
                                 <option value="0">SELECT A COUNTRY</option> 
                             </select>
                             <span asp-validation-for="CountryId" class="text-danger"></span>
@@ -67,12 +67,13 @@
                         </div>
                     </div>
                 <input asp-for="CustomerId" type="hidden"/>
+                <input asp-for="Registrations" type="hidden"/> 
 
                 @*action buttons*@
                 <div class="row">
                     <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
-                        <button type="submit" class="btn formbutton rounded-pill">@ViewBag.Action</button>
-                        <button class="btn formbutton rounded-pill" asp-controller="Customer" asp-action="Index">Cancel</button>
+                        <button type="submit" class="btn formbutton rounded-pill accept_color grow">@ViewBag.Action</button>
+                        <button class="btn formbutton rounded-pill cancel_color grow" asp-controller="Customer" asp-action="Index">Cancel</button>
                     </div> 
                 </div>
             </form>

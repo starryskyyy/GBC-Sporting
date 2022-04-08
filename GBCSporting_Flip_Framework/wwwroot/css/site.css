@@ -29,8 +29,8 @@ body {
 
 /*Navigation styling elements*/
 .navfont,  nav.navbar > .container-fluid > .navbar-brand {
-    color: red;
-    font-size: 22px;
+    color: #e5e5e5;
+    font-size: 16px;
     padding: 0;
     margin-top: -5px;
 }
@@ -41,7 +41,7 @@ li.navlist-item {
 }
 
 a.navfont:hover{
-    color: red;
+    color: #FCA311;
 }
 
 a.navfont {
@@ -68,6 +68,11 @@ a.navfont {
  }
 
 a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+a.active:after{
     width: 100%;
     left: 0;
 }
@@ -136,7 +141,72 @@ main{
      background-color: rgba(0, 0, 0,0.70);
      padding: 5%;
  }
-/*Body Section of Home*/
+/*Admin Panel*/
+
+.panelBG{
+    height: auto;
+}
+
+.adminAnim{
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    width: 250px;
+    cursor: pointer;
+    transition: all 0.5s;
+    position: relative;
+}
+
+.buttonAnim {
+    text-decoration: none;
+    color: #FCA311;
+    transition: all 0.5s;
+}
+
+.adminAnim::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.5s;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-color: rgba(252, 163, 17, 0.5);
+    border-bottom-color: rgba(252, 163, 17, 0.5);
+    transform: scale(0.1, 1);
+}
+.buttonAnim:hover::after{
+    letter-spacing: 5px;
+}
+
+.adminAnim:hover::before{
+    opacity: 1;
+    transform: scale(1, 1);
+}
+
+.adminAnim::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.5s;
+    background-color: rgba(252, 163, 17, 0.1);
+}
+
+.adminAnim:hover::after{
+    opacity: 0;
+    transform: scale(0.1, 1);
+}
+
 
 /*Table Styling Elements*/
 
@@ -146,6 +216,7 @@ main{
     padding: 1em;
     border-radius: 10px;
     color: black;
+    position: relative;
 }
 .responsive-table{
     padding: 0 1rem;
@@ -168,6 +239,15 @@ main{
     font-weight: bold;
 }
 
+.table-row:nth-child(even){
+    background-color: #969494;
+}
+
+.table-row:hover{
+    transition: ease 0.4s;
+    background-color:#FF7F11;
+}
+
 .sneakylabel{
     font-size: 16px;
     font-weight: bold;
@@ -179,10 +259,28 @@ main{
     padding: 0 2.5rem;
 }
 
-
 .responsive-table > #hoverMe:hover {
     transition: ease 0.4s;
     transform: translateY(-10px);
+}
+
+.slide_up_notification {
+    /*Top to hide message needs to be 72px*/
+    position: absolute;
+    margin: 0 auto 1rem auto;
+    color: white;
+    top: 0;
+    z-index: 1;
+    right: 0;
+    width: 25.18rem;
+    height: 3.5rem;
+    background-color: #14213D;
+    border-radius: 25px 9px 0 0;
+    text-align: center;
+    padding: 1.25rem 0 1.25rem 0;
+    color: #FCA311;
+    font-size: 18px;
+    animation: notify 1s ease forwards;
 }
 
 @media only screen and (max-width: 767px){
@@ -260,7 +358,6 @@ main{
     content: "\f057";
 }
 
-
 .formbutton.grow::after{
     transition: all 0.5s;
 }
@@ -305,6 +402,10 @@ main{
     font-size: 2.5rem;
     font-weight: bold;
 }
+
+.formWrapping label{
+    margin-top: .5rem;
+}
 button a {
     text-decoration: none;
     color: #f4f1de;
@@ -337,7 +438,6 @@ footer{
     color: white;
 }
 
-
 .dk-footer-form button[type=submit] {
     position: absolute;
     top: 0;
@@ -350,6 +450,75 @@ footer{
     color: #fff;
 }
 
+.panel_left {
+    display: inline-flex;
+    background: #0E0D0D;
+    width: 50%;
+    padding: 3rem;
+    border-right: outset #0E0D0D 4px;
+    border-right-style: groove;
+}
+
+.panel_left li a{
+    color: orange;
+    text-decoration: none;
+    line-height: 2.2rem;
+}
+
+.footer_nav{
+    margin-left: 3rem;
+}
+
+.panel_right {
+    position: relative;
+    background: #141414;
+    width: 50%;
+    padding: 3rem;
+    border-left: outset #141414 4px;
+   
+}
+
+.bottom_panel{
+    position: relative;
+    background: #1D1E1E;
+    height: 7rem;
+    width: 100%;
+    border-top: outset #0E0D0D 4px;
+}
+
+.socials{
+    position: absolute;
+    right:0;
+    margin: 2rem 4rem 2rem 0;
+}
+
+.copyright{
+    position: absolute;
+    right: 25rem;
+    margin: 2.5rem 4rem 2rem 0;
+    font-size: 1.15rem;
+}
+
+.copyright a{
+    color: #FCA311;
+    text-decoration: none;
+}
+
+.socials li a{
+    color: #FCA311;
+    font-size: 1.5rem;
+    margin-left: 2rem;
+}
+
+.socials li a:hover, .copyright a:hover{
+    color: #e5e5e5;
+}
+
+.contactUs{
+    position: absolute;
+    right: 100px;
+    margin-top: 2rem;
+}
 
 @media only screen and (max-width: 991px) {
     .offcanvas > .offcanvas-header > h5, .offcanvas > .offcanvas-body > ul > li > a {
@@ -366,10 +535,12 @@ footer{
 
 /*Validation styling for invalid inputs*/
 .formWrapping  input.input-validation-error, .formWrapping select.input-validation-error{
+    margin-bottom: 0;
     border: 2px solid #dc3545;
     background-color: #faebd7;
     animation: shake 300ms;
 }
+
 
 
 .validation-summary-errors ul{list-style: none;}
@@ -381,9 +552,13 @@ footer{
     50% {transform: translateX(-4px);}
     75% {transform: translateX(4px);}
 }
+
+@keyframes notify{
+    to{
+        transform: translateY(-50px);
+    }
+}
    
-
-
 .active {
     color: #FCA311;
 }

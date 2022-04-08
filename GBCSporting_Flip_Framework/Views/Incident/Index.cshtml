@@ -3,12 +3,6 @@
     ViewData["Title"] = "Incident Manager";
     var status = new List<string>() {"All Incidents", "Unassigned Incidents", "Open Incidents"};
 }
-@if (TempData.Keys.Contains("confirmMessage"))
-{
-    <h4 class="bg-info text-center text-white p-2">
-        @TempData["confirmMessage"]
-    </h4>
-}
 <div class="addmargins">
     <ul class="nav nav-pills">
         <li class="nav-item"><a class="nav-link @(Model.SelectedStatus == "all" ? "active" : "")" asp-action="Index" asp-route-activeStatus="all">All Incidents</a></li>
@@ -19,6 +13,10 @@
 
     <div class="container-fluid padding my-4">
         <div class="container mx-auto my-auto tablebg">
+            @if (TempData.Keys.Contains("confirmMessage"))
+            {
+               <span class="slide_up_notification">@TempData["confirmMessage"]</span>
+            }
             <ul class="responsive-table">
                 <li class="row d-md-flex d-block p-0">
                     <h1 class="p-0" style="color: #FCA311;">Incident Manager</h1>
@@ -32,7 +30,7 @@
                 </li>
                 @foreach (Incident i in Model.Incidents)
                 {
-                    <li class="row table-row d-md-flex d-block hoverMe">
+                    <li id="hoverMe" class="row table-row d-md-flex d-block">
                         <label class="col d-md-none sneakylabel">Title</label>
                         <div class="col col-md-3 col-12 text-wrap">@i.Title</div>
                         <label class="col d-md-none sneakylabel">Customer</label>

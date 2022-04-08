@@ -42,21 +42,33 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpPost]
         public IActionResult Edit(Technician technician)
         {
-            if (TempData["okEmail"] == null)
+            if(technician.TechnicianId == 0)
             {
-                string message = Check.EmailExistsTech(context, technician.TechEmail);
-                if (!String.IsNullOrEmpty(message))
+                if (TempData["okEmail"] == null)
                 {
-                    ModelState.AddModelError(nameof(Technician.TechEmail), message);
+                    string message = Check.EmailExistsTech(context, technician.TechEmail);
+                    if (!String.IsNullOrEmpty(message))
+                    {
+                        ModelState.AddModelError(nameof(Technician.TechEmail), message);
+                    }
                 }
             }
-
+            
             if (ModelState.IsValid)
             {
                 if (technician.TechnicianId == 0)
+                {
                     context.Technicians.Add(technician);
+                    TempData["confirmMessage"] = $"Technician {technician.TechName} Added";
+                }
                 else
+                {
+                    Technician oldTech = context.Technicians.Where(t => t.TechnicianId == technician.TechnicianId).AsNoTracking().FirstOrDefault();
+
                     context.Technicians.Update(technician);
+                    TempData["confirmMessage"] = $"Technician {technician.TechName} Updated";
+                }
+                    
                 context.SaveChanges();
                 return RedirectToAction("Index", "Technician");
             }
@@ -76,7 +88,10 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpPost]
         public RedirectToActionResult Delete(Technician technician)
         {
+            Technician deleteTech = context.Technicians.Where(t => t.TechnicianId == technician.TechnicianId).AsNoTracking().FirstOrDefault();
+
             context.Technicians.Remove(technician);
+            TempData["confirmMessage"] = $"{deleteTech.TechName} Deleted";
             context.SaveChanges();
             return RedirectToAction("Index", "Technician");
         }

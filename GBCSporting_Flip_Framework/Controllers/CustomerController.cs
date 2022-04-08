@@ -40,27 +40,40 @@ namespace GBCSporting_Flip_Framework.Controllers
             ViewBag.Countries = context.Countries.OrderBy(c => c.CountryName).ToList();
             var customer = context.Customers.Find(id);
 
+
             return View(customer);
         }
 
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
-            if (TempData["okEmail"] == null)
+            if(customer.CustomerId == 0)
             {
-                string message = Check.EmailExists(context, customer.CustEmail);
-                if (!String.IsNullOrEmpty(message))
+                if (TempData["okEmail"] == null)
                 {
-                    ModelState.AddModelError(nameof(Customer.CustEmail), message);
+                    string message = Check.EmailExists(context, customer.CustEmail);
+                    if (!String.IsNullOrEmpty(message))
+                    {
+                        ModelState.AddModelError(nameof(Customer.CustEmail), message);
+                    }
                 }
             }
-
+            
             if (ModelState.IsValid)
             {
                 if (customer.CustomerId == 0)
+                {
                     context.Customers.Add(customer);
+                    TempData["confirmMessage"] = $"New Customer {customer.FullName} Added.";
+                }
+
                 else
+                {
+                    Customer oldCustomer = context.Customers.Where(c => c.CustomerId == customer.CustomerId).AsNoTracking().FirstOrDefault();
+
                     context.Customers.Update(customer);
+                    TempData["confirmMessage"] = $"Customer {oldCustomer.FullName} Updated.";
+                }
                 context.SaveChanges();
                 return RedirectToAction("Index", "Customer");
             }
@@ -83,7 +96,10 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpPost]
         public RedirectToActionResult Delete(Customer customer)
         {
+            Customer deleteCustomer = context.Customers.Where(c => c.CustomerId == customer.CustomerId).AsNoTracking().FirstOrDefault();
+
             context.Customers.Remove(customer);
+            TempData["confirmMessage"] = $"{deleteCustomer.FullName} Deleted.";
             context.SaveChanges();
             return RedirectToAction("Index", "Customer");
         }

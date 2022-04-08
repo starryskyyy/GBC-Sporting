@@ -2,15 +2,13 @@
 @{
     ViewData["Title"] = "Product Manager";
 }
-@if (TempData.Keys.Contains("confirmMessage"))
-{
-    <h4 class="bg-info text-center text-white p-2">
-        @TempData["confirmMessage"]
-    </h4>
-}
 <div class="addmargins">
     <div class="container-fluid padding my-4">
         <div class="container mx-auto my-auto tablebg">
+            @if (TempData.Keys.Contains("confirmMessage"))
+            {
+               <span class="slide_up_notification">@TempData["confirmMessage"]</span>
+            }
             <ul class="responsive-table">
                 <li class="row d-md-flex d-block p-0">
                     <h1 class="p-0" style="color: #FCA311;">Product Manager</h1>
@@ -19,7 +17,7 @@
                     <div class="col col-2">Code</div>
                     <div class="col col-3">Name</div>
                     <div class="col col-2">Price</div>
-                    <div class="col col-5">Release Date</div>
+                    <div class="col col-5" style="z-index: 1;">Release Date</div>
                 </li>
                 @foreach (Product p in Model)
                 {

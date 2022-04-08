@@ -5,6 +5,10 @@
 <div class="addmargins">
     <div class="container-fluid padding my-4">
         <div class="container mx-auto my-auto tablebg">
+            @if (TempData.Keys.Contains("confirmMessage"))
+            {
+               <span class="slide_up_notification">@TempData["confirmMessage"]</span>
+            }
             <ul class="responsive-table">
                 <li class="row d-md-flex d-block p-0">
                         <h1 class="p-0" style="color: #FCA311;">Technician Manager</h1>
@@ -17,7 +21,7 @@
                 </li>
                 @foreach (Technician t in Model)
                 {
-                    <li class="row table-row d-md-flex d-block">
+                    <li id="hoverMe" class="row table-row d-md-flex d-block">
                         <label class="col d-md-none sneakylabel">Name</label>
                         <div class="col col-md-3 col-12">@t.TechName</div>
                         <label class="col d-md-none sneakylabel">Email</label>

@@ -1,11 +1,28 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-   <div class="hero text-center">
-       <div class="container-fluid">
-           <h1 class="bannerText mx-auto">Step Up Your Game With Us</h1>
-         <h5 class="fs-4 d-md-flex d-none flavourText mx-auto">GBC Sporting strives to deliver you the tools 
-             you need to keep your games running</h5>
-       </div>
-     
+
+
+    <div class="container-fluid d-md-inline-flex padding my-4">
+        <div class="col-md-6 panelBG">
+            <ul class="responsive-table">
+                <li class="row d-md-flex d-block p-0">
+                    <h3 class="p-0" style="color: #FCA311;">Admin</h3>
+                </li>
+                <li class="row adminAnim d-md-flex p-0 d-block"><a class="buttonAnim" asp-controller="Product" asp-action="Index">Manage Products</a></li>
+                <li class="row adminAnim d-md-flex p-0 d-block"><a class="buttonAnim" asp-controller="Technician" asp-action="Index">Manage Technicians</a></li>
+                <li class="row adminAnim d-md-flex p-0 d-block"><a class="buttonAnim" asp-controller="Customer" asp-action="Index">Manage Customers</a></li>
+                <li class="row adminAnim d-md-flex p-0 d-block"><a class="buttonAnim" asp-controller="Incident" asp-action="Index">Manage Incidents</a></li>
+                <li class="row adminAnim d-md-flex p-0 d-block"><a class="buttonAnim" asp-controller="Registration" asp-action="Index">Manage Registrations</a></li>
+            </ul>
+        </div>
+        <div class="col-md-6 panelBG">
+            <ul class="responsive-table">
+                <li class="row d-md-flex d-block p-0">
+                    <h3 class="p-0" style="color: #FCA311;">Technican</h3>
+                </li>
+                <li class="row adminAnim p-0 d-md-flex d-block"><a class="buttonAnim" asp-controller="Incident" asp-action="Update">Update Incident</a></li>
+            </ul>
+        </div>
     </div>
+
