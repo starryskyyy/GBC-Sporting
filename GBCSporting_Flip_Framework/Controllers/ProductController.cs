@@ -51,14 +51,13 @@ namespace GBCSporting_Flip_Framework.Controllers
                 if (product.ProductId == 0)
                 {
                     context.Products.Add(product);
-                    TempData["confirmMessage"] = $"New Product {product.Name} Added";
+                    TempData["confirmMessage"] = $"New Product \"{product.Name}\" Added";
                 }
                 else
                 {
-                    Product oldProduct = context.Products.Where(p => p.ProductId == product.ProductId).AsNoTracking().FirstOrDefault();
 
                     context.Products.Update(product);
-                    TempData["confirmMessage"] = $"Product {oldProduct.Name} Updated";
+                    TempData["confirmMessage"] = $"Product \"{product.Name}\" Updated";
                 }
                     
                 context.SaveChanges();
@@ -83,7 +82,7 @@ namespace GBCSporting_Flip_Framework.Controllers
         public RedirectToActionResult Delete(Product product)
         {
             context.Products.Remove(product);
-            TempData["confirmMessage"] = $"{product.Name} Deleted";
+            TempData["confirmMessage"] = $"\"{product.Name}\" Deleted";
             context.SaveChanges();
             return RedirectToAction("Index", "Product");
         }

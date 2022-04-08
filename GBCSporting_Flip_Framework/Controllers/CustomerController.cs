@@ -64,15 +64,13 @@ namespace GBCSporting_Flip_Framework.Controllers
                 if (customer.CustomerId == 0)
                 {
                     context.Customers.Add(customer);
-                    TempData["confirmMessage"] = $"New Customer {customer.FullName} Added.";
+                    TempData["confirmMessage"] = $"New Customer \"{customer.FullName}\" Added.";
                 }
 
                 else
                 {
-                    Customer oldCustomer = context.Customers.Where(c => c.CustomerId == customer.CustomerId).AsNoTracking().FirstOrDefault();
-
                     context.Customers.Update(customer);
-                    TempData["confirmMessage"] = $"Customer {oldCustomer.FullName} Updated.";
+                    TempData["confirmMessage"] = $"Customer \"{customer.FullName}\" Updated.";
                 }
                 context.SaveChanges();
                 return RedirectToAction("Index", "Customer");
@@ -97,9 +95,8 @@ namespace GBCSporting_Flip_Framework.Controllers
         public RedirectToActionResult Delete(Customer customer)
         {
             Customer deleteCustomer = context.Customers.Where(c => c.CustomerId == customer.CustomerId).AsNoTracking().FirstOrDefault();
-
             context.Customers.Remove(customer);
-            TempData["confirmMessage"] = $"{deleteCustomer.FullName} Deleted.";
+            TempData["confirmMessage"] = $"\"{deleteCustomer.FullName}\" Deleted.";
             context.SaveChanges();
             return RedirectToAction("Index", "Customer");
         }

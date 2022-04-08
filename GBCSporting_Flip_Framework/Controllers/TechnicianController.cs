@@ -59,14 +59,12 @@ namespace GBCSporting_Flip_Framework.Controllers
                 if (technician.TechnicianId == 0)
                 {
                     context.Technicians.Add(technician);
-                    TempData["confirmMessage"] = $"Technician {technician.TechName} Added";
+                    TempData["confirmMessage"] = $"Technician \"{technician.TechName}\" Added";
                 }
                 else
                 {
-                    Technician oldTech = context.Technicians.Where(t => t.TechnicianId == technician.TechnicianId).AsNoTracking().FirstOrDefault();
-
                     context.Technicians.Update(technician);
-                    TempData["confirmMessage"] = $"Technician {technician.TechName} Updated";
+                    TempData["confirmMessage"] = $"Technician \"{technician.TechName}\" Updated";
                 }
                     
                 context.SaveChanges();
@@ -88,10 +86,8 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpPost]
         public RedirectToActionResult Delete(Technician technician)
         {
-            Technician deleteTech = context.Technicians.Where(t => t.TechnicianId == technician.TechnicianId).AsNoTracking().FirstOrDefault();
-
             context.Technicians.Remove(technician);
-            TempData["confirmMessage"] = $"{deleteTech.TechName} Deleted";
+            TempData["confirmMessage"] = $"Techinician \"{technician.TechName}\" Deleted";
             context.SaveChanges();
             return RedirectToAction("Index", "Technician");
         }
