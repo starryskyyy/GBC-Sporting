@@ -14,20 +14,10 @@ namespace GBCSporting_Flip_Framework.Controllers
             this.context = ctx;
         }
 
-        public IActionResult Index()
+        public IActionResult Get()
         {
-
             ViewBag.Technicians = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
             return View();
-        }
-
-        // bind data to viewbag
-        public void listTable()
-        {
-            ViewBag.Technicians = context.Technicians.ToList();
-            ViewBag.Customers = context.Customers.ToList();
-            ViewBag.Products = context.Products.ToList();
-            ViewBag.Incidents = context.Incidents.ToList();
         }
 
         [HttpGet]
@@ -35,21 +25,28 @@ namespace GBCSporting_Flip_Framework.Controllers
         {
             if (technician.TechnicianId == 0 && id == null)
             {
-                listTable();
+                ViewBag.Technicians = context.Technicians.ToList();
+                ViewBag.Customers = context.Customers.ToList();
+                ViewBag.Products = context.Products.ToList();
                 ViewBag.error = "Please select a technician !";
-                return View("Index");
+                return View("Get");
             }
 
             int Id = technician.TechnicianId;
 
-            if (Id == 0)
+            if (Id == 0 && (int)id !=0)
             {
                 Id = (int)id;
             }
 
-                // save TechiniciansId to the session
-                HttpContext.Session.SetInt32("TechId", Id);
-                listTable();
+            // save TechiniciansId to the session
+            HttpContext.Session.SetInt32("TechId", Id);
+            ViewBag.Technicians = context.Technicians.ToList();
+            ViewBag.Customers = context.Customers.ToList();
+            ViewBag.Products = context.Products.ToList();
+
+            if (Id != 0)
+            { 
                 var TechIncidents = context.Incidents.Where(g => g.TechnicianId == Id).ToList();
                 ViewBag.name = context.Technicians.Find(Id).TechName;
                 if (TechIncidents.Count == 0)
@@ -57,32 +54,39 @@ namespace GBCSporting_Flip_Framework.Controllers
                     ViewBag.Error = "There is no incidents available for " + ViewBag.Name;
                 }
                 return View("List", TechIncidents);
+            }
 
+            ViewBag.error = "Please select a technician !";
+            return View("Get");
         }
 
+
         [HttpGet]
-        public ViewResult Edit(int id)
+        public IActionResult Edit(int id)
         {
-            listTable();
-            ViewBag.Action = "Edit";
-            var incident = context.Incidents.Find(id);
-            return View(incident);
+            ViewBag.Technicians = context.Technicians.ToList();
+            ViewBag.Customers = context.Customers.ToList();
+            ViewBag.Products = context.Products.ToList();
+            ViewBag.Incidents = context.Incidents.ToList();
+            var i = context.Incidents.Find(id);
+            return View(i);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(Incident incident)
+        public IActionResult Edit(Incident i)
         {
+            int id = (int)HttpContext.Session.GetInt32("TechId");
 
             if (ModelState.IsValid)
             {
-                context.Incidents.Update(incident);
+                context.Incidents.Update(i);
                 context.SaveChanges();
-                return RedirectToAction("List", incident);
-            }
+                
+                return RedirectToAction("List", new {id=id});
 
-            int? id = HttpContext.Session.GetInt32("TechId");
-            return View("Edit", incident);
+            }
+            return View(i);
+
         }
 
     }
