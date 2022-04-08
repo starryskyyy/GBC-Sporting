@@ -19,14 +19,21 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<GBCSportingContext>(options =>
   options.UseSqlServer(builder.Configuration.GetConnectionString("GBCSportingContext"))
 );
+
 var app = builder.Build();
 app.UseDeveloperExceptionPage();
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthorization();
 app.UseSession();
 
-app.MapControllerRoute(
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
+});
+
 
 app.Run();

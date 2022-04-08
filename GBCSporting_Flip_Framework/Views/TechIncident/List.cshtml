@@ -20,7 +20,7 @@
                             <div class="col col-2">Product</div>
                             <div class="col col-5">Date Opened</div>
                     </li>
-                    @foreach (Incident i in Model)
+                    @foreach (var i in Model)
                     {
                     
                       <li id="hoverMe" class="row table-row d-md-flex d-block">
@@ -33,7 +33,7 @@
                           <label class="col d-md-none sneakylabel">Date Opened</label>
                           <div class="col col-md-4 col-12">@i.DateOpened</div>
                           <div class="col-md-1 d-inline-flex justify-content-end">
-                              <a asp-action="Edit" asp-route-id=@i.IncidentId>
+                              <a asp-action="Edit" asp-route-Id="@i.IncidentId">
                                   <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
                               </a>
                           </div>
@@ -42,7 +42,7 @@
                 }
                 
                 <li class="row mt-4 d-md-flex d-block p-0">
-                        <a asp-action="Index" class="btn formbutton rounded-pill w-25" role="button">Switch Technician</a>
+                        <a asp-action="Get" class="btn formbutton rounded-pill w-25" role="button">Switch Technician</a>
                 </li>
             </ul>
         </div>
