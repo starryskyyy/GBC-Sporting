@@ -42,7 +42,7 @@ namespace GBCSporting_Flip_Framework.Controllers
         {
             if (customerId == 0)
             {
-                TempData["ErrorMessage"] = "Please choose a customer";
+                TempData["ErrorMessage"] = "Please choose a customer!";
                 return RedirectToAction("Get");
             }
             HttpContext.Session.SetInt32("customerId", customerId);
