@@ -12,25 +12,26 @@
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <input type="hidden" asp-for="IncidentId" class="form-control" />
                 <input type="hidden" asp-for="CustomerId" class="form-control" />
-                <input type="hidden" asp-for="ProductId" class="form-control" />
+                <input type="hidden" asp-for="Product.ProductId" class="form-control" />
                 <input type="hidden" asp-for="Product.YearlyPrice" class="form-control"/>
-                <input type="hidden" asp-for="Product.Code" class="form-control" />
-                <input type="hidden" asp-for="TechnicianId" class="form-control" />
+                
+                <input type="hidden" asp-for="Technician.TechnicianId" class="form-control" />
                 <input type="hidden" asp-for="Technician.TechEmail" class="form-control"/>
                 <input type="hidden" asp-for="Technician.TechPhone" class="form-control"/>
+                <input type="hidden" asp-for="Product.Code" class="form-control" />
         
         
                 <div class="row">
                     <div class="col-md-12">
-                        <label asp-for="TechnicianId" class="form-label">Technician</label>
+                        <label asp-for="Technician.TechnicianId" class="form-label">Technician</label>
                         <input type="text" asp-for="Technician.TechName" class="form-control" readonly/>
                     </div>
                     <div class="col-md-12">
-                        <label asp-for="CustomerId" class="form-label">Customer</label>
+                        <label class="form-label">Customer</label>
                         <input type="text" asp-for="Customer.FullName" class="form-control" readonly/>
                     </div>
                     <div class="col-md-12">
-                        <label asp-for="ProductId" class="form-label">Product</label>
+                        <label asp-for="Product.ProductId" class="form-label">Product</label>
                         <input type="text" asp-for="Product.Name" class="form-control" readonly/>
                     </div>
                     <div class="col-md-12">
@@ -59,8 +60,8 @@
                 @*action buttons*@
                 <div class="row">
                     <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
-                        <button type="submit" class="btn formbutton rounded-pill accept_color grow">Save</button>
-                        <button class="btn formbutton rounded-pill cancel_color grow" asp-action="List" asp-route-id="@Model.TechnicianId">Cancel</button>
+                        <input type="submit" value="Save" class="btn formbutton rounded-pill accept_color grow"/>
+                        <a class="btn formbutton rounded-pill cancel_color grow" asp-action="List" asp-route-Id="@Model.TechnicianId">Cancel</a>
                     </div>
                 </div>
             </form>

@@ -13,6 +13,8 @@ namespace GBCSporting_Flip_Framework.Models
         public DbSet<Incident> Incidents { get; set; }
         public DbSet<Technician> Technicians { get; set; }
 
+        public DbSet<Registration> Registrations { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Country>().HasData(
@@ -153,6 +155,21 @@ namespace GBCSporting_Flip_Framework.Models
                     TechPhone = "542 112-4367"
                 }
                 );
+
+            modelBuilder.Entity<Registration>().HasData(
+               new Registration
+               {
+                   RegistrationId = 1,
+                   CustomerId = 1,
+                   ProductId = 1,
+               },
+                new Registration
+                {
+                    RegistrationId = 2,
+                    CustomerId = 2,
+                    ProductId = 2,
+                }
+               );
 
 
         }

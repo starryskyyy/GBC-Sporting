@@ -33,30 +33,31 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpGet]
         public IActionResult List(Technician? technician, int? id)
         {
-            if (technician.TechnicianId == 0 && id == 0)
+            if (technician.TechnicianId == 0 && id == null)
             {
                 listTable();
                 ViewBag.error = "Please select a technician !";
                 return View("Index");
             }
 
-            int TechId = technician.TechnicianId;
+            int Id = technician.TechnicianId;
 
-            if (TechId == 0)
+            if (Id == 0)
             {
-                TechId = (int)id;
+                Id = (int)id;
             }
 
-            // save TechiniciansId to the session
-            HttpContext.Session.SetInt32("TechId", TechId);
-            listTable();
-            var TechIncidents = context.Incidents.Where(g => g.TechnicianId == TechId).ToList();
-            ViewBag.name = context.Technicians.Find(TechId).TechName;
-            if (TechIncidents.Count == 0)
-            {
-                ViewBag.Error = "There is no incidents available for " + ViewBag.Name;
-            }
-            return View("List", TechIncidents);
+                // save TechiniciansId to the session
+                HttpContext.Session.SetInt32("TechId", Id);
+                listTable();
+                var TechIncidents = context.Incidents.Where(g => g.TechnicianId == Id).ToList();
+                ViewBag.name = context.Technicians.Find(Id).TechName;
+                if (TechIncidents.Count == 0)
+                {
+                    ViewBag.Error = "There is no incidents available for " + ViewBag.Name;
+                }
+                return View("List", TechIncidents);
+
         }
 
         [HttpGet]
@@ -69,21 +70,19 @@ namespace GBCSporting_Flip_Framework.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(Incident incident)
         {
 
             if (ModelState.IsValid)
             {
-
                 context.Incidents.Update(incident);
                 context.SaveChanges();
-                return RedirectToAction("List", incident.TechnicianId);
+                return RedirectToAction("List", incident);
             }
-            else
-            {
-                int? id = HttpContext.Session.GetInt32("TechId");
-                return View("Edit", incident);
-            }
+
+            int? id = HttpContext.Session.GetInt32("TechId");
+            return View("Edit", incident);
         }
 
     }
