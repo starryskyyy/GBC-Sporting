@@ -71,6 +71,7 @@ namespace GBCSporting_Flip_Framework.Controllers
             Registration reg = context.Registrations.Find(id);
             context.Registrations.Remove(reg);
             context.SaveChanges();
+            TempData["SuccessMessage"] = $"Product removed";
             return RedirectToAction("Register", new {id=customerId});
         }
 

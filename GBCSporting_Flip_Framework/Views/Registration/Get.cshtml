@@ -6,6 +6,7 @@
     <div class="container-fluid padding my-4">
         <div class="formWrapping row-md g-2">
             <form asp-action="Register" method="post">
+                <div asp-validation-summary="ModelOnly"></div>
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="p-0" style="color: #FCA311;">Get Customer</h1>
@@ -18,7 +19,7 @@
                 @*action buttons*@
                 <div class="row">
                     <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
-                        <input class="btn formbutton rounded-pill w-25" type="submit"/>
+                        <input class="btn formbutton rounded-pill" type="submit"/>
                     </div>
                 </div>
             </form>
