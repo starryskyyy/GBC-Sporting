@@ -27,8 +27,18 @@ namespace GBCSporting_Flip_Framework.Controllers
         public IActionResult Register(int customerId)
         {
             HttpContext.Session.SetInt32("customerId", customerId);
-            IEnumerable<Registration> registrations = context.Registrations.Where(c => c.CustomerId == customerId).OrderBy(c => c.ProductId);
+            IEnumerable<Registration> registrations = context.Registrations.Where(c => c.CustomerId == customerId).Include(c => c.Product).OrderBy(c => c.ProductId);
             ViewBag.Products = context.Products.OrderBy(c => c.ProductId).ToList();
+            ViewBag.Customer = context.Customers.Find(customerId);
+            return View(registrations);
+        }
+
+        public IActionResult Register()
+        {
+            int? customerId = HttpContext.Session.GetInt32("customerId");
+            IEnumerable<Registration> registrations = context.Registrations.Where(c => c.CustomerId == customerId).Include(c => c.Product).OrderBy(c => c.ProductId);
+            ViewBag.Products = context.Products.OrderBy(c => c.ProductId).ToList();
+            ViewBag.Customer = context.Customers.Find(customerId);
             return View(registrations);
         }
 
@@ -52,21 +62,23 @@ namespace GBCSporting_Flip_Framework.Controllers
             TempData["SuccessMessage"] = "Product added to registration";
             return RedirectToAction("Register");
         }
-        public IActionResult Register3(int customerId)
+
+        [HttpGet]
+        public ViewResult Delete(int id)
         {
-            return View();
+            int customerId = (int) HttpContext.Session.GetInt32("customerId");
+            Registration registration = context.Registrations.Where(r => r.CustomerId == customerId && r.ProductId == id)
+                .Include(r => r.Product).Include(r => r.Customer).FirstOrDefault();
+            return View(registration);
         }
-        public IActionResult Register4(int customerId)
+
+        [HttpPost]
+        public RedirectToActionResult Delete(Registration registration)
         {
-            return View();
-        }
-        public IActionResult Register5(int customerId)
-        {
-            return View();
-        }
-        public IActionResult Register6(int customerId)
-        {
-            return View();
+            context.Registrations.Remove(registration);
+            TempData["SuccessMessage"] = "Registration Deleted";
+            context.SaveChanges();
+            return RedirectToAction("Register");
         }
     }
 }

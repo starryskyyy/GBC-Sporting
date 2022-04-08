@@ -14,8 +14,6 @@ namespace GBCSporting_Flip_Framework.Models
         public DbSet<Technician> Technicians { get; set; }
         public DbSet<Registration> Registrations { get; set; }
 
-        public DbSet<Registration> Registrations { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Country>().HasData(

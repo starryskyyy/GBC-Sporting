@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Product>
+﻿@model IEnumerable<Registration>
 
 @{
     ViewData["Title"] = "Registration Manager";
@@ -20,20 +20,20 @@
         <div class="container mx-auto my-auto tablebg">
             <ul class="responsive-table">
                 <li class="row d-md-flex d-block p-0">
-                    <h1 class="p-0" style="color: #FCA311;">What was here</h1>
+                    <h1 class="p-0" style="color: #FCA311;">@ViewBag.Customer.FullName</h1>
                 </li>
                 <li class="row table-header d-md-flex d-none">
                     <div class="col col-4">Product</div>
                     <div class="col col-2"></div>
                 </li>
 
-                @foreach (Product product in Model)
+                @foreach (Registration registration in Model)
                 {
                     <li class="row table-row d-md-flex d-block">
                         <label class="col d-md-none sneakylabel">Name</label>
-                        <div class="col col-md-3 col-12 text-wrap">@product.Name</div>
+                        <div class="col col-md-3 col-12 text-wrap">@registration.Product.Name</div>
                         <div class="col-md-2 d-inline-flex justify-content-end">
-                            <a asp-controller="Registration" asp-action="Delete" asp-route-id=@product.ProductId>
+                            <a asp-controller="Registration" asp-action="Delete" asp-route-id=@registration.Product.ProductId>
                                 <i class="fa-solid fa-trash fa-lg" style="color:#CC0000; font-size:22px;"></i>
                             </a>
                         </div>
@@ -42,7 +42,7 @@
             </ul>
             <h1 class="p-0" style="color: #FCA311;">Product</h1>
             <form asp-action="Add">
-                <select name="id" asp-items='@new SelectList(Model,"ProductId", "Name")' class="form-select">
+                <select name="productId" asp-items='@new SelectList(ViewBag.Products, "ProductId", "Name")' class="form-select">
                     <option value="0">SELECT PRODUCT</option>
                 </select>
                 <br /><br>
