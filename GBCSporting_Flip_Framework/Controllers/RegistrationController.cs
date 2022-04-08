@@ -17,7 +17,7 @@ namespace GBCSporting_Flip_Framework.Controllers
 
         [HttpGet]
         [Route("[controller]s")]
-        public ViewResult Index()
+        public ViewResult Get()
         {
             List<Customer> customers = context.Customers.OrderBy(c => c.CustomerId).ToList();
             return View(customers);
@@ -64,21 +64,16 @@ namespace GBCSporting_Flip_Framework.Controllers
         }
 
         [HttpGet]
-        public ViewResult Delete(int id)
+        public IActionResult Delete(int id)
         {
-            int customerId = (int) HttpContext.Session.GetInt32("customerId");
-            Registration registration = context.Registrations.Where(r => r.CustomerId == customerId && r.ProductId == id)
-                .Include(r => r.Product).Include(r => r.Customer).FirstOrDefault();
-            return View(registration);
+            int customerId = (int)HttpContext.Session.GetInt32("customerId");
+
+            Registration reg = context.Registrations.Find(id);
+            context.Registrations.Remove(reg);
+            context.SaveChanges();
+            return RedirectToAction("Register", new {id=customerId});
         }
 
-        [HttpPost]
-        public RedirectToActionResult Delete(Registration registration)
-        {
-            context.Registrations.Remove(registration);
-            TempData["SuccessMessage"] = "Registration Deleted";
-            context.SaveChanges();
-            return RedirectToAction("Register");
-        }
+       
     }
 }
