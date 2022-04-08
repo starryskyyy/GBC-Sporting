@@ -12,6 +12,7 @@ namespace GBCSporting_Flip_Framework.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Incident> Incidents { get; set; }
         public DbSet<Technician> Technicians { get; set; }
+        public DbSet<Registration> Registrations { get; set; }
 
         public DbSet<Registration> Registrations { get; set; }
 
