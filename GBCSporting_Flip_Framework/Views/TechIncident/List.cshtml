@@ -13,7 +13,9 @@
             <ul class="responsive-table">
                 <li class="row d-md-flex d-block p-0">
                     <h1 class="p-0" style="color: #FCA311;">Technician: @ViewBag.Name Assigned/Open Incidents</h1>
-                    <p>@ViewBag.Error</p>
+                </li>
+                <li class="row d-md-flex d-block">
+                    <div class="text-danger fs-2">@ViewBag.Error</div>
                 </li>
                 @if (Model.Count() > 0)
                 {
@@ -45,7 +47,7 @@
                 }
                 
                 <li class="row mt-4 d-md-flex d-block p-0">
-                        <a asp-action="Get" class="btn formbutton rounded-pill" role="button">Switch Technician</a>
+                        <a asp-action="Get" class="btn formbutton rounded-pill accept_color_add grow" role="button">Switch Technician</a>
                 </li>
             </ul>
         </div>

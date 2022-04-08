@@ -349,14 +349,23 @@ main{
 .formbutton.accept_color::after{
     font-family: "Font Awesome 5 Free";
     content: "\f0a9";
-    background: lightgreen;
+    background: #5cb85c;
     position: absolute;
     z-index: -1;
     display: block;
 }
 
+    .formbutton.accept_color_add::after {
+        font-family: "Font Awesome 5 Free";
+        content: "";
+        background: #5cb85c;
+        position: absolute;
+        z-index: -1;
+        display: block;
+    }
+
 .formbutton.cancel_color::after{
-    background: red;
+    background: #d9534f;
     position: absolute;
     z-index: -1;
     display: block;
@@ -377,6 +386,15 @@ main{
     padding-left: 30px;
     padding-top: 11px;
 }
+    .formbutton.grow.accept_color_add:hover::after {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transition: all 0.35s;
+        padding-left: 30px;
+        padding-top: 11px;
+    }
 
 .formbutton.grow.cancel_color:hover::after{
     left: 0;
@@ -426,13 +444,6 @@ footer{
 .footer-row{
     margin-bottom: 2rem;
 }
-.footer-row a{
-    color: white;
-    text-decoration: none;
-}
-.footer-row a:hover{
-    color: orange;
-}
 .dk-footer-form{
     position: relative;
 }
@@ -459,8 +470,7 @@ footer{
 .panel_left {
     display: inline-flex;
     background: #0E0D0D;
-    width: 50%;
-    padding: 3rem;
+    padding: 4rem;
     border-right: outset #0E0D0D 4px;
     border-right-style: groove;
 }
@@ -472,16 +482,14 @@ footer{
 }
 
 .footer_nav{
-    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 .panel_right {
     position: relative;
     background: #141414;
-    width: 50%;
     padding: 3rem;
     border-left: outset #141414 4px;
-   
 }
 
 .bottom_panel{
@@ -492,15 +500,8 @@ footer{
     border-top: outset #0E0D0D 4px;
 }
 
-.socials{
-    position: absolute;
-    right:0;
-    margin: 2rem 4rem 2rem 0;
-}
 
 .copyright{
-    position: absolute;
-    right: 25rem;
     margin: 2.5rem 4rem 2rem 0;
     font-size: 1.15rem;
 }
@@ -513,17 +514,14 @@ footer{
 .socials li a{
     color: #FCA311;
     font-size: 1.5rem;
-    margin-left: 2rem;
 }
 
 .socials li a:hover, .copyright a:hover{
     color: #e5e5e5;
 }
 
-.contactUs{
-    position: absolute;
-    right: 100px;
-    margin-top: 2rem;
+.important_nav{
+    margin-left: 2.5rem;
 }
 
 @media only screen and (max-width: 991px) {

@@ -6,21 +6,21 @@
 <div class="addmargins">
     <div class="container-fluid padding my-4">
         <div class="formWrapping row-md g-2">
-            <h1>@ViewBag.Error</h1>
             <form method="get">
                 <div class="row">
                     <div class="col-md-12">
                         <h4>Technician</h4>
-                        <select asp-for="TechnicianId" asp-items='@new SelectList(ViewBag.Technicians, "TechnicianId", "TechName")' class="form-select">
+                        <select asp-for="TechnicianId" asp-items='@new SelectList(ViewBag.Technicians, "TechnicianId", "TechName")' class="form-select mb-1">
                                 <option value="0">SELECT TECHNICIAN</option>
                         </select>
+                        <span class="fs-5" style="color: #D9534F;">@ViewBag.Error</span>
                     </div>
                 </div>
 
                 @*action buttons*@
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
-                        <input type="submit" asp-action="List" value="Get" class="btn formbutton rounded-pill w-25">
+                        <button type="submit" asp-action="List" value="Get" class="btn formbutton rounded-pill accept_color_add grow">Get Technician</button>
                     </div>
                 </div>
             </form>
