@@ -23,7 +23,22 @@ namespace GBCSporting_Flip_Framework.Controllers
             return View(customers);
         }
 
-        [HttpPost]
+        private List<Product> getUnregisteredProducts(IEnumerable<Registration> registrations, List<Product> products)
+        {
+            foreach (Registration registration in registrations)
+            {
+                foreach(Product product in products.ToList())
+                {
+                    if (registration.ProductId == product.ProductId)
+                    {
+                        products.Remove(product);
+                        break;
+                    }
+                }   
+            }
+            return products;
+        }
+
         public IActionResult Register(int customerId)
         {
             if (customerId == 0)
@@ -33,16 +48,8 @@ namespace GBCSporting_Flip_Framework.Controllers
             }
             HttpContext.Session.SetInt32("customerId", customerId);
             IEnumerable<Registration> registrations = context.Registrations.Where(c => c.CustomerId == customerId).Include(c => c.Product).OrderBy(c => c.ProductId);
-            ViewBag.Products = context.Products.OrderBy(c => c.ProductId).ToList();
-            ViewBag.Customer = context.Customers.Find(customerId);
-            return View(registrations);
-        }
-
-        public IActionResult Register()
-        {
-            int? customerId = HttpContext.Session.GetInt32("customerId");
-            IEnumerable<Registration> registrations = context.Registrations.Where(c => c.CustomerId == customerId).Include(c => c.Product).OrderBy(c => c.ProductId);
-            ViewBag.Products = context.Products.OrderBy(c => c.ProductId).ToList();
+            List<Product> products = context.Products.OrderBy(c => c.ProductId).ToList();
+            ViewBag.Products = getUnregisteredProducts(registrations, products); 
             ViewBag.Customer = context.Customers.Find(customerId);
             return View(registrations);
         }
@@ -50,22 +57,22 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpPost]
         public IActionResult Add(int productId)
         {
+            int customerId = (int)HttpContext.Session.GetInt32("customerId");
             if (productId == 0)
             {
                 TempData["ErrorMessage"] = "Please choose a product";
-                return RedirectToAction("Register");
+                return RedirectToAction("Register", new { customerId });
             }
-            int customerId = (int)HttpContext.Session.GetInt32("customerId");
             bool registrationAlreadyExist = context.Registrations.Where(r => r.CustomerId == customerId && r.ProductId == productId).AsNoTracking().FirstOrDefault() != null;
             if (registrationAlreadyExist)
             {
                 TempData["ErrorMessage"] = "This registration is already existed";
-                return RedirectToAction("Register");
+                return RedirectToAction("Register", new { customerId });
             }
             context.Registrations.Add(new Registration { CustomerId = customerId, ProductId = productId });
             context.SaveChanges();
             TempData["SuccessMessage"] = "Product added to registration";
-            return RedirectToAction("Register");
+            return RedirectToAction("Register", new { customerId });
         }
 
         [HttpGet]
@@ -77,7 +84,7 @@ namespace GBCSporting_Flip_Framework.Controllers
             TempData["SuccessMessage"] = "Registration deleted";
             context.SaveChanges();
             TempData["SuccessMessage"] = $"Product removed from registration";
-            return RedirectToAction("Register", new {id=customerId});
+            return RedirectToAction("Register", new { customerId });
         }
     }
 }

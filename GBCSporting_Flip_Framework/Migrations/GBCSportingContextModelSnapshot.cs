@@ -466,7 +466,6 @@ namespace GBCSporting_Flip_Framework.Migrations
                         .IsRequired();
 
                     b.Navigation("Customer");
-
                     b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
