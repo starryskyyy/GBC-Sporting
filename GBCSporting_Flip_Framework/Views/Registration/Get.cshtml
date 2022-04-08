@@ -5,6 +5,12 @@
 <div class="addmargins">
     <div class="container-fluid padding my-4">
         <div class="formWrapping row-md g-2">
+            @if (TempData.Keys.Contains("ErrorMessage"))
+            {
+                <h4 class="bg-danger text-center text-white p-2">
+                    @TempData["ErrorMessage"]
+                </h4>
+            }
             <form asp-action="Register" method="post">
                 <div class="row">
                     <div class="col-md-12">
