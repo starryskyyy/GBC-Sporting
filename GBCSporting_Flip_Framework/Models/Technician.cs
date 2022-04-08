@@ -8,7 +8,7 @@ namespace GBCSporting_Flip_Framework.Models
         public int TechnicianId { get; set; }
 
         [Required(ErrorMessage ="Please enter a name")]
-        [RegularExpression("^[a-zA-Z0-9 ]+$", ErrorMessage = "First name may not contain any special characters.")]
+        [RegularExpression("^[a-zA-Z0-9 ]+$", ErrorMessage = "Technician Name may not contain any special characters.")]
         public string? TechName { get; set; }
 
         [Required(ErrorMessage ="Please enter a email")]

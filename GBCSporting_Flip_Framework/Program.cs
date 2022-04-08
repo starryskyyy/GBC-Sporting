@@ -8,6 +8,11 @@ builder.Services.AddRouting(options =>
     options.AppendTrailingSlash = true;
 }
 );
+
+// Configure to use session sate
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -18,6 +23,7 @@ var app = builder.Build();
 app.UseDeveloperExceptionPage();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

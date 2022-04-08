@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Incident>
+@{
+    ViewData["Title"] = "Technician Incidents";
+
+}
+<div class="addmargins">
+    <div class="container-fluid padding my-4">
+        <div class="container mx-auto my-auto tablebg">
+            <ul class="responsive-table">
+                <li class="row d-md-flex d-block p-0">
+                    <h2>Technician: @ViewBag.Name</h2>
+                    <p>@ViewBag.Error</p>
+                    <h2>Assigned/Open Incidents</h2>
+                </li>
+                @if (Model.Count() > 0)
+                {
+                    <li class="row table-header d-md-flex d-none">
+                            <div class="col col-2">Title</div>
+                            <div class="col col-3">Customer</div>
+                            <div class="col col-2">Product</div>
+                            <div class="col col-5">Date Opened</div>
+                    </li>
+                    @foreach (Incident i in Model)
+                    {
+                    
+                      <li id="hoverMe" class="row table-row d-md-flex d-block">
+                          <label class="col d-md-none sneakylabel">Title</label>
+                          <div class="col col-md-2 col-12">@i.Title</div>
+                          <label class="col d-md-none sneakylabel">Customer</label>
+                          <div class="col col-md-3 col-12">@i.Customer.FullName</div>
+                          <label class="col d-md-none sneakylabel">Product</label>
+                          <div class="col col-md-2 col-12">@i.Product.Name</div>
+                          <label class="col d-md-none sneakylabel">Date Opened</label>
+                          <div class="col col-md-4 col-12">@i.DateOpened</div>
+                          <div class="col-md-1 d-inline-flex justify-content-end">
+                              <a asp-action="Edit" asp-route-id=@i.IncidentId>
+                                  <i class="fa-solid fa-pen-to-square fa-lg" style="color:#292929; font-size:22px; margin-right: .5rem;"></i>
+                              </a>
+                          </div>
+                      </li>  
+                    }
+                }
+                
+                <li class="row mt-4 d-md-flex d-block p-0">
+                        <a asp-action="Index" class="btn formbutton rounded-pill w-25" role="button">Switch Technician</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

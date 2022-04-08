@@ -7,16 +7,16 @@ namespace GBCSporting_Flip_Framework.Models
         [Key]
         public int CustomerId { get; set; }
         [Required(ErrorMessage = "Please enter a first name")]
-        [RegularExpression("^[a-zA-Z0-9 ]+$", ErrorMessage = "First name may not contain any special characters.")]
+        [RegularExpression("^[a-zA-Z0-9 ]+$", ErrorMessage = "Customer First name may not contain any special characters.")]
         [StringLength(51)]
         public string? FirstName { get; set; }
 
         [Required(ErrorMessage = "Please enter a last name")]
-        [RegularExpression("^[a-zA-Z0-9 ]+$", ErrorMessage = "Last name may not contain any special characters.")]
+        [RegularExpression("^[a-zA-Z0-9 ]+$", ErrorMessage = "Customer Last name may not contain any special characters.")]
         [StringLength(51)]
         public string? LastName { get; set; }
 
-        public string FullName { get { return this.FirstName + " " + this.LastName; } }
+        public string FullName => FirstName + " " + LastName;
 
         [Required(ErrorMessage ="Please enter a address")]
         [StringLength(51)]
@@ -49,7 +49,6 @@ namespace GBCSporting_Flip_Framework.Models
             ErrorMessage = "Phone number format must be ### ###-####")]
         public string? CustPhone { get; set; }
 
-        public ICollection<Registration>? Registrations { get; set; }
         public string Slug => FirstName?.Replace(' ', '-').ToLower()
              + '-' + LastName?.Replace(' ', '-').ToLower();
 
