@@ -16,7 +16,6 @@ namespace GBCSporting_Flip_Framework.Controllers
 
         public IActionResult Index()
         {
-
             ViewBag.Technicians = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
             return View();
         }
