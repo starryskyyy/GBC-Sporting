@@ -4,6 +4,7 @@ using GBCSporting_Flip_Framework.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBCSporting_Flip_Framework.Migrations
 {
     [DbContext(typeof(GBCSportingContext))]
-    partial class GBCSportingContextModelSnapshot : ModelSnapshot
+    [Migration("20220408065251_update1")]
+    partial class update1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -270,8 +272,8 @@ namespace GBCSporting_Flip_Framework.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 2,
-                            DateClosed = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4614),
-                            DateOpened = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4612),
+                            DateClosed = new DateTime(2022, 4, 8, 2, 52, 51, 86, DateTimeKind.Local).AddTicks(6108),
+                            DateOpened = new DateTime(2022, 4, 8, 2, 52, 51, 86, DateTimeKind.Local).AddTicks(6105),
                             Description = "When trying to install getting error 123",
                             ProductId = 2,
                             TechnicianId = 1,
@@ -281,8 +283,8 @@ namespace GBCSporting_Flip_Framework.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 1,
-                            DateClosed = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4617),
-                            DateOpened = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4616),
+                            DateClosed = new DateTime(2022, 4, 8, 2, 52, 51, 86, DateTimeKind.Local).AddTicks(6111),
+                            DateOpened = new DateTime(2022, 4, 8, 2, 52, 51, 86, DateTimeKind.Local).AddTicks(6109),
                             Description = "Program crash almost instantly when I open it",
                             ProductId = 1,
                             TechnicianId = 2,
@@ -324,7 +326,7 @@ namespace GBCSporting_Flip_Framework.Migrations
                             ProductId = 1,
                             Code = "H332K",
                             Name = "Draft Manager 1.0",
-                            ReleaseDate = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4599),
+                            ReleaseDate = new DateTime(2022, 4, 8, 2, 52, 51, 86, DateTimeKind.Local).AddTicks(6091),
                             YearlyPrice = 6.6500000000000004
                         },
                         new
@@ -332,7 +334,7 @@ namespace GBCSporting_Flip_Framework.Migrations
                             ProductId = 2,
                             Code = "TVE32",
                             Name = "League Scheduler 1.0",
-                            ReleaseDate = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4602),
+                            ReleaseDate = new DateTime(2022, 4, 8, 2, 52, 51, 86, DateTimeKind.Local).AddTicks(6093),
                             YearlyPrice = 5.54
                         });
                 });

@@ -5,12 +5,11 @@
 <div class="addmargins">
     <div class="container-fluid padding my-4">
         <div class="formWrapping row-md g-2">
-            <form asp-action="ViewProducts" method="post">
-                <div asp-validation-summary="All"></div>
+            <form asp-action="Register" method="post">
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="p-0" style="color: #FCA311;">Get Customer</h1>
-                        <select name="id" asp-items='@new SelectList(Model, "CustomerId", "FullName")' class="form-select">
+                        <select name="customerId" asp-items='@new SelectList(Model, "CustomerId", "FullName")' class="form-select">
                                 <option value="0">SELECT CUSTOMER</option>
                         </select>
                     </div>
@@ -19,7 +18,7 @@
                 @*action buttons*@
                 <div class="row">
                     <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
-                        <input class="btn formbutton rounded-pill w-25"  type="submit" name="Operation" value="Select" />
+                        <input class="btn formbutton rounded-pill w-25" type="submit"/>
                     </div>
                 </div>
             </form>
