@@ -47,14 +47,18 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
-            if (TempData["okEmail"] == null)
+            if(customer.CustomerId == 0)
             {
-                string message = Check.EmailExists(context, customer.CustEmail);
-                if (!String.IsNullOrEmpty(message))
+                if (TempData["okEmail"] == null)
                 {
-                    ModelState.AddModelError(nameof(Customer.CustEmail), message);
+                    string message = Check.EmailExists(context, customer.CustEmail);
+                    if (!String.IsNullOrEmpty(message))
+                    {
+                        ModelState.AddModelError(nameof(Customer.CustEmail), message);
+                    }
                 }
             }
+            
             
             if (ModelState.IsValid)
             {
