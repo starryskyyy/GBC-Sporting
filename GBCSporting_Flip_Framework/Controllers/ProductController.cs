@@ -78,6 +78,7 @@ namespace GBCSporting_Flip_Framework.Controllers
             var product = context.Products.Find(id);
             return View(product);
         }
+
         [HttpPost]
         public RedirectToActionResult Delete(Product product)
         {

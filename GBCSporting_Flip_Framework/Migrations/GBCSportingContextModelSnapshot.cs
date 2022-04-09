@@ -270,8 +270,8 @@ namespace GBCSporting_Flip_Framework.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 2,
-                            DateClosed = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4614),
-                            DateOpened = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4612),
+                            DateClosed = new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(224),
+                            DateOpened = new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(222),
                             Description = "When trying to install getting error 123",
                             ProductId = 2,
                             TechnicianId = 1,
@@ -281,8 +281,8 @@ namespace GBCSporting_Flip_Framework.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 1,
-                            DateClosed = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4617),
-                            DateOpened = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4616),
+                            DateClosed = new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(227),
+                            DateOpened = new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(225),
                             Description = "Program crash almost instantly when I open it",
                             ProductId = 1,
                             TechnicianId = 2,
@@ -324,7 +324,7 @@ namespace GBCSporting_Flip_Framework.Migrations
                             ProductId = 1,
                             Code = "H332K",
                             Name = "Draft Manager 1.0",
-                            ReleaseDate = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4599),
+                            ReleaseDate = new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(205),
                             YearlyPrice = 6.6500000000000004
                         },
                         new
@@ -332,7 +332,7 @@ namespace GBCSporting_Flip_Framework.Migrations
                             ProductId = 2,
                             Code = "TVE32",
                             Name = "League Scheduler 1.0",
-                            ReleaseDate = new DateTime(2022, 4, 8, 4, 42, 30, 862, DateTimeKind.Local).AddTicks(4602),
+                            ReleaseDate = new DateTime(2022, 4, 8, 19, 21, 50, 973, DateTimeKind.Local).AddTicks(208),
                             YearlyPrice = 5.54
                         });
                 });
@@ -466,7 +466,6 @@ namespace GBCSporting_Flip_Framework.Migrations
                         .IsRequired();
 
                     b.Navigation("Customer");
-
                     b.Navigation("Product");
                 });
 #pragma warning restore 612, 618

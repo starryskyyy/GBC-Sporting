@@ -33,6 +33,15 @@ namespace GBCSporting_Flip_Framework.Controllers
             else return Json(message);
         }
 
-
+        public JsonResult CheckCustomer(int id)
+        {
+            string message = Check.ValidCustomerOrProduct(context, id);
+            if (string.IsNullOrEmpty(message))
+            {
+                TempData["okId"] = true;
+                return Json(true);
+            }
+            else return Json(message);
+        }
     }
 }
