@@ -39,7 +39,9 @@ namespace GBCSporting_Flip_Framework.Controllers
 
         [HttpGet]
         public ViewResult Add()
+
         {
+
             var model = new IncidentEditViewModel
             {
                 operation = "Add",
@@ -70,9 +72,12 @@ namespace GBCSporting_Flip_Framework.Controllers
 
         [HttpPost]
         public IActionResult Edit(Incident incident)
+
         {
+
             if (ModelState.IsValid)
             {
+                
                 if (incident.DateOpened is null)
                 {
                     incident.DateOpened = DateTime.Now;

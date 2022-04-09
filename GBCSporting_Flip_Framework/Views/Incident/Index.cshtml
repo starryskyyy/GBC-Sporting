@@ -4,13 +4,6 @@
     var status = new List<string>() {"All Incidents", "Unassigned Incidents", "Open Incidents"};
 }
 <div class="addmargins">
-    <ul class="nav nav-pills">
-        <li class="nav-item"><a class="nav-link @(Model.SelectedStatus == "all" ? "active" : "")" asp-action="Index" asp-route-activeStatus="all">All Incidents</a></li>
-        <li class="nav-item"><a class="nav-link @(Model.SelectedStatus == "unassigned" ? "active" : "")" asp-action="Index" asp-route-activeStatus="unassigned">Unassigned Incidents</a></li>
-        <li class="nav-item"><a class="nav-link @(Model.SelectedStatus == "open" ? "active" : "")" asp-action="Index" asp-route-activeStatus="open">Open Incidents</a></li>
-    </ul>
-
-
     <div class="container-fluid padding my-4">
         <div class="container mx-auto my-auto tablebg">
             @if (TempData.Keys.Contains("confirmMessage"))
@@ -19,7 +12,14 @@
             }
             <ul class="responsive-table">
                 <li class="row d-md-flex d-block p-0">
-                    <h1 class="p-0" style="color: #FCA311;">Incident Manager</h1>
+                    <h1 class="p-0 w-50" style="color: #FCA311;">Incident Manager</h1>
+                    <div class="p-0 filterButtons">
+                        <ul class="d-inline-flex">
+                            <li class="p-0"><a class="nav-link @(Model.SelectedStatus == "all" ? "active" : "")" asp-action="Index" asp-route-activeStatus="all">All Incidents</a></li>
+                            <li class="p-0"><a class="nav-link @(Model.SelectedStatus == "unassigned" ? "active" : "")" asp-action="Index" asp-route-activeStatus="unassigned">Unassigned Incidents</a></li>
+                            <li class="p-0"><a class="nav-link @(Model.SelectedStatus == "open" ? "active" : "")" asp-action="Index" asp-route-activeStatus="open">Open Incidents</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="row table-header d-md-flex d-none">
                     <div class="col col-3">Title</div>

@@ -145,30 +145,38 @@ main{
 
 .panelBG{
     height: auto;
+    width: auto;
     background-color: rgba(20, 33, 61, 0.5);
     padding: 1rem;
-    margin: 0 .25rem 0 .25rem;
+    margin: 1rem 1rem 0 1rem;
+    border-radius: 35px 25px; 
+    min-width: 430px
+}
+.panelBG:nth-child(2){
+    border-radius: 25px 35px;
 }
 
 .adminAnim {
     align-items: center;
     height: 5rem;
     text-align: center;
-    width: 23rem;
+    width: 24rem;
     cursor: pointer;
     transition: all 0.5s;
     position: relative;
     font-size: 26px;
     line-height: 40px;
+    margin: 0 auto 0 auto;
 }
 
-.buttonAnim {
-    z-index: 4;
+.buttonAnim  {
+    z-index: 100;
     text-decoration: none;
     text-align: center;
     color: #FCA311;
     transition: all 0.5s;
-    width: 100%
+    width: 100%;
+    height: auto;
 }
 
 .adminAnim::before {
@@ -247,7 +255,34 @@ main{
     background-color: #E5E5E5;
     font-weight: bold;
 }
+.filterButtons{
+    width: 38rem;
+}
 
+.filterButtons ul{
+    padding-left: 0;
+}
+.filterButtons ul li{
+    text-align: center;
+    list-style: none;
+    padding: 7px;
+    margin-bottom: 0;
+}
+
+.filterButtons a{
+    color: #e5e5e5;
+    font-size: 1.15em;
+}
+
+.filterButtons a:hover{
+    color: #FCA311;
+}
+
+.filterButtons a.active{
+    color: #FCA311;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+}
 
 .table-row:hover{
     transition: ease 0.4s;
