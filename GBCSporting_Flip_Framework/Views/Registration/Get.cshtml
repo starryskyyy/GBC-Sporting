@@ -10,18 +10,18 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="p-0" style="color: #FCA311;">Get Customer</h1>
-                        <select name="customerId" asp-items='@new SelectList(Model, "CustomerId", "FullName")' class="form-select">
+                        <select name="customerId" asp-items='@new SelectList(Model, "CustomerId", "FullName")' class="form-select mb-1">
                                 <option value="0">SELECT CUSTOMER</option>
                         </select>
                         @if (TempData.Keys.Contains("ErrorMessage"))
                         {
-                            <span class="text-danger">@TempData["ErrorMessage"]</span>
+                            <span class="text-danger fs-5">@TempData["ErrorMessage"]</span>
                         }
                     </div>
                 </div>
                 @*action buttons*@
-                <div class="row">
-                    <div class="col-12 d-grid gap-3 d-lg-flex justify-content-center">
+                <div class="row mt-4">
+                    <div class="col-12 d-grid gap-3 d-lg-flex  justify-content-center">
                         <button class="btn formbutton rounded-pill accept_color_add grow" type="submit">Get Customer</button>
                     </div>
                 </div>
