@@ -21,6 +21,13 @@
                     <div class="col col-2"></div>
                 </li>
 
+                @if (TempData.Keys.Contains("NoProductMessage"))
+                {
+                    <li class="row d-md-flex d-block">
+                        <div class="text-danger fs-2">@TempData["NoProductMessage"]</div>
+                    </li>
+                }
+
                 @foreach (Registration registration in Model)
                 {
                     <li class="row table-row d-md-flex d-block">

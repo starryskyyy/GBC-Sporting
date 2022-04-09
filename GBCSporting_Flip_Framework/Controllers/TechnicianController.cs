@@ -42,18 +42,15 @@ namespace GBCSporting_Flip_Framework.Controllers
         [HttpPost]
         public IActionResult Edit(Technician technician)
         {
-            if(technician.TechnicianId == 0)
+            if (TempData["okEmail"] == null)
             {
-                if (TempData["okEmail"] == null)
+                string message = Check.EmailExistsTech(context, technician.TechEmail);
+                if (!String.IsNullOrEmpty(message))
                 {
-                    string message = Check.EmailExistsTech(context, technician.TechEmail);
-                    if (!String.IsNullOrEmpty(message))
-                    {
-                        ModelState.AddModelError(nameof(Technician.TechEmail), message);
-                    }
+                    ModelState.AddModelError(nameof(Technician.TechEmail), message);
                 }
             }
-            
+
             if (ModelState.IsValid)
             {
                 if (technician.TechnicianId == 0)

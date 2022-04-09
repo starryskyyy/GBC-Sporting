@@ -22,7 +22,7 @@ namespace GBCSporting_Flip_Framework.Controllers
             return View(customers);
         }
 
-        private List<Product> getUnregisteredProducts(IEnumerable<Registration> registrations, List<Product> products)
+        private List<Product> getUnregisteredProducts(List<Registration> registrations, List<Product> products)
         {
             foreach (Registration registration in registrations)
             {
@@ -46,10 +46,17 @@ namespace GBCSporting_Flip_Framework.Controllers
                 return RedirectToAction("Get");
             }
             HttpContext.Session.SetInt32("customerId", customerId);
-            IEnumerable<Registration> registrations = context.Registrations.Where(c => c.CustomerId == customerId).Include(c => c.Product).OrderBy(c => c.ProductId);
+            List<Registration> registrations = context.Registrations.Where(c => c.CustomerId == customerId).Include(c => c.Product).OrderBy(c => c.ProductId).ToList();
             List<Product> products = context.Products.OrderBy(c => c.ProductId).ToList();
+
+            Customer c = context.Customers.Find(customerId);
+            ViewBag.Customer = c;
+
+            if (registrations.Count == 0)
+            {
+                TempData["NoProductMessage"] = $"There are no products registered for {c.FullName}";
+            }
             ViewBag.Products = getUnregisteredProducts(registrations, products); 
-            ViewBag.Customer = context.Customers.Find(customerId);
             return View(registrations);
         }
 
