@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 namespace GBCSporting_Flip_Framework.Models
 {
     public class Incident
@@ -6,11 +8,11 @@ namespace GBCSporting_Flip_Framework.Models
         [Key]
         public int IncidentId { get; set; }
         
-        [Required(ErrorMessage ="Please select a customer")] 
+        [IdCheck] 
         public int CustomerId { get; set; }
         public Customer? Customer { get; set; }
        
-        [Required(ErrorMessage = "Please select a product")]
+        [IdCheck(ErrorMessage = "Please pick a product")]
         public int ProductId { get; set; }
         public Product? Product { get; set; }
 

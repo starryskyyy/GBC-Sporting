@@ -74,24 +74,6 @@ namespace GBCSporting_Flip_Framework.Controllers
         public IActionResult Edit(Incident incident)
 
         {
-            if (TempData["okId"] == null)
-                {
-                    string message = Check.ValidCustomerOrProduct(context, incident.CustomerId);
-                    if (!String.IsNullOrEmpty(message))
-                    {
-                        ModelState.AddModelError(nameof(Customer.CustomerId), message);
-                    }
-                }
-
-                if (TempData["okId"] == null)
-                {
-                    string message = Check.ValidCustomerOrProduct(context, incident.ProductId);
-                    if (!String.IsNullOrEmpty(message))
-                    {
-                        ModelState.AddModelError(nameof(Product.ProductId), message);
-                    }
-                }
-
 
             if (ModelState.IsValid)
             {

@@ -28,14 +28,5 @@ namespace GBCSporting_Flip_Framework
             return msg;
         }
 
-        public static string ValidCustomerOrProduct(GBCSportingContext ctx, int id)
-        {
-            string msg = "";
-            if (id == 0)
-            {
-                msg = $"Please select an option";
-            }
-            return msg;
-        }
     }
 }
