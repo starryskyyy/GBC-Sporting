@@ -22,6 +22,7 @@ namespace GBCSporting_Flip_Framework
             if (!string.IsNullOrEmpty(email))
             {
                 Technician technician = ctx.Technicians.FirstOrDefault(t => t.TechEmail.ToLower() == email.ToLower());
+                
                 if (technician != null)
                     msg = $"Email address {email} is already in use.";
             }
