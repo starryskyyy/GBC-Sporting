@@ -4,13 +4,13 @@ The GBC Sporting Technical Support website consists of web pages that support tw
 ## Color Reference
 
   
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Black | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
+| Gamboge  | ![#e49b0f](https://via.placeholder.com/10/e49b0f?text=+) #e49b0f |
+| Tristesse  ( similar )  | ![#0a101e](https://via.placeholder.com/10/0a101e?text=+) #0a101e |
+| White | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
 
-|Color|Hex  |
-|--|--|
-|Black  | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
-|Gamboge  | ![#e49b0f](https://via.placeholder.com/10/e49b0f?text=+) #e49b0f |
-|Tristesse  ( similar )  | ![#0a101e](https://via.placeholder.com/10/0a101e?text=+) #0a101e |
-|White  | ![#FFFFFF](https://via.placeholder.com/10/FFFFFF?text=+) #FFFFFF |
 ## Demo
 ![website demo](https://cdn.discordapp.com/attachments/315879205818597377/988515889559265321/gbc_flip.gif)
 
