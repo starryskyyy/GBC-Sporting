@@ -6,7 +6,7 @@ The GBC Sporting Technical Support website consists of web pages that support tw
   
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Black | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
+| Black | ![#000000](https://cdn.discordapp.com/attachments/315879205818597377/988523572668543036/black.jpg) #000000 |
 | Gamboge  | ![#e49b0f](https://via.placeholder.com/10/e49b0f?text=+) #e49b0f |
 | Tristesse  ( similar )  | ![#0a101e](https://via.placeholder.com/10/0a101e?text=+) #0a101e |
 | White | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
