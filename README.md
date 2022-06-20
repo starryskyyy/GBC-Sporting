@@ -49,7 +49,7 @@ To run this project, you will need to create a database called `GBCSporting` and
 ## Authors
 
 - [@jjensen-ai]([https://github.com/jjensen-ai)
-- [@starryskyyy]([https://github.com/starryskyyy) 
+- [@starryskyyy](https://github.com/starryskyyy) 
 - [@kellyhoang1291]([https://github.com/kellyhoang1291)
 - [@bocchuoi]([https://github.com/bocchuoi)
 
