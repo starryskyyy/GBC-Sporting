@@ -40,7 +40,7 @@ Allows technicians to view all of their assigned and open incidents. The page al
 ![select technician](https://cdn.discordapp.com/attachments/315879205818597377/988520546046193674/Screenshot_12.jpg)
 ![view assigned incidents](https://cdn.discordapp.com/attachments/315879205818597377/988520546243342407/Screenshot_13.jpg)
 
-## Environment Variables
+## Environment Variables :grey_exclamation:
 
 To run this project, you will need to create a database called `GBCSporting` and run command below in the Package Manager Console
 
