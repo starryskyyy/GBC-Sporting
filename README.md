@@ -1,7 +1,7 @@
-﻿# GBC Sporting
+﻿# GBC Sporting :star2:
 The GBC Sporting Technical Support website consists of web pages that support two types of users. First, it lets administrators manage the products, technicians, customers, incidents, and product registrations that are in the database. Second, it lets technicians update incidents that have been assigned to them.
 
-## Color Reference
+## Color Reference 	:art:
 
   
 | Color             | Hex                                                                |
@@ -11,10 +11,10 @@ The GBC Sporting Technical Support website consists of web pages that support tw
 | Tristesse  ( similar )  | ![#0a101e](https://cdn.discordapp.com/attachments/315879205818597377/988525267825864704/0a101e.jpg) #0a101e |
 | White | ![#ffffff](https://cdn.discordapp.com/attachments/315879205818597377/988525268060737667/ffffff.jpg) #ffffff |
 
-## Demo
+## Demo :arrow_forward:
 ![website demo](https://cdn.discordapp.com/attachments/315879205818597377/988515889559265321/gbc_flip.gif)
 
-## Screenshots and description
+## Screenshots and description :camera:
 ### Home page
 The Home Page includes a navigation bar and some menu options for alter assignments.
 
@@ -46,7 +46,7 @@ To run this project, you will need to create a database called `GBCSporting` and
 
 `Update-Database`
 
-## Authors
+## Authors :sparkling_heart:
 
 - [@jjensen-ai](https://github.com/jjensen-ai)
 - [@starryskyyy](https://github.com/starryskyyy) 
